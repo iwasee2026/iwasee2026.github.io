@@ -54,7 +54,9 @@ header {
     background-color: transparent;
 }
 
-
+.menu-toggle {
+    display: none; 
+}
 
 
 
@@ -151,13 +153,11 @@ header.scrolled .bar {
     background-color: #001F3F !important; /* Color oscuro para el menú hamburguesa */
 }
 
-@media (max-width: 992px) {
-    .hero-text h1 br {
+
+@media (max-width: 993px) {
+    .only-desktop {
         display: none;
     }
-   .menu-toggle {
-    display: none; 
-   }
 }
 
 
