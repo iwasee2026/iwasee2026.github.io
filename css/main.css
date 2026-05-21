@@ -154,7 +154,7 @@ header.scrolled .bar {
 }
 
 @media (max-width: 992px) {
-    .hero-text h1 br {
+    .hero-text br {
         display: none;
     }
 }
