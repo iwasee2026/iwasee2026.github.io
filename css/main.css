@@ -54,9 +54,7 @@ header {
     background-color: transparent;
 }
 
-.menu-toggle {
-    display: none; 
-}
+
 
 
 
@@ -154,9 +152,12 @@ header.scrolled .bar {
 }
 
 @media (max-width: 992px) {
-    .hero-text br {
+    .hero-text h1 br {
         display: none;
     }
+   .menu-toggle {
+    display: none; 
+   }
 }
 
 
