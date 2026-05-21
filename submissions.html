@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submissions - AMW 2026</title>
+
+    <meta property="og:site_name" content="AMW 2026">
+    <meta name="description" content="17th Alberto Mendelzon International Workshop on Foundations of Databases and the Web (AMW 2026). November 9-13, Arequipa, Peru.">
+    <meta property="og:title" content="Submissions - AMW 2026">
+    <meta property="og:description" content="The premier forum for the Latin American community and researchers worldwide on the Foundations of Databases and the Web.">
+    <meta property="og:image" content="https://amw2026.github.io/assets/img/hero-amw-arequipa.webp">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="css/main.css?v=1.01">
+</head>
+<body class="inner-page">
+
+    <header id="main-nav">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    
+        <a href="index" class="logo">AMW 2026</a>
+        
+        <nav id="nav-container">
+            <ul class="nav-links" id="nav-links">
+                <li><a href="news">News</a></li>
+                <li><a href="info">Information</a></li>
+                <li><a href="keynotes">Keynotes</a></li>
+                
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle">Program ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="program">Conference Program</a></li>
+                        <li><a href="accepted-papers">Accepted Papers</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="submissions">Submissions</a></li>
+                
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle">Participation Info ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="venue">Venue & Travel</a></li>
+                        <li><a href="registration">Registration</a></li>
+                    </ul>
+                </li>
+                <li><a href="grants">Grants Program</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="page-header-content">
+                <h1>Submissions</h1>
+                <p>Call for Papers & Guidelines</p>
+            </div>
+        </section>
+
+        <div class="page-content container tabs-page-layout">
+            
+            <aside class="sidebar-nav">
+                <button class="side-tab-btn active" onclick="openInfoSection(event, 'sec-dates')">Important Dates</button>
+                <button class="side-tab-btn" onclick="openInfoSection(event, 'sec-cfp')">Call for Papers</button>
+                <button class="side-tab-btn" onclick="openInfoSection(event, 'sec-submit')">Submission Rules</button>
+                <button class="side-tab-btn" onclick="window.open('https://easychair.org/conferences/?conf=amw2026', '_blank')">Submit Paper</button>
+                <button class="side-tab-btn" onclick="openInfoSection(event, 'sec-camera')">Camera-Ready Guidelines</button>
+            </aside>
+
+            <div class="content-area">
+                
+                <section id="sec-dates" class="info-section tab-section active">
+                    <h2 class="section-title-left">Important Dates</h2>
+                    <div class="dates-list-editorial">
+                        <div class="date-row">
+                            <span class="label">Paper Submission</span>
+                            <span class="value updated">July 15th, 2026 (Wednesday)</span>
+                        </div>
+                        <div class="date-row">
+                            <span class="label">Notifications</span>
+                            <span class="value updated">September 1st, 2026</span>
+                        </div>
+                        <div class="date-row">
+                            <span class="label">Camera-ready</span>
+                            <span class="value updated">October 1st, 2026</span>
+                        </div>
+                    </div>
+                    
+                    <div class="aoe-notice" style="margin-top: 1.5rem; padding: 1.2rem; background-color: rgba(0, 51, 102, 0.03); border-left: 4px solid var(--primary); font-size: 0.95rem; color: var(--primary-dark);">
+                        <p style="margin: 0;"><strong>Note:</strong> All deadlines are <strong>23:59</strong> on that date <strong>anywhere on Earth (AoE)</strong>.</p>
+                    </div>
+                </section>
+
+                <section id="sec-cfp" class="info-section tab-section">
+                    <h2 class="section-title-left">Call for Papers</h2>
+                    <p>We solicit submissions in the following areas of data management. Submissions addressing foundational aspects and (short) papers illustrating applications of foundational results in real-world contexts are particularly welcome.</p>
+                    
+                    <h3 class="subsection-title">Topics</h3>
+                    <p>The following topics would be of interest, but the list is intended to be illustrative, not exhaustive:</p>
+                    <br>
+                    <div class="topics-grid">
+                        <ul class="tpc-list">
+                            <li>Approximate and probabilistic query answering</li>
+                            <li>Data analytics</li>
+                            <li>Data exchange and integration</li>
+                            <li>Data exploration</li>
+                            <li>Data mining</li>
+                            <li>Data modelling</li>
+                            <li>Data privacy, security, and blockchain</li>
+                            <li>Data provenance</li>
+                            <li>Data streams</li>
+                            <li>Data visualization</li>
+                            <li>Data warehousing</li>
+                            <li>Database benchmarking</li>
+                            <li>Database concurrency and transactions</li>
+                        </ul>
+                        <ul class="tpc-list">
+                            <li>Database storage and indexing</li>
+                            <li>Distributed and parallel databases</li>
+                            <li>Domain-specific databases</li>
+                            <li>Ethics of data science</li>
+                            <li>Graph data management</li>
+                            <li>Incompleteness, inconsistency, and uncertainty in databases</li>
+                            <li>Information extraction</li>
+                            <li>Information retrieval</li>
+                            <li>Knowledge representation</li>
+                            <li>Logic and databases</li>
+                            <li>Machine learning and databases</li>
+                            <li>Model theory and databases</li>
+                            <li>Physical design</li>
+                            <li>Query languages</li>
+                            <li>Query processing and optimization</li>
+                            <li>Semantic Web</li>
+                            <li>Social networks</li>
+                            <li>Spatial/temporal data</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="sec-submit" class="info-section tab-section">
+                    <h2 class="section-title-left">Submissions</h2>
+                    
+                    <div class="info-callout blue">
+                        <p>Log in to EasyChair for AMW 2026 <strong><a href="https://easychair.org/conferences/?conf=amw2026">EasyChair</a></strong>.</p>
+                    </div>
+
+                    <div class="info-callout red">
+                        <p>At least one author of each accepted paper must attend the workshop to present the work.</p>
+                    </div>
+
+                    <div class="editorial-text-block">
+                        <p>We invite two types of submissions:</p>
+                        <ul class="bullet-list">
+                            <li><strong>Short papers</strong> of up to 5 pages that may contain either original ongoing research or recently published results. In case of papers presenting recently published results, these should have an explicit “[Recent Work]” suffix in the title. Papers accepted in the Recent Work category will not be published in the workshop proceedings.</li>
+                            <li><strong>Regular papers</strong> of up to 10 pages, presenting original research.</li>
+                        </ul>
+                        <p>Papers should be written in English and must be formatted according to the <strong>single-column</strong> <a href="https://ceur-ws.org/HOWTOSUBMIT.html#CEURART">CEURART style</a> and submitted electronically via EasyChair (link available on the conference website) in PDF format. The submissions will be judged by the Program Committee for scientific quality and relevance. At least one author of each accepted paper is required to attend the workshop to present the work. In case of papers presenting original work the authors can choose to opt-out from their paper being published in the workshop proceedings.</p>
+                        <p>Submissions must be uploaded in PDF format using the following link:</p>
+                        <p><a href="https://easychair.org/conferences/?conf=amw2026">EasyChair</a></p>
+                    </div>
+                </section>
+
+                <section id="sec-camera" class="info-section tab-section">
+                    <h2 class="section-title-left">Camera-Ready Guidelines</h2>
+                    <div class="guidelines-numbered">
+                        <ol>
+                            <li>Follow the <strong>single-column </strong><a href="https://ceur-ws.org/HOWTOSUBMIT.html#CEURART">CEURART Style</a>.</li>
+                            <li>Complete and sign the <a href="https://ceur-ws.org/HOWTOSUBMIT.html#AUTHORAGREEMENT">Author Agreement Form</a>.
+                                <ul>
+                                    <li>Fill in <em>Gabriela Montoya, Emanuel Sallinger, and Genoveva Vargas-Solar</em> as <strong>Editors of the proceedings</strong>.</li>
+                                </ul>
+                            </li>
+                            <li>Use the <strong>emphasizing capitalized style</strong> for your paper title.
+                                <ul>
+                                    <li>CEUR instructions references <a href="https://wiki.musicbrainz.org/Style/Language/English">Language/English hints</a> for how to correctly use this style.</li>
+                                </ul>
+                            </li>
+                            <li>Choose the author agreement form that corresponds to your paper:
+                                <ul>
+                                    <li><strong>AUTHOR-AGREEMENT (NTP)</strong> if your paper includes "no copyrighted third party material and no material in the paper was produced with the help of Generative Artificial Intelligence tools".</li>
+                                    <li><strong>AUTHOR-AGREEMENT (TP)</strong> if your paper includes "copyrighted third party material or includes material produced with the help of Generative Artificial Intelligence tools".</li>
+                                </ul>
+                            </li>
+                            <li>For papers including copyrighted third party material, append a copy of the permission(s) by the third parties to use this material to the signed author agreement.</li>
+                            <li>For papers including material produced with the help of Generative Artificial Intelligence tools, fill in and <a href="https://ceur-ws.org/ceur-author-statement-AI-material.pdf?ver=2024-06-04">sign a declaration</a> on which elements were produced by AI tools.
+                                <ul>
+                                    <li>Please notice that <strong>substantial</strong> use of AI is not acceptable (<a href="https://ceur-ws.org/ACADEMIC-ETHICS.html?ver=2024-06-04">Academic Ethics</a>).</li>
+                                </ul>
+                            </li>
+                            <li>The <strong>author agreement</strong> and eventual <strong>permissions and declarations</strong> appended to the agreement <strong>must be physically signed with an ink pen on paper and scanned</strong>.
+                                <ul>
+                                    <li>To comply with <a href="https://ceur-ws.org/HOWTOSUBMIT.html#FAQ-HAND-SIGNATURE">CEUR-WS hand-signature FAQ</a>.</li>
+                                </ul>
+                            </li>
+                            <li>Provide the <strong>author agreement</strong> and eventual <strong>permissions and declarations</strong> appended to the agreement as a <strong>PDF file of at most 1MB</strong>.</li>
+                            <li><strong>Make sure that the authors' names and affiliations are correct</strong>.</li>
+                            <li><strong>Keep the copyright clause</strong> as in the template.
+                                <p class="small-text">*Copyright for this paper by its authors. Use permitted under Creative Commons License Attribution 4.0 International (CC BY 4.0).</p>
+                            </li>
+                            <li><strong>Update copyright year</strong> to "2026".</li>
+                            <li><strong>Update conference</strong> to:
+                                <p class="small-text">"AMW 2026: 17th Alberto Mendelzon International Workshop on Foundations of Databases and the Web, November 9th–13th, 2026, Arequipa, Peru"</p>
+                            </li>
+                            <li>The paper <strong>must not include page numbers</strong>.</li>
+                        </ol>
+                    </div>
+
+                    <div class="editorial-text-block" style="margin-top: 3rem;">
+                        <p>Your camera ready submission must be completed by <strong>October 1st, 2026</strong> and include the following files:</p>
+                        <ul class="bullet-list-pink">
+                            <li>AuthorAgreementPaperXXXX.pdf (a PDF file of at most 1MB that includes eventual permissions for copyrighted third party material and AI declaration)</li>
+                            <li>paperXXXX.pdf</li>
+                            <li>paperXXXX.zip (including all the source files to generate paperXXXX.pdf)</li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+        
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col about">
+                <h3 class="footer-logo">AMW 2026</h3>
+                <p>17th Alberto Mendelzon International Workshop on Foundations of Databases and the Web.</p>
+                <p>Organized by Universidad Católica San Pablo.</p>
+            </div>
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index">Home</a></li>
+                    <li><a href="submissions#sec-cfp">Call for Papers</a></li>
+                    <li><a href="program">Program</a></li>
+                    <li><a href="registration">Registration</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact">
+                <h4>Contact Info</h4>
+                <p><i class="icon-location"></i> Quinta Vivanco s/n, Urb. Campiña Paisajista, Arequipa - Perú</p>
+                <p><i class="icon-email"></i> rticona&#64;ucsp&#46;edu&#46;pe</p>
+            </div>
+            <div class="footer-col social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="LinkedIn">LN</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="#" aria-label="ResearchGate">RG</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Alberto Mendelzon Workshop. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js?v=1.01"></script>
+</body>
+</html>

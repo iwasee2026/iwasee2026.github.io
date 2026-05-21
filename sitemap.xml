@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Página Principal -->
+  <url>
+    <loc>https://amw2026.github.io/</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Páginas del Menú Principal -->
+  <url>
+    <loc>https://amw2026.github.io/news</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amw2026.github.io/info</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amw2026.github.io/keynotes</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amw2026.github.io/program</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amw2026.github.io/accepted-papers</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amw2026.github.io/submissions</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://amw2026.github.io/venue</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amw2026.github.io/registration</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://amw2026.github.io/grants</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Perfiles de Speakers -->
+  <url>
+    <loc>https://amw2026.github.io/speakers/speaker-Wim-Martens</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://amw2026.github.io/speakers/speaker-Maribel-Acosta-Deibe</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://amw2026.github.io/speakers/speaker-Domagoj-Vrgoc</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://amw2026.github.io/speakers/speaker-Yudith-Cardinale</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://amw2026.github.io/speakers/speaker-Sebastian-Ferrada</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+</urlset>
+
+
+
