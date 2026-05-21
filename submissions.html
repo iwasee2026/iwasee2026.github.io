@@ -8,6 +8,7 @@
     <meta property="og:site_name" content="IWASEE 2026">
     <meta name="description" content="International Workshop on Advanced Systems Efficiency Engineering (IWASEE 2026). July 16-17, 2026, Arequipa, Peru.">
     <meta property="og:title" content="Submissions - IWASEE 2026">
+    <meta property="og:description" content="International forum for innovative technologies and research advances in efficient, intelligent, and sustainable engineering systems.">
     <meta property="og:image" content="https://iwasee2026.github.io/assets/img/hero-amw-arequipa.webp">
     <meta property="og:type" content="website">
     
@@ -65,7 +66,9 @@
             <aside class="sidebar-nav">
                 <button class="side-tab-btn active" onclick="openInfoSection(event, 'sec-dates')">Important Dates</button>
                 <button class="side-tab-btn" onclick="openInfoSection(event, 'sec-cfp')">Call for Papers</button>
-                <button class="side-tab-btn" onclick="window.open('https://easychair.org/', '_blank')">Submit Paper</button>
+                <button class="side-tab-btn" onclick="openInfoSection(event, 'sec-submit')">Submission Rules</button>
+                <button class="side-tab-btn" onclick="window.open('#', '_blank')">Submit Paper</button>
+                <button class="side-tab-btn" onclick="openInfoSection(event, 'sec-camera')">Camera-Ready Guidelines</button>
             </aside>
 
             <div class="content-area">
@@ -87,28 +90,76 @@
                         </div>
                     </div>
                     
-                    <div class="aoe-notice">
-                        <p><strong>Note:</strong> All deadlines are <strong>23:59</strong> on that date <strong>anywhere on Earth (AoE)</strong>.</p>
+                    <div class="aoe-notice" style="margin-top: 1.5rem; padding: 1.2rem; background-color: rgba(0, 51, 102, 0.03); border-left: 4px solid var(--primary); font-size: 0.95rem; color: var(--primary-dark);">
+                        <p style="margin: 0;"><strong>Note:</strong> All deadlines are <strong>23:59</strong> on that date <strong>anywhere on Earth (AoE)</strong>.</p>
                     </div>
                 </section>
 
                 <section id="sec-cfp" class="info-section tab-section">
                     <h2 class="section-title-left">Call for Papers</h2>
-                    <p>IWASEE 2026 invites researchers and practitioners to submit original contributions in the following strategic tracks:</p>
+                    <p>IWASEE 2026 invites researchers, practitioners, and students to submit high-quality, original contributions covering the latest advances in efficient, intelligent, and sustainable engineering systems.</p>
                     
                     <h3 class="subsection-title">Research Tracks</h3>
                     <div class="topics-grid">
                         <ul class="tpc-list">
-                            <li><strong>Track 1:</strong> Green Computing and Efficient Systems</li>
-                            <li><strong>Track 2:</strong> Robotics, Automation, and Control</li>
-                            <li><strong>Track 3:</strong> Wireless Systems, Antennas, and IoT</li>
-                            <li><strong>Track 4:</strong> Green Computing and Sustainable Infrastructures</li>
+                            <li><strong>Track 1: Green Computing and Efficient Systems</strong></li>
+                            <li>Green AI and Machine Learning</li>
+                            <li>Algorithmic Resource Optimization</li>
+                            <li>Efficient Data Management and Information Systems</li>
+                            <li>Computational Logic and Numerical Methods for Efficiency</li>
                         </ul>
+                        <ul class="tpc-list">
+                            <li><strong>Track 2: Robotics, Automation, and Control</strong></li>
+                            <li>Intelligent robotics</li>
+                            <li>Industrial automation</li>
+                            <li>Control systems</li>
+                            <li>Autonomous systems</li>
+                            <li>Smart manufacturing</li>
+                        </ul>
+                        <ul class="tpc-list">
+                            <li><strong>Track 3: Wireless Systems, Antennas, and IoT</strong></li>
+                            <li>Antenna design</li>
+                            <li>Wireless communications</li>
+                            <li>5G/6G</li>
+                            <li>IoT networks</li>
+                            <li>Embedded connectivity systems</li>
+                        </ul>
+                        <ul class="tpc-list">
+                            <li><strong>Track 4: Green Computing and Sustainable Infrastructures</strong></li>
+                            <li>Energy-efficient computing</li>
+                            <li>Sustainable IT infrastructures</li>
+                            <li>Cloud / Edge efficiency</li>
+                            <li>Software Engineering for Green Systems</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="sec-submit" class="info-section tab-section">
+                    <h2 class="section-title-left">Submission Rules</h2>
+                    
+                    <div class="info-callout blue">
+                        <p>Papers must be submitted in English. Please follow the standard IEEE conference formatting guidelines.</p>
+                    </div>
+
+                    <div class="info-callout red">
+                        <p>At least one author of each accepted paper must attend the workshop to present the work.</p>
+                    </div>
+
+                    <div class="editorial-text-block">
+                        <p>Submissions will be evaluated by the Program Committee based on scientific quality, relevance, and originality. Detailed instructions regarding the submission portal will be updated soon.</p>
+                    </div>
+                </section>
+
+                <section id="sec-camera" class="info-section tab-section">
+                    <h2 class="section-title-left">Camera-Ready Guidelines</h2>
+                    <div class="editorial-text-block">
+                        <p>Information regarding final camera-ready versions will be provided to the authors of accepted papers following the notification of the final decision.</p>
                     </div>
                 </section>
 
             </div>
         </div>
+        
     </main>
 
     <footer class="main-footer">
@@ -116,6 +167,7 @@
             <div class="footer-col about">
                 <h3 class="footer-logo">IWASEE 2026</h3>
                 <p>International Workshop on Advanced Systems Efficiency Engineering.</p>
+                <p>Hosted by the KR Research Group at Universidad Católica San Pablo.</p>
             </div>
     
             <div class="footer-col links">
@@ -130,7 +182,7 @@
     
             <div class="footer-col contact">
                 <h4>Contact Info</h4>
-                <p><i class="icon-location"></i> Universidad Católica San Pablo, Arequipa - Perú</p>
+                <p><i class="icon-location"></i> Universidad Católica San Pablo (UCSP), Arequipa - Perú</p>
                 <p><i class="icon-email"></i> iwaseeNews&#64;groups&#45;google&#46;com</p>
             </div>
     
@@ -138,7 +190,7 @@
                 <h4>Follow Us</h4>
                 <div class="social-icons">
                     <a href="#" aria-label="LinkedIn">LN</a>
-                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="https://twitter.com/iwaseeNews" aria-label="Twitter">TW</a>
                     <a href="#" aria-label="ResearchGate">RG</a>
                 </div>
             </div>
@@ -150,7 +202,6 @@
             </div>
         </div>
     </footer>
-
     <script src="js/main.js?v=1.012"></script>
 </body>
 </html>
