@@ -444,220 +444,83 @@ header.scrolled .nav-links a {
 
 
 
-
 /* ==========================================================================
-   HERO INDEX: CINEMÁTICO, CENTRADO Y MODERNO (UI 2.0)
+   HERO INDEX - RADICAL UI/UX REDESIGN
    ========================================================================== */
-.hero-cinematic {
-    position: relative;
+.hero-new {
     height: 100vh;
-    min-height: 750px;
+    min-height: 700px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    /* Ajuste crítico: Evita que el contenido se esconda debajo del header fijo */
-    padding-top: 80px; 
-    overflow: hidden;
-}
-
-/* Imagen de fondo panorámica */
-.hero-bg-image {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    /* Recuerda cambiar la ruta si tu imagen está en otro lugar */
-    background-image: url('../assets/img/hero-amw-arequipa.webp'); 
-    background-size: cover;
-    background-position: center 30%; /* Centra mejor la vista de la ciudad/montaña */
-    z-index: 1;
-    transform: scale(1.02); /* Evita bordes blancos al hacer animaciones */
-    animation: slowZoom 20s linear infinite alternate; /* Efecto premium sutil */
-}
-
-/* Oscurece la imagen para que el texto blanco resalte perfectamente */
-.hero-overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    /* Un gradiente que es más oscuro arriba (para el menú) y abajo */
-    background: linear-gradient(
-        to bottom, 
-        rgba(15, 23, 42, 0.9) 0%, 
-        rgba(15, 23, 42, 0.6) 50%, 
-        rgba(15, 23, 42, 0.9) 100%
-    );
-    z-index: 2;
-}
-
-/* Contenedor principal de texto */
-.hero-content-center {
     position: relative;
-    z-index: 3;
-    max-width: 900px; /* Limita el ancho para que el texto no se extienda demasiado */
-    display: flex;
-    flex-direction: column;
+    background: var(--white);
+    overflow: hidden;
+    /* IMPORTANTE: Padding superior para evitar que el header fijo tape el contenido */
+    padding-top: 100px; 
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Mitad y mitad exacto */
+    gap: 6rem;
     align-items: center;
+    position: relative;
+    z-index: 2;
+    height: 100%;
 }
 
-/* Etiqueta superior */
-.hero-tag {
-    display: inline-block;
-    padding: 6px 16px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
-    color: var(--white);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.85rem;
-    margin-bottom: 2rem;
-    backdrop-filter: blur(4px);
+/* El bloque de texto queda a la izquierda */
+.hero-text {
+    padding-left: 5%;
 }
 
-/* Título Gigante */
-.hero-content-center h1 {
-    font-size: clamp(3rem, 7vw, 5rem);
-    line-height: 1.1;
-    color: var(--white);
-    margin-bottom: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-}
-
-.gradient-text {
-    /* Degradado en el texto de naranja a oro */
-    background: linear-gradient(to right, var(--accent), #FCD34D);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* Descripción */
-.hero-description {
-    font-size: clamp(1.1rem, 2vw, 1.3rem);
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.6;
-    margin-bottom: 3rem;
-    max-width: 750px;
-}
-
-/* Fechas y Ubicación en formato Píldora (Capsule) */
-.hero-dates-centered {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 3.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.date-capsule {
+/* El bloque visual a la derecha expandido */
+.hero-visual {
+    height: 100%;
+    width: 100%;
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 10px;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(8px);
-    border-radius: 8px;
-    padding: 12px 24px;
-    color: var(--white);
-    font-weight: 500;
-    font-size: 1.05rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    justify-content: flex-end;
 }
 
-.date-capsule i {
-    color: var(--accent);
-    font-size: 1.2rem;
+.visual-wrapper {
+    width: 90%;
+    height: 70%;
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg); /* Corte lateral moderno */
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-lg);
 }
 
-/* Botones Centrados */
-.hero-btns-centered {
+.visual-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.hero-visual:hover img {
+    transform: scale(1.05);
+}
+
+/* Ajustes de botones y fechas para un look más tech */
+.hero-btns {
     display: flex;
     gap: 1.5rem;
+    margin-top: 2rem;
     flex-wrap: wrap;
-    justify-content: center;
 }
 
-.btn-primary-hero {
-    background-color: var(--primary);
-    color: var(--white);
-    padding: 1rem 2.5rem;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 8px;
-    transition: var(--transition);
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+/* RESPONSIVE: Ajuste crítico para que nada se desborde */
+@media (max-width: 992px) {
+    .hero-new { height: auto; padding: 120px 0; }
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+    .hero-text { padding: 0 2rem; }
+    .hero-dates { justify-content: center; }
+    .hero-btns { justify-content: center; }
+    .hero-visual { display: none; } /* Ocultamos la imagen en móvil para prioridad de texto */
 }
-
-.btn-primary-hero:hover {
-    background-color: #1D4ED8; /* Primary un poco más oscuro */
-    transform: translateY(-3px);
-}
-
-/* Botón estilo vidrio esmerilado para opciones secundarias */
-.btn-glass-hero {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--white);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    padding: 1rem 2.5rem;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 8px;
-    transition: var(--transition);
-}
-
-.btn-glass-hero:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-3px);
-}
-
-/* Indicador de Scroll adaptado a fondo oscuro */
-.scroll-indicator.light {
-    color: rgba(255, 255, 255, 0.6);
-    z-index: 10;
-}
-
-.scroll-indicator.light .mouse {
-    border-color: rgba(255, 255, 255, 0.4);
-}
-
-.scroll-indicator.light .mouse::before {
-    background: var(--accent);
-}
-
-/* Keyframes */
-@keyframes slowZoom {
-    0% { transform: scale(1.02); }
-    100% { transform: scale(1.08); }
-}
-
-/* Móvil */
-@media (max-width: 768px) {
-    .hero-cinematic {
-        padding-top: 100px;
-        min-height: 100vh;
-    }
-    
-    .hero-dates-centered {
-        flex-direction: column;
-        gap: 1rem;
-        width: 100%;
-    }
-    
-    .date-capsule {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .hero-btns-centered {
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    .btn-primary-hero, .btn-glass-hero {
-        width: 100%;
-    }
-}
-
 
 
 
