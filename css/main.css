@@ -445,306 +445,219 @@ header.scrolled .nav-links a {
 
 
 
-
-
 /* ==========================================================================
-   HERO INDEX: FLOATING GLASS DESIGN (UI/UX 2.0)
+   HERO INDEX: CINEMÁTICO, CENTRADO Y MODERNO (UI 2.0)
    ========================================================================== */
-.hero-new {
-    height: 100vh !important;
-    min-height: 700px;
+.hero-cinematic {
+    position: relative;
+    height: 100vh;
+    min-height: 750px;
     display: flex;
     align-items: center;
-    position: relative;
-    background-color: var(--bg-light); /* Usamos el gris perla sutil del nuevo diseño */
+    justify-content: center;
+    text-align: center;
+    /* Ajuste crítico: Evita que el contenido se esconda debajo del header fijo */
+    padding-top: 80px; 
     overflow: hidden;
-    padding-top: 100px; /* EVITA QUE EL HEADER TAPE EL CONTENIDO */
 }
 
-/* Efecto de luz abstracta en el fondo para dar modernidad */
-.hero-new::before {
-    content: '';
+/* Imagen de fondo panorámica */
+.hero-bg-image {
     position: absolute;
-    top: -20%;
-    right: -10%;
-    width: 60vw;
-    height: 60vw;
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, rgba(255,255,255,0) 70%);
-    border-radius: 50%;
-    z-index: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* Recuerda cambiar la ruta si tu imagen está en otro lugar */
+    background-image: url('../assets/img/hero-amw-arequipa.webp'); 
+    background-size: cover;
+    background-position: center 30%; /* Centra mejor la vista de la ciudad/montaña */
+    z-index: 1;
+    transform: scale(1.02); /* Evita bordes blancos al hacer animaciones */
+    animation: slowZoom 20s linear infinite alternate; /* Efecto premium sutil */
 }
 
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr; /* Le da un poco más de espacio al texto */
-    gap: 5rem;
-    align-items: center;
-    position: relative;
+/* Oscurece la imagen para que el texto blanco resalte perfectamente */
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* Un gradiente que es más oscuro arriba (para el menú) y abajo */
+    background: linear-gradient(
+        to bottom, 
+        rgba(15, 23, 42, 0.9) 0%, 
+        rgba(15, 23, 42, 0.6) 50%, 
+        rgba(15, 23, 42, 0.9) 100%
+    );
     z-index: 2;
-    width: 100%;
 }
 
-/* Bloque de Texto Estilo Glassmorphism */
-.hero-text {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 3rem;
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: var(--shadow-lg);
-}
-
-.hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--primary);
-    background: rgba(37, 99, 235, 0.1);
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-size: 0.8rem;
-    margin-bottom: 2rem;
-}
-
-.hero-text h1 {
-    font-size: clamp(3rem, 5vw, 4.5rem);
-    line-height: 1.05;
-    color: var(--primary-dark);
-    margin-bottom: 1.5rem;
-    font-weight: 800;
-    text-align: left;
-}
-
-.hero-text h1 span {
-    display: block;
-    color: var(--primary);
-}
-
-.hero-text p {
-    font-size: 1.15rem;
-    color: var(--text-main);
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
-    opacity: 0.9;
-}
-
-/* Fechas y Ubicación */
-.hero-dates {
-    display: flex;
-    align-items: center;
-    gap: 2.5rem;
-    margin-bottom: 3rem;
-    padding-bottom: 2.5rem;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-}
-
-.date-box {
+/* Contenedor principal de texto */
+.hero-content-center {
+    position: relative;
+    z-index: 3;
+    max-width: 900px; /* Limita el ancho para que el texto no se extienda demasiado */
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.date-box .day { font-size: 2.5rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: var(--primary); line-height: 1; }
-.date-box .month { font-size: 0.9rem; text-transform: uppercase; font-weight: 700; color: var(--text-main); opacity: 0.7; letter-spacing: 1px;}
-
-.hero-location {
-    font-size: 1.05rem;
+/* Etiqueta superior */
+.hero-tag {
+    display: inline-block;
+    padding: 6px 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    color: var(--white);
     font-weight: 600;
-    color: var(--primary-dark);
-    border-left: 2px solid var(--accent);
-    padding-left: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(4px);
 }
 
-/* Botones Modernos */
-.hero-btns {
+/* Título Gigante */
+.hero-content-center h1 {
+    font-size: clamp(3rem, 7vw, 5rem);
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.gradient-text {
+    /* Degradado en el texto de naranja a oro */
+    background: linear-gradient(to right, var(--accent), #FCD34D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Descripción */
+.hero-description {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 750px;
+}
+
+/* Fechas y Ubicación en formato Píldora (Capsule) */
+.hero-dates-centered {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.date-capsule {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    border-radius: 8px;
+    padding: 12px 24px;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 1.05rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.date-capsule i {
+    color: var(--accent);
+    font-size: 1.2rem;
+}
+
+/* Botones Centrados */
+.hero-btns-centered {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
-    align-items: center;
+    justify-content: center;
 }
 
 .btn-primary-hero {
     background-color: var(--primary);
     color: var(--white);
-    padding: 1rem 2rem;
+    padding: 1rem 2.5rem;
     text-decoration: none;
     font-weight: 600;
-    border-radius: var(--radius-sm);
+    border-radius: 8px;
     transition: var(--transition);
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25); /* Sombra azulada */
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
 }
 
-.btn-secondary-hero {
-    color: var(--primary-dark);
+.btn-primary-hero:hover {
+    background-color: #1D4ED8; /* Primary un poco más oscuro */
+    transform: translateY(-3px);
+}
+
+/* Botón estilo vidrio esmerilado para opciones secundarias */
+.btn-glass-hero {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2.5rem;
     text-decoration: none;
     font-weight: 600;
-    transition: var(--transition);
-    padding: 1rem 1.5rem;
-    border-radius: var(--radius-sm);
-    background: transparent;
-}
-
-.btn-primary-hero:hover { 
-    background: var(--primary-dark); 
-    transform: translateY(-2px); 
-    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.2);
-}
-
-.btn-secondary-hero:hover { 
-    background: rgba(0,0,0,0.03);
-    color: var(--primary); 
-}
-
-/* ==========================================================================
-   DISEÑO VISUAL (IMAGEN LIMPIA Y FLOTANTE)
-   ========================================================================== */
-.hero-visual {
-    position: relative;
-    z-index: 2;
-}
-
-/* Sombra de apoyo difusa (Glow trasero) */
-.hero-visual::before {
-    content: '';
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    width: 90%;
-    height: 90%;
-    background: var(--primary);
-    filter: blur(60px);
-    opacity: 0.15;
-    z-index: -1;
-    border-radius: var(--radius-lg);
-}
-
-.hero-visual .visual-wrapper {
-    width: 100%;
-    height: 600px;
-    border-radius: var(--radius-lg); /* Bordes redondeados elegantes */
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-    border: 6px solid var(--white);
+    border-radius: 8px;
     transition: var(--transition);
 }
 
-.hero-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+.btn-glass-hero:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
 }
 
-/* Interacción muy sutil y premium */
-.hero-visual .visual-wrapper:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-.hero-visual:hover img {
-    transform: scale(1.03);
-}
-
-/* Indicador de Scroll */
-.scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    opacity: 0.4;
+/* Indicador de Scroll adaptado a fondo oscuro */
+.scroll-indicator.light {
+    color: rgba(255, 255, 255, 0.6);
     z-index: 10;
-    transition: var(--transition);
 }
 
-.scroll-indicator:hover {
-    opacity: 1;
+.scroll-indicator.light .mouse {
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
-.mouse {
-    width: 24px;
-    height: 38px;
-    border: 2px solid var(--text-main);
-    border-radius: 20px;
-    position: relative;
+.scroll-indicator.light .mouse::before {
+    background: var(--accent);
 }
 
-.mouse::before {
-    content: '';
-    width: 4px; 
-    height: 6px;
-    background: var(--primary);
-    position: absolute;
-    left: 50%; 
-    top: 6px;
-    transform: translateX(-50%);
-    border-radius: 2px;
-    animation: scroll 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+/* Keyframes */
+@keyframes slowZoom {
+    0% { transform: scale(1.02); }
+    100% { transform: scale(1.08); }
 }
 
-@keyframes scroll {
-    0% { opacity: 1; transform: translateX(-50%) translateY(0); }
-    100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
-}
-
-/* ==========================================================================
-   MÓVIL Y TABLET (ADAPTACIÓN)
-   ========================================================================== */
-@media (max-width: 992px) {
-    .hero-new { 
-        height: auto !important; 
+/* Móvil */
+@media (max-width: 768px) {
+    .hero-cinematic {
+        padding-top: 100px;
         min-height: 100vh;
-        padding: 120px 0 60px 0;
     }
     
-    .hero-grid { 
-        grid-template-columns: 1fr; 
-        gap: 3rem;
-    }
-    
-    .hero-text {
-        text-align: center;
-        padding: 2rem 1.5rem;
-    }
-
-    .hero-text h1 { 
-        text-align: center; 
-        font-size: clamp(2.5rem, 8vw, 3.5rem); 
-    }
-    
-    .hero-dates { 
-        justify-content: center; 
+    .hero-dates-centered {
         flex-direction: column;
-        gap: 1.5rem; 
-    }
-
-    .hero-location {
-        border-left: none;
-        border-top: 2px solid var(--accent);
-        padding-left: 0;
-        padding-top: 1rem;
+        gap: 1rem;
+        width: 100%;
     }
     
-    .hero-btns { 
+    .date-capsule {
+        width: 100%;
         justify-content: center;
+    }
+    
+    .hero-btns-centered {
         flex-direction: column;
         width: 100%;
     }
-
-    .btn-primary-hero, .btn-secondary-hero {
-        width: 100%;
-        text-align: center;
-    }
     
-    .hero-visual { display: none !important; }
-    .scroll-indicator { display: none !important; }
+    .btn-primary-hero, .btn-glass-hero {
+        width: 100%;
+    }
 }
+
 
 
 
