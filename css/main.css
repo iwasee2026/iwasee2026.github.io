@@ -444,6 +444,7 @@ header.scrolled .nav-links a {
 
 
 
+
 /* ==========================================================================
    NUEVO HERO: "MODERN TECH STACK" (Evita solapamiento con header)
    ========================================================================== */
@@ -500,7 +501,6 @@ header.scrolled .nav-links a {
     .hero-visual { display: none !important; } /* Ocultar foto en móvil para ahorrar espacio */
     .hero-btns { justify-content: center; }
 }
-
 
 
 /* ==========================================================================
