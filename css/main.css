@@ -448,148 +448,117 @@ header.scrolled .nav-links a {
 
 
 /* ==========================================================================
-   HERO INDEX (MODERN UI/UX 2.0)
+   HERO INDEX: FLOATING GLASS DESIGN (UI/UX 2.0)
    ========================================================================== */
 .hero-new {
-    height: 100vh !important; 
-    min-height: 750px; 
+    height: 100vh !important;
+    min-height: 700px;
     display: flex;
-    align-items: center; 
+    align-items: center;
     position: relative;
-    background-color: var(--bg-light); /* Fondo perla moderno */
-    overflow: hidden; 
-    padding-top: 60px; /* Compensa la altura del header fijo */
+    background-color: var(--bg-light); /* Usamos el gris perla sutil del nuevo diseño */
+    overflow: hidden;
+    padding-top: 100px; /* EVITA QUE EL HEADER TAPE EL CONTENIDO */
 }
 
-/* 1. Fondo dinámico y sutil (Glow) */
-.hero-new::after {
+/* Efecto de luz abstracta en el fondo para dar modernidad */
+.hero-new::before {
     content: '';
     position: absolute;
     top: -20%;
     right: -10%;
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, rgba(255,255,255,0) 70%);
     border-radius: 50%;
-    z-index: 1;
+    z-index: 0;
 }
 
 .hero-grid {
     display: grid;
-    /* Grid asimétrico moderno: Texto amplio, imagen de apoyo */
-    grid-template-columns: 1.1fr 0.9fr; 
-    gap: 4rem;
+    grid-template-columns: 1.1fr 1fr; /* Le da un poco más de espacio al texto */
+    gap: 5rem;
     align-items: center;
     position: relative;
     z-index: 2;
     width: 100%;
 }
 
-/* ==========================================================================
-   BLOQUE DE TEXTO E INFORMACIÓN
-   ========================================================================== */
+/* Bloque de Texto Estilo Glassmorphism */
+.hero-text {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow-lg);
+}
+
 .hero-tag {
-    display: inline-block;
-    padding: 6px 14px;
-    background-color: rgba(37, 99, 235, 0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     color: var(--primary);
+    background: rgba(37, 99, 235, 0.1);
+    padding: 6px 16px;
     border-radius: 20px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     font-size: 0.8rem;
     margin-bottom: 2rem;
-    border: 1px solid rgba(37, 99, 235, 0.2);
 }
 
 .hero-text h1 {
     font-size: clamp(3rem, 5vw, 4.5rem);
-    line-height: 1.1;
+    line-height: 1.05;
     color: var(--primary-dark);
     margin-bottom: 1.5rem;
     font-weight: 800;
     text-align: left;
-    letter-spacing: -0.03em;
 }
 
-/* Efecto de gradiente vibrante en el texto "Workshop 2026" */
 .hero-text h1 span {
-    background: linear-gradient(135deg, var(--primary), #3B82F6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
+    display: block;
+    color: var(--primary);
 }
 
 .hero-text p {
     font-size: 1.15rem;
-    max-width: 540px;
-    margin-bottom: 3rem;
     color: var(--text-main);
     line-height: 1.7;
+    margin-bottom: 2.5rem;
     opacity: 0.9;
 }
 
-/* ==========================================================================
-   FECHAS Y UBICACIÓN (Estilo Data Card)
-   ========================================================================== */
+/* Fechas y Ubicación */
 .hero-dates {
     display: flex;
-    align-items: stretch;
-    gap: 2rem;
-    margin-bottom: 3.5rem;
-    background: var(--white);
-    padding: 1.5rem 2rem;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid rgba(0,0,0,0.03);
-    max-width: fit-content;
+    align-items: center;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
 .date-box {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    border-right: 2px dashed rgba(0,0,0,0.1);
-    padding-right: 2rem;
 }
 
-.date-box .day { 
-    font-size: 2.2rem; 
-    font-weight: 800; 
-    color: var(--primary); 
-    line-height: 1; 
-    letter-spacing: -1px;
-}
-
-.date-box .month { 
-    font-size: 0.9rem; 
-    text-transform: uppercase; 
-    font-weight: 700; 
-    color: var(--accent); 
-    margin-top: 4px;
-}
+.date-box .day { font-size: 2.5rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: var(--primary); line-height: 1; }
+.date-box .month { font-size: 0.9rem; text-transform: uppercase; font-weight: 700; color: var(--text-main); opacity: 0.7; letter-spacing: 1px;}
 
 .hero-location {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.hero-location span {
     font-size: 1.05rem;
     font-weight: 600;
     color: var(--primary-dark);
+    border-left: 2px solid var(--accent);
+    padding-left: 1.5rem;
 }
 
-.hero-location small {
-    font-size: 0.85rem;
-    color: var(--text-main);
-    opacity: 0.7;
-}
-
-/* ==========================================================================
-   BOTONES
-   ========================================================================== */
+/* Botones Modernos */
 .hero-btns {
     display: flex;
     gap: 1.5rem;
@@ -600,24 +569,22 @@ header.scrolled .nav-links a {
 .btn-primary-hero {
     background-color: var(--primary);
     color: var(--white);
-    padding: 1rem 2.2rem;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: var(--radius-sm);
-    transition: var(--transition);
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
-}
-
-.btn-secondary-hero {
-    color: var(--text-main);
-    background-color: var(--white);
     padding: 1rem 2rem;
     text-decoration: none;
     font-weight: 600;
     border-radius: var(--radius-sm);
     transition: var(--transition);
-    border: 1px solid rgba(0,0,0,0.05);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25); /* Sombra azulada */
+}
+
+.btn-secondary-hero {
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-sm);
+    background: transparent;
 }
 
 .btn-primary-hero:hover { 
@@ -627,71 +594,77 @@ header.scrolled .nav-links a {
 }
 
 .btn-secondary-hero:hover { 
+    background: rgba(0,0,0,0.03);
     color: var(--primary); 
-    border-color: rgba(37, 99, 235, 0.2);
-    transform: translateY(-2px);
 }
 
 /* ==========================================================================
-   IMAGEN (Estilo App/Window Flotante)
+   DISEÑO VISUAL (IMAGEN LIMPIA Y FLOTANTE)
    ========================================================================== */
 .hero-visual {
     position: relative;
-    width: 100%;
-    height: 520px;
-    perspective: 1000px; /* Da profundidad para el hover 3D */
+    z-index: 2;
+}
+
+/* Sombra de apoyo difusa (Glow trasero) */
+.hero-visual::before {
+    content: '';
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    background: var(--primary);
+    filter: blur(60px);
+    opacity: 0.15;
+    z-index: -1;
+    border-radius: var(--radius-lg);
 }
 
 .hero-visual .visual-wrapper {
     width: 100%;
-    height: 100%;
-    position: relative;
-    border-radius: var(--radius-lg); 
+    height: 600px;
+    border-radius: var(--radius-lg); /* Bordes redondeados elegantes */
     overflow: hidden;
     box-shadow: var(--shadow-lg);
-    border: 8px solid rgba(255, 255, 255, 0.5); /* Borde semitransparente estilo cristal */
-    background-clip: padding-box;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 6px solid var(--white);
+    transition: var(--transition);
 }
 
 .hero-visual img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.8s ease;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Interacción 3D Suave */
-.hero-visual:hover .visual-wrapper {
-    transform: translateY(-10px) rotateY(-2deg) rotateX(2deg);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+/* Interacción muy sutil y premium */
+.hero-visual .visual-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 .hero-visual:hover img {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
-/* ==========================================================================
-   INDICADOR DE SCROLL
-   ========================================================================== */
+/* Indicador de Scroll */
 .scroll-indicator {
     position: absolute;
-    bottom: 30px;
+    bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    opacity: 0.5;
+    opacity: 0.4;
     z-index: 10;
+    transition: var(--transition);
 }
 
-.scroll-indicator span {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 600;
+.scroll-indicator:hover {
+    opacity: 1;
 }
 
 .mouse {
@@ -706,13 +679,13 @@ header.scrolled .nav-links a {
     content: '';
     width: 4px; 
     height: 6px;
-    background: var(--text-main);
+    background: var(--primary);
     position: absolute;
     left: 50%; 
     top: 6px;
     transform: translateX(-50%);
     border-radius: 2px;
-    animation: scroll 2s infinite cubic-bezier(0.4, 0, 0.2, 1); 
+    animation: scroll 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes scroll {
@@ -721,7 +694,7 @@ header.scrolled .nav-links a {
 }
 
 /* ==========================================================================
-   RESPONSIVE MÓVIL
+   MÓVIL Y TABLET (ADAPTACIÓN)
    ========================================================================== */
 @media (max-width: 992px) {
     .hero-new { 
@@ -732,34 +705,46 @@ header.scrolled .nav-links a {
     
     .hero-grid { 
         grid-template-columns: 1fr; 
-        text-align: center; 
         gap: 3rem;
     }
     
-    .hero-tag { margin: 0 auto 1.5rem; display: table; }
-    .hero-text h1 { text-align: center; }
-    .hero-text p { margin: 0 auto 2.5rem; }
+    .hero-text {
+        text-align: center;
+        padding: 2rem 1.5rem;
+    }
+
+    .hero-text h1 { 
+        text-align: center; 
+        font-size: clamp(2.5rem, 8vw, 3.5rem); 
+    }
     
     .hero-dates { 
-        margin: 0 auto 2.5rem; 
-        flex-direction: column; 
+        justify-content: center; 
+        flex-direction: column;
         gap: 1.5rem; 
+    }
+
+    .hero-location {
+        border-left: none;
+        border-top: 2px solid var(--accent);
+        padding-left: 0;
+        padding-top: 1rem;
+    }
+    
+    .hero-btns { 
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-primary-hero, .btn-secondary-hero {
+        width: 100%;
         text-align: center;
     }
     
-    .date-box { 
-        border-right: none; 
-        border-bottom: 2px dashed rgba(0,0,0,0.1); 
-        padding-right: 0; 
-        padding-bottom: 1.5rem; 
-    }
-    
-    .hero-btns { justify-content: center; }
-    
-    .hero-visual { height: 350px; }
+    .hero-visual { display: none !important; }
     .scroll-indicator { display: none !important; }
 }
-
 
 
 
