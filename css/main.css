@@ -535,39 +535,36 @@ body header#main-nav ul#nav-links .dropdown-menu li a:active {
 
 
 
-
-
-
 /* ==========================================================================
    SECCIONES DEL INDEX
    ========================================================================== */
+
 /* ==========================================================================
-   NUEVO HERO: ESTILO TECH / ENGINEERING (IWASEE)
+   HERO INDEX
    ========================================================================== */
 .hero-new {
-    height: 100vh;
-    min-height: 750px;
+    height: 100vh !important; /* Fuerza el alto total de la pantalla */
+    min-height: 600px; /* Evita que se colapse en pantallas muy bajas */
     display: flex;
-    align-items: center;
+    align-items: center; /* Centra el contenido verticalmente */
     position: relative;
-    /* Fondo con un gradiente moderno muy sutil */
-    background: linear-gradient(135deg, #fdfdfd 0%, #f0f4f8 100%);
-    overflow: hidden;
-    padding-top: 80px;
+    background-color: var(--white);
+    overflow: hidden; /* Evita scrolls accidentales por elementos decorativos */
+    padding-top: 0; /* Quitamos el padding para que el centrado sea matemático */
 }
 
-/* Patrón de puntos integrado (Tech feel) */
+/* Patrón de puntos integrado */
 .hero-dots {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-image: radial-gradient(rgba(0, 51, 102, 0.04) 2px, transparent 2px);
-    background-size: 30px 30px;
+    background-image: radial-gradient(rgba(0, 51, 102, 0.05) 2px, transparent 2px);
+    background-size: 40px 40px;
     z-index: 1;
 }
 
 .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Mitad texto, mitad imagen */
+    grid-template-columns: 1.2fr 0.8fr;
     gap: 4rem;
     align-items: center;
     position: relative;
@@ -575,222 +572,200 @@ body header#main-nav ul#nav-links .dropdown-menu li a:active {
     width: 100%;
 }
 
-/* Píldora de Edición (Badge) */
+/* Bloque de Texto */
 .hero-tag {
     display: inline-block;
-    background: rgba(243, 156, 18, 0.1);
-    color: var(--accent-hover);
-    padding: 8px 18px;
-    border-radius: 30px;
-    font-weight: 800;
+    color: var(--accent);
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.8rem;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
     margin-bottom: 1.5rem;
-    border: 1px solid rgba(243, 156, 18, 0.3);
 }
 
 .hero-text h1 {
-    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-size: clamp(2.8rem, 5.5vw, 4.2rem);
     line-height: 1.1;
     color: var(--primary-dark);
     margin-bottom: 1.5rem;
     font-weight: 900;
     text-align: left;
-    letter-spacing: -1px;
 }
 
 .hero-text h1 span {
     color: var(--primary);
-    background: linear-gradient(120deg, var(--primary), #0066cc);
+    background: linear-gradient(to right, var(--primary), var(--primary-dark));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .hero-text p {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     max-width: 580px;
     margin-bottom: 2.5rem;
     color: var(--text-main);
-    line-height: 1.7;
-    opacity: 0.9;
+    line-height: 1.6;
 }
 
-/* Tarjeta Flotante de Fechas y Ubicación */
+/* Fechas y Ubicación */
 .hero-dates {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem;
     margin-bottom: 3rem;
-    padding: 1.5rem 2rem;
-    background: var(--white);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.05);
-    border: 1px solid rgba(0,0,0,0.03);
-    max-width: 480px;
 }
 
-.date-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-right: 2rem;
-    border-right: 2px solid rgba(0,0,0,0.05);
-}
-
-.date-box .day { font-size: 2.2rem; font-weight: 900; color: var(--primary); line-height: 1; }
-.date-box .month { font-size: 0.9rem; text-transform: uppercase; font-weight: 800; color: var(--accent); letter-spacing: 1px; margin-top: 5px; }
+.date-box .day { font-size: 2.5rem; font-weight: 900; color: var(--primary); line-height: 1; }
+.date-box .month { font-size: 1rem; text-transform: uppercase; font-weight: 700; color: var(--accent); }
 
 .hero-location {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--primary-dark);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    line-height: 1.4;
+    border-left: 2px solid var(--accent);
+    padding-left: 1.5rem;
 }
 
-/* Botones Hero (Diseño Limpio) */
+/* Botones */
 .hero-btns {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .btn-primary-hero {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    background-color: var(--primary);
     color: var(--white);
     padding: 1.1rem 2.2rem;
     text-decoration: none;
     font-weight: 700;
-    border-radius: 8px; 
+    border-radius: 6px;
     transition: var(--transition);
-    box-shadow: 0 10px 20px rgba(0, 51, 102, 0.15);
+    box-shadow: 0 10px 20px rgba(0, 51, 102, 0.12);
 }
 
 .btn-secondary-hero {
     color: var(--primary);
     text-decoration: none;
     font-weight: 700;
-    padding: 1.1rem 2rem;
-    border-radius: 8px;
-    border: 2px solid rgba(0, 51, 102, 0.1);
     transition: var(--transition);
 }
 
-.btn-primary-hero:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(0, 51, 102, 0.25); }
-.btn-secondary-hero:hover { border-color: var(--primary); background: rgba(0, 51, 102, 0.03); transform: translateY(-3px); }
-
-
-/* Visual (La Foto) Estilo Tech/Estructurado */
-.hero-visual {
-    position: relative;
-    padding: 20px 20px 20px 0; /* Espacio para el marco punteado */
-}
-
-/* Marco punteado detrás de la imagen (Efecto de plano de ingeniería) */
-.hero-visual::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 95%;
-    height: 95%;
-    border: 3px dashed var(--accent);
-    border-radius: 24px;
-    z-index: 1;
-    transition: var(--transition);
-    opacity: 0.6;
-}
-
-.hero-visual .visual-wrapper {
-    width: 100%;
-    height: 550px;
-    border-radius: 24px; /* Rectángulo con bordes suaves */
-    overflow: hidden;
-    box-shadow: 0 25px 50px rgba(0, 31, 63, 0.12);
-    position: relative;
-    z-index: 2;
-    transition: var(--transition);
-    background: var(--primary-dark);
-}
-
-.hero-visual .visual-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.7s ease;
-}
-
-/* Hover interactivo */
-.hero-visual:hover .visual-wrapper {
-    transform: translate(-10px, -10px);
-}
-.hero-visual:hover .visual-wrapper img {
-    transform: scale(1.05); /* Efecto zoom suave */
-}
+.btn-primary-hero:hover { background: var(--primary-dark); transform: translateY(-3px); }
 
 /* Indicador de Scroll */
 .scroll-indicator {
     position: absolute;
-    bottom: 30px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     opacity: 0.6;
-    z-index: 3;
+    z-index: 10; /* Aseguramos que esté por encima de todo el hero */
 }
 
+/* Dibujo del borde del ratón */
 .mouse {
-    width: 25px;
+    width: 26px;
     height: 40px;
     border: 2px solid var(--primary);
     border-radius: 20px;
     position: relative;
 }
 
+/* Dibujo de la ruedita que baja */
 .mouse::before {
     content: '';
-    width: 4px; height: 8px;
+    width: 4px; 
+    height: 8px;
     background: var(--accent);
     position: absolute;
-    left: 50%; top: 8px;
+    left: 50%; 
+    top: 8px;
     transform: translateX(-50%);
     border-radius: 2px;
-    animation: scroll 2s infinite;
+    animation: scroll 2s infinite; /* Llama a la animación */
 }
 
+/* Animación de la ruedita */
 @keyframes scroll {
     0% { opacity: 1; transform: translateX(-50%) translateY(0); }
     100% { opacity: 0; transform: translateX(-50%) translateY(15px); }
 }
 
-/* Responsive */
-@media (max-width: 992px) {
-    .hero-new { 
-        height: auto !important;
-        min-height: 100vh;
-        padding: 120px 0 60px 0;
-    }
-    .hero-grid { 
-        grid-template-columns: 1fr; 
-        text-align: center; 
-        gap: 3rem;
-    }
-    .hero-text h1 { text-align: center; }
-    .hero-text p { margin: 0 auto 2rem; }
-    .hero-dates { margin: 0 auto 2.5rem; justify-content: center; max-width: 100%; }
-    .hero-btns { justify-content: center; }
-    .hero-visual { padding: 0 1rem; }
-    .hero-visual::before { display: none; }
+/* ==========================================================================
+   DISEÑO DE IMAGEN GEOMÉTRICO (LIMPIO Y PROFESIONAL)
+   ========================================================================== */
+.hero-visual {
+    position: relative;
+    padding: 20px;
 }
 
+/* Marco decorativo de acento */
+.hero-visual::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    z-index: 1;
+    transition: var(--transition);
+}
 
+.hero-visual .visual-wrapper {
+    width: 100%;
+    height: 480px;
+    position: relative;
+    z-index: 2;
+    /* RECTANGULAR: Forzamos esquinas levemente redondeadas, nada de círculos */
+    border-radius: 12px !important; 
+    overflow: hidden;
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+    background-color: var(--primary-dark);
+    transition: var(--transition);
+}
+
+.hero-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* HOVER: Mantenemos la forma rectangular SIEMPRE */
+.hero-visual:hover .visual-wrapper {
+    transform: translateY(-10px);
+    border-radius: 12px !important; /* BLOQUEO TOTAL AL CÍRCULO */
+}
+
+.hero-visual:hover::before {
+    transform: translate(-15px, 15px);
+}
+
+.hero-visual:hover img {
+    transform: scale(1.05); /* Efecto zoom suave */
+}
+
+/* Móvil */
+@media (max-width: 992px) {
+    .hero-new { 
+        height: auto !important; /* En móvil permitimos que crezca si el texto es mucho */
+        min-height: 100vh;
+        padding: 100px 0;
+    }
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero-text h1 { text-align: center; }
+    .hero-text p { margin: 0 auto 2rem; }
+    .hero-dates, .hero-btns { justify-content: center; }
+    .hero-visual { display: none !important; }
+    .scroll-indicator { display: none !important; }
+}
 
 
 /* ==========================================================================
