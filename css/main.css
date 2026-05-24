@@ -447,38 +447,37 @@ header.scrolled .nav-links a {
 
 
 
-
-
 /* ==========================================================================
-   SECCIONES DEL INDEX
-   ========================================================================== */
-
-/* ==========================================================================
-   HERO INDEX
+   HERO INDEX (MODERN UI/UX 2.0)
    ========================================================================== */
 .hero-new {
-    height: 100vh !important; /* Fuerza el alto total de la pantalla */
-    min-height: 600px; /* Evita que se colapse en pantallas muy bajas */
+    height: 100vh !important; 
+    min-height: 750px; 
     display: flex;
-    align-items: center; /* Centra el contenido verticalmente */
+    align-items: center; 
     position: relative;
-    background-color: var(--white);
-    overflow: hidden; /* Evita scrolls accidentales por elementos decorativos */
-    padding-top: 0; /* Quitamos el padding para que el centrado sea matemático */
+    background-color: var(--bg-light); /* Fondo perla moderno */
+    overflow: hidden; 
+    padding-top: 60px; /* Compensa la altura del header fijo */
 }
 
-/* Patrón de puntos integrado */
-.hero-dots {
+/* 1. Fondo dinámico y sutil (Glow) */
+.hero-new::after {
+    content: '';
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: radial-gradient(rgba(0, 51, 102, 0.05) 2px, transparent 2px);
-    background-size: 40px 40px;
+    top: -20%;
+    right: -10%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
     z-index: 1;
 }
 
 .hero-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    /* Grid asimétrico moderno: Texto amplio, imagen de apoyo */
+    grid-template-columns: 1.1fr 0.9fr; 
     gap: 4rem;
     align-items: center;
     position: relative;
@@ -486,200 +485,282 @@ header.scrolled .nav-links a {
     width: 100%;
 }
 
-/* Bloque de Texto */
+/* ==========================================================================
+   BLOQUE DE TEXTO E INFORMACIÓN
+   ========================================================================== */
 .hero-tag {
     display: inline-block;
-    color: var(--accent);
+    padding: 6px 14px;
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--primary);
+    border-radius: 20px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(37, 99, 235, 0.2);
 }
 
 .hero-text h1 {
-    font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+    font-size: clamp(3rem, 5vw, 4.5rem);
     line-height: 1.1;
     color: var(--primary-dark);
     margin-bottom: 1.5rem;
-    font-weight: 900;
+    font-weight: 800;
     text-align: left;
+    letter-spacing: -0.03em;
 }
 
+/* Efecto de gradiente vibrante en el texto "Workshop 2026" */
 .hero-text h1 span {
-    color: var(--primary);
-    background: linear-gradient(to right, var(--primary), var(--primary-dark));
+    background: linear-gradient(135deg, var(--primary), #3B82F6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    display: inline-block;
 }
 
 .hero-text p {
-    font-size: 1.2rem;
-    max-width: 580px;
-    margin-bottom: 2.5rem;
+    font-size: 1.15rem;
+    max-width: 540px;
+    margin-bottom: 3rem;
     color: var(--text-main);
-    line-height: 1.6;
+    line-height: 1.7;
+    opacity: 0.9;
 }
 
-/* Fechas y Ubicación */
+/* ==========================================================================
+   FECHAS Y UBICACIÓN (Estilo Data Card)
+   ========================================================================== */
 .hero-dates {
     display: flex;
-    align-items: center;
-    gap: 3rem;
-    margin-bottom: 3rem;
+    align-items: stretch;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+    background: var(--white);
+    padding: 1.5rem 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.03);
+    max-width: fit-content;
 }
 
-.date-box .day { font-size: 2.5rem; font-weight: 900; color: var(--primary); line-height: 1; }
-.date-box .month { font-size: 1rem; text-transform: uppercase; font-weight: 700; color: var(--accent); }
+.date-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 2px dashed rgba(0,0,0,0.1);
+    padding-right: 2rem;
+}
+
+.date-box .day { 
+    font-size: 2.2rem; 
+    font-weight: 800; 
+    color: var(--primary); 
+    line-height: 1; 
+    letter-spacing: -1px;
+}
+
+.date-box .month { 
+    font-size: 0.9rem; 
+    text-transform: uppercase; 
+    font-weight: 700; 
+    color: var(--accent); 
+    margin-top: 4px;
+}
 
 .hero-location {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--primary-dark);
-    border-left: 2px solid var(--accent);
-    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* Botones */
+.hero-location span {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.hero-location small {
+    font-size: 0.85rem;
+    color: var(--text-main);
+    opacity: 0.7;
+}
+
+/* ==========================================================================
+   BOTONES
+   ========================================================================== */
 .hero-btns {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
     align-items: center;
 }
 
 .btn-primary-hero {
     background-color: var(--primary);
     color: var(--white);
-    padding: 1.1rem 2.2rem;
+    padding: 1rem 2.2rem;
     text-decoration: none;
-    font-weight: 700;
-    border-radius: 6px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
     transition: var(--transition);
-    box-shadow: 0 10px 20px rgba(0, 51, 102, 0.12);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
 }
 
 .btn-secondary-hero {
-    color: var(--primary);
+    color: var(--text-main);
+    background-color: var(--white);
+    padding: 1rem 2rem;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
     transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-sm);
 }
 
-.btn-primary-hero:hover { background: var(--primary-dark); transform: translateY(-3px); }
-
-/* Indicador de Scroll */
-.scroll-indicator {
-    position: absolute;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    opacity: 0.6;
-    z-index: 10; /* Aseguramos que esté por encima de todo el hero */
+.btn-primary-hero:hover { 
+    background: var(--primary-dark); 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.2);
 }
 
-/* Dibujo del borde del ratón */
-.mouse {
-    width: 26px;
-    height: 40px;
-    border: 2px solid var(--primary);
-    border-radius: 20px;
-    position: relative;
-}
-
-/* Dibujo de la ruedita que baja */
-.mouse::before {
-    content: '';
-    width: 4px; 
-    height: 8px;
-    background: var(--accent);
-    position: absolute;
-    left: 50%; 
-    top: 8px;
-    transform: translateX(-50%);
-    border-radius: 2px;
-    animation: scroll 2s infinite; /* Llama a la animación */
-}
-
-/* Animación de la ruedita */
-@keyframes scroll {
-    0% { opacity: 1; transform: translateX(-50%) translateY(0); }
-    100% { opacity: 0; transform: translateX(-50%) translateY(15px); }
+.btn-secondary-hero:hover { 
+    color: var(--primary); 
+    border-color: rgba(37, 99, 235, 0.2);
+    transform: translateY(-2px);
 }
 
 /* ==========================================================================
-   DISEÑO DE IMAGEN GEOMÉTRICO (LIMPIO Y PROFESIONAL)
+   IMAGEN (Estilo App/Window Flotante)
    ========================================================================== */
 .hero-visual {
     position: relative;
-    padding: 20px;
-}
-
-/* Marco decorativo de acento */
-.hero-visual::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 80%;
-    height: 80%;
-    border: 2px solid var(--accent);
-    border-radius: 12px;
-    z-index: 1;
-    transition: var(--transition);
+    width: 100%;
+    height: 520px;
+    perspective: 1000px; /* Da profundidad para el hover 3D */
 }
 
 .hero-visual .visual-wrapper {
     width: 100%;
-    height: 480px;
+    height: 100%;
     position: relative;
-    z-index: 2;
-    /* RECTANGULAR: Forzamos esquinas levemente redondeadas, nada de círculos */
-    border-radius: 12px !important; 
+    border-radius: var(--radius-lg); 
     overflow: hidden;
-    box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
-    background-color: var(--primary-dark);
-    transition: var(--transition);
+    box-shadow: var(--shadow-lg);
+    border: 8px solid rgba(255, 255, 255, 0.5); /* Borde semitransparente estilo cristal */
+    background-clip: padding-box;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-visual img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.8s ease;
 }
 
-/* HOVER: Mantenemos la forma rectangular SIEMPRE */
+/* Interacción 3D Suave */
 .hero-visual:hover .visual-wrapper {
-    transform: translateY(-10px);
-    border-radius: 12px !important; /* BLOQUEO TOTAL AL CÍRCULO */
-}
-
-.hero-visual:hover::before {
-    transform: translate(-15px, 15px);
+    transform: translateY(-10px) rotateY(-2deg) rotateX(2deg);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
 }
 
 .hero-visual:hover img {
-    transform: scale(1.05); /* Efecto zoom suave */
+    transform: scale(1.05);
 }
 
-/* Móvil */
+/* ==========================================================================
+   INDICADOR DE SCROLL
+   ========================================================================== */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.5;
+    z-index: 10;
+}
+
+.scroll-indicator span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.mouse {
+    width: 24px;
+    height: 38px;
+    border: 2px solid var(--text-main);
+    border-radius: 20px;
+    position: relative;
+}
+
+.mouse::before {
+    content: '';
+    width: 4px; 
+    height: 6px;
+    background: var(--text-main);
+    position: absolute;
+    left: 50%; 
+    top: 6px;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    animation: scroll 2s infinite cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+@keyframes scroll {
+    0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
+}
+
+/* ==========================================================================
+   RESPONSIVE MÓVIL
+   ========================================================================== */
 @media (max-width: 992px) {
     .hero-new { 
-        height: auto !important; /* En móvil permitimos que crezca si el texto es mucho */
+        height: auto !important; 
         min-height: 100vh;
-        padding: 100px 0;
+        padding: 120px 0 60px 0;
     }
-    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    
+    .hero-grid { 
+        grid-template-columns: 1fr; 
+        text-align: center; 
+        gap: 3rem;
+    }
+    
+    .hero-tag { margin: 0 auto 1.5rem; display: table; }
     .hero-text h1 { text-align: center; }
-    .hero-text p { margin: 0 auto 2rem; }
-    .hero-dates, .hero-btns { justify-content: center; }
-    .hero-visual { display: none !important; }
+    .hero-text p { margin: 0 auto 2.5rem; }
+    
+    .hero-dates { 
+        margin: 0 auto 2.5rem; 
+        flex-direction: column; 
+        gap: 1.5rem; 
+        text-align: center;
+    }
+    
+    .date-box { 
+        border-right: none; 
+        border-bottom: 2px dashed rgba(0,0,0,0.1); 
+        padding-right: 0; 
+        padding-bottom: 1.5rem; 
+    }
+    
+    .hero-btns { justify-content: center; }
+    
+    .hero-visual { height: 350px; }
     .scroll-indicator { display: none !important; }
 }
+
+
 
 
 /* ==========================================================================
