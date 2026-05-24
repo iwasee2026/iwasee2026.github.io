@@ -1,44 +1,65 @@
 /* ==========================================================================
-   SISTEMA DE DISEÑO & VARIABLES
+   NUEVO SISTEMA DE DISEÑO & VARIABLES (UI/UX 2.0)
    ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
 :root {
-    --primary: #003366;       
-    --primary-dark: #001f3f;
-    --accent: #f39c12;       
-    --accent-hover: #d35400;
-    --text-main: #2c3e50;
-    --text-light: #ffffff;
-    --bg-light: #fafafa;
+    /* Paleta de Colores Renovada (Más tech y vibrante) */
+    --primary: #2563EB;       /* Azul eléctrico moderno */
+    --primary-dark: #0F172A;  /* Azul noche casi negro (Slate 900) */
+    --accent: #F59E0B;        /* Naranja cálido y vibrante */
+    --accent-hover: #D97706;
+    
+    /* Grises neutros y fondos */
+    --text-main: #334155;     /* Gris pizarra (legibilidad óptima) */
+    --text-light: #F8FAFC;
+    --bg-light: #F1F5F9;      /* Fondo gris perla súper sutil */
     --white: #ffffff;
-    --shadow: 0 10px 30px rgba(0,0,0,0.08);
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    /* Elementos UI */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
+    /* Tipografía secundaria para lectura fluida */
     font-family: 'Inter', sans-serif;
     color: var(--text-main);
-    line-height: 1.7;
-    background-color: var(--white);
+    line-height: 1.6;
+    background-color: var(--bg-light); /* Fondo base más suave que el blanco puro */
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Tipografía principal para Títulos (Plus Jakarta Sans: geométrica y moderna) */
+h1, h2, h3, h4, h5, h6, .logo {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--primary-dark);
+    letter-spacing: -0.02em;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1240px; /* Un poco más ancho para pantallas modernas */
     margin: 0 auto;
     padding: 0 2rem;
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+    font-weight: 800;
     text-align: center;
-    margin-bottom: 3rem;
-    color: var(--primary-dark);
+    margin-bottom: 3.5rem;
 }
 
 /* ==========================================================================
-   HEADER Y NAVEGACIÓN (ESCRITORIO)
+   HEADER Y NAVEGACIÓN (MODERNO Y FLOTANTE)
    ========================================================================== */
 header {
     position: fixed;
@@ -50,135 +71,105 @@ header {
     display: flex;
     justify-content: space-between; 
     align-items: center;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     background-color: transparent;
+    border-bottom: 1px solid transparent;
 }
 
 .menu-toggle {
     display: none; 
 }
 
+/* ==========================================================================
+   LOGO
+   ========================================================================== */
+.logo, a.logo {
+    color: var(--primary-dark) !important;
+    text-decoration: none !important;
+    font-weight: 800 !important;
+    font-size: 1.6rem !important;
+    letter-spacing: -0.05em;
+    transition: var(--transition) !important;
+}
 
+body.inner-page header:not(.scrolled) .logo {
+    color: var(--white) !important;
+}
+
+header.scrolled .logo {
+    color: var(--primary-dark) !important;
+}
 
 /* ==========================================================================
-   LOGO: AZUL EN INDEX / BLANCO EN INTERNAS (TOP)
+   ENLACES DE NAVEGACIÓN
    ========================================================================== */
-
-/* 1. Estado base y para el INDEX (Azul) */
-.logo, 
-a.logo {
-    color: #001F3F !important;
-    -webkit-text-fill-color: #001F3F !important;
-    text-decoration: none !important;
-    opacity: 1 !important;
-    font-weight: 800 !important;
-    font-size: 1.5rem !important;
-    text-transform: uppercase !important;
-    display: inline-block !important;
-    border: none !important;
-    background: none !important;
-    transition: color 0.3s ease !important;
-}
-
-/* 2. Solo para PÁGINAS INTERNAS cuando están arriba (Blanco) */
-/* Esto detecta la clase .inner-page del body y que el header NO tenga .scrolled */
-body.inner-page header:not(.scrolled) .logo {
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;
-}
-
-/* 3. AL HACER SCROLL (Azul en todas las páginas) */
-header.scrolled .logo {
-    color: #001F3F !important;
-    -webkit-text-fill-color: #001F3F !important;
-}
-
-/* Bloqueo en Hover */
-.logo:hover, a.logo:hover {
-    opacity: 0.8 !important;
-}
-
 .nav-links {
     display: flex;
     list-style: none; 
-    gap: 2rem;
+    gap: 2.5rem; /* Más respiro entre enlaces */
     margin: 0;
     padding: 0;
+    align-items: center;
 }
 
-/* 1. REGLA PARA EL INDEX (Fondo Inicial Blanco) */
-/* Al no tener la clase .inner-page, le damos color oscuro desde el inicio */
 body:not(.inner-page) .nav-links a {
-    text-decoration: none !important;
-    color: #001F3F !important; /* Azul marino oscuro para contrastar con tu Hero blanco */
+    color: var(--primary-dark) !important;
     font-weight: 600;
-    transition: color 0.3s ease;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    text-decoration: none;
 }
 
-/* 2. REGLA PARA PÁGINAS INTERNAS (Fondo Inicial con Imagen/Oscuro) */
-/* Solo cuando estamos arriba (sin .scrolled), forzamos el blanco */
 body.inner-page header:not(.scrolled) .nav-links a {
-    text-decoration: none !important;
-    color: #ffffff !important; /* Blanco puro sobre las fotos de cabecera */
-    font-weight: 600;
-    transition: color 0.3s ease;
+    color: var(--white) !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: var(--transition);
 }
 
-/* 3. HOVER GENERAL (Todas las páginas) */
-.nav-links a:hover {
-    color: var(--accent) !important; /* Naranja/dorado al pasar el mouse */
+/* Efecto Hover Moderno (Punto debajo en lugar de cambio de color brusco) */
+.nav-links a {
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 4px;
+    background-color: var(--accent);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 20px;
 }
 
 /* ==========================================================================
-   SCROLL ACTIVO (Todas las páginas unificadas)
+   SCROLL ACTIVO (Header estilo "Glassmorphism")
    ========================================================================== */
 header.scrolled {
-    background-color: #ffffff !important; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
-    padding: 0.8rem 5% !important;
+    background-color: rgba(255, 255, 255, 0.9) !important; 
+    backdrop-filter: blur(10px); /* Efecto vidrio esmerilado */
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm) !important;
+    padding: 1rem 5% !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-/* Al hacer scroll, el menú SIEMPRE es blanco, así que forzamos letras oscuras */
 header.scrolled .nav-links a { 
-    color: #001F3F !important; /* Usamos el mismo azul oscuro del logo para armonía */
+    color: var(--text-main) !important; 
     font-weight: 600;
-    text-decoration: none !important;
 }
-
-header.scrolled .nav-links a:hover { 
-    color: var(--accent) !important;
-}
-
-header.scrolled .bar { 
-    background-color: #001F3F !important; /* Color oscuro para el menú hamburguesa */
-}
-
-/* Salto de linea solo para PC */
-@media (max-width: 993px) {
-    .only-desktop {
-        display: none;
-    }
-}
-
-
-
-
-
-
-
 
 /* ==========================================================================
-   DROPDOWN MENU (REESTRUCTURACIÓN TOTAL)
+   DROPDOWN MENU (LIMPIO Y SIN BORDES DUROS)
    ========================================================================== */
-body header#main-nav ul#nav-links .dropdown-menu li a {
-    color: #001F3F !important; /* Fuerza el azul oscuro siempre */
-}
-
-body header#main-nav ul#nav-links .dropdown-menu li a:hover,
-body header#main-nav ul#nav-links .dropdown-menu li a:active {
-    color: var(--accent) !important; /* Fuerza el naranja al tocar */
-}
-/* 1. ESTRUCTURA BASE (Común para PC y Móvil) */
 .dropdown {
     position: relative;
     display: flex;
@@ -187,9 +178,11 @@ body header#main-nav ul#nav-links .dropdown-menu li a:active {
 
 .dropdown-toggle {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
-/* El submenú nace ESTRICTAMENTE oculto en todas partes */
 .dropdown-menu {
     display: none !important; 
     list-style: none;
@@ -197,206 +190,124 @@ body header#main-nav ul#nav-links .dropdown-menu li a:active {
     margin: 0;
 }
 
-/* ==========================================================================
-   VERSIÓN ESCRITORIO (Solo funciona pasando el ratón)
-   ========================================================================== */
+/* Escritorio */
 @media (min-width: 993px) {
     .dropdown-menu {
         position: absolute;
         top: 100%;
-        left: -15px;
-        margin-top: 10px;
-        background-color: #ffffff !important;
-        box-shadow: 0 10px 30px rgba(0, 51, 102, 0.15);
-        padding: 0.8rem 0;
-        min-width: 220px;
-        border-radius: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 15px;
+        background-color: var(--white) !important;
+        box-shadow: var(--shadow-lg);
+        padding: 0.5rem;
+        min-width: 240px;
+        border-radius: var(--radius-md);
         z-index: 1000;
-        border: 1px solid rgba(0,0,0,0.05);
+        border: 1px solid rgba(0,0,0,0.04);
     }
 
-    /* Puente invisible para que el menú no parpadee */
-    .dropdown::after {
-        content: ''; position: absolute; width: 100%; height: 20px; bottom: -20px; left: 0;
-    }
+    .dropdown::after { content: ''; position: absolute; width: 100%; height: 30px; bottom: -30px; left: 0; }
 
-    /* Mostrar al pasar el ratón SOLAMENTE en PC */
     .dropdown:hover .dropdown-menu {
         display: block !important;
-        animation: fadeInDropdown 0.3s ease forwards;
+        animation: fadeInDropdown 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
 
     .dropdown-menu li a {
         display: block !important;
-        padding: 10px 25px !important;
-        color: #001F3F !important;
+        padding: 12px 20px !important;
+        color: var(--text-main) !important;
         font-weight: 500;
         font-size: 0.95rem;
-        text-align: left;
-        transition: all 0.3s ease;
+        border-radius: var(--radius-sm);
+        transition: var(--transition);
     }
 
+    /* Quitamos la línea de hover para los submenús y usamos fondo suave */
+    .dropdown-menu li a::after { display: none; }
+    
     .dropdown-menu li a:hover {
-        background-color: rgba(243, 156, 18, 0.05) !important;
-        color: var(--accent) !important;
-        padding-left: 30px !important;
+        background-color: var(--bg-light) !important;
+        color: var(--primary) !important;
+        padding-left: 24px !important;
     }
 }
 
 @keyframes fadeInDropdown {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translate(-50%, 10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
 }
 
-/* ==========================================================================
-   VERSIÓN MÓVIL (TARJETA FLOTANTE - UX/UI MEJORADO)
-   ========================================================================== */
+/* Móvil */
 @media (max-width: 992px) {
     .dropdown {
-        position: relative;
         width: 100%;
-        display: flex !important;
         flex-direction: column;
-        align-items: center !important; /* Fuerza a centrar el contenido (el botón) */
-        justify-content: center;
+        align-items: center !important; 
     }
     
-    .dropdown-toggle {
-        width: 100%;
-        text-align: center !important; /* Fuerza el texto al centro */
-        display: block;
-    }
+    .dropdown-toggle { width: 100%; text-align: center !important; }
 
-    /* La Tarjeta Flotante (Nace oculta y absoluta para no mover nada) */
     .dropdown-menu {
         display: none !important; 
-        position: absolute !important;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 85%;
-        max-width: 300px;
-        margin-top: 15px;
-        background-color: #ffffff !important;
-        box-shadow: 0 15px 35px rgba(0, 51, 102, 0.2) !important;
-        border-radius: 12px;
-        padding: 5px 0;
-        z-index: 2000;
-        border: 1px solid rgba(0,0,0,0.08);
+        position: relative !important; /* En móvil no es flotante, empuja el contenido */
+        width: 100%;
+        background-color: rgba(255,255,255,0.05) !important;
+        border-radius: var(--radius-md);
+        margin-top: 10px;
+        padding: 10px 0;
     }
 
-    /* Flecha decorativa (UI moderno que apunta a 'Participation Info') */
-    .dropdown-menu::before {
-        content: '';
-        position: absolute;
-        top: -8px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-bottom: 8px solid #ffffff;
-    }
-
-    /* Clase que activa el JavaScript */
     .dropdown-menu.show-dropdown {
         display: block !important;
-        animation: popInMobile 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; /* Animación fluida de rebote */
     }
 
-    /* Estilos de los botones internos (Fáciles de tocar con el dedo) */
     .dropdown-menu li a {
-        display: block !important;
-        padding: 15px 20px !important;
-        color: #001F3F !important; /* Siempre oscuro para contraste perfecto */
-        font-size: 1.05rem;
-        font-weight: 600;
+        padding: 12px 20px !important;
+        color: rgba(255,255,255,0.8) !important; 
+        font-size: 1rem;
+        font-weight: 500;
         text-align: center !important;
-        border-bottom: 1px solid rgba(0,0,0,0.05); /* Línea separadora */
     }
-
-    /* Quitamos la línea al último elemento */
-    .dropdown-menu li:last-child a {
-        border-bottom: none;
-    }
-
-    /* Efecto visual al tocar con el dedo */
-    .dropdown-menu li a:active {
-        background-color: rgba(243, 156, 18, 0.1) !important;
-        color: var(--accent) !important;
-    }
+    .dropdown-menu li a::after { display: none; }
 }
-    /* Keyframes de la animación móvil */
-    @keyframes popInMobile {
-        0% { opacity: 0; transform: translate(-50%, -10px) scale(0.95); }
-        100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
-    }
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ==========================================================================
-   CORRECCIÓN: PATRÓN DE PUNTOS DE FONDO (PÁGINAS INTERNAS)
+   PÁGINAS INTERNAS (FONDO LIMPIO SIN PUNTOS)
    ========================================================================== */
 .page-content {
-    position: relative; /* Necesario para anclar el fondo expandido */
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    position: relative;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
     min-height: 60vh;
     z-index: 1;
 }
 
-/* Este pseudo-elemento dibuja el fondo al 100% del ancho de la pantalla (100vw) 
-   mientras el contenido principal se queda en sus 1200px */
+/* Eliminamos el gradiente radial de puntos para un look más limpio */
 .page-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 100%;
-    background-color: #fafbfc; 
-    background-image: radial-gradient(rgba(0, 51, 102, 0.08) 2px, transparent 2px) !important;
-    background-size: 30px 30px !important;
-    z-index: -1; /* Lo empuja detrás de las tarjetas y el texto */
+    display: none;
 }
 
-/* Blindaje para que el texto sea legible sobre los puntos */
+/* Contenedores de contenido limpios */
 .tab-section,
 .editorial-text-block,
 .venue-article,
 .speaker-main-info {
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); /* Sombra elegante */
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    background-color: var(--white);
+    box-shadow: var(--shadow-sm); 
+    border: 1px solid rgba(0,0,0,0.02);
 }
 
-/* Ajuste específico para el menú lateral del Dashboard */
 .sidebar-nav {
-    background-color: #ffffff;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    background-color: transparent;
+    padding: 0;
 }
 
-/* En móviles quitamos el fondo blanco extra del menú para que deslice bien */
 @media (max-width: 768px) {
-    .sidebar-nav {
-        background-color: transparent;
-        box-shadow: none;
-        padding: 0;
-    }
+    .tab-section, .editorial-text-block { padding: 1.5rem; }
 }
 
 
