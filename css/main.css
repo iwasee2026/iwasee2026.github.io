@@ -1,25 +1,27 @@
 /* ==========================================================================
-   SISTEMA DE DISEÑO & VARIABLES (NUEVO ESTILO TECH MODERNO)
+   SISTEMA DE DISEÑO & VARIABLES (NUEVO UI/UX)
    ========================================================================== */
 :root {
-    --primary: #0F172A;       /* Deep Slate - Elegante y tech */
-    --primary-dark: #020617;  /* Negro profundo para altos contrastes */
-    --accent: #2563EB;        /* Azul Eléctrico vibrante */
-    --accent-hover: #1D4ED8;
-    --accent-glow: #06B6D4;   /* Cian brillante para gradientes y luces */
-    --text-main: #475569;     /* Gris plomo para lectura suave */
-    --text-light: #FFFFFF;
-    --bg-light: #F8FAFC;
-    --white: #FFFFFF;
-    --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); /* Sombra difusa moderna */
-    --shadow-glow: 0 10px 30px rgba(37, 99, 235, 0.3); /* Sombra de color */
-    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Curva ultra fluida */
+    --primary: #004080;       
+    --primary-dark: #00152b; /* Azul aún más profundo para mayor elegancia */
+    --accent: #ff9f1c;       /* Naranja más vibrante y moderno */
+    --accent-hover: #ff7b00;
+    --text-main: #334155;
+    --text-light: #ffffff;
+    --bg-light: #f8fafc;
+    --white: #ffffff;
+    --shadow: 0 10px 40px rgba(0,0,0,0.08);
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Transición más premium */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+html {
+    scroll-behavior: smooth; /* Scroll suave general */
+}
+
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     color: var(--text-main);
     line-height: 1.7;
     background-color: var(--white);
@@ -33,16 +35,16 @@ body {
 }
 
 h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: 2.8rem;
     text-align: center;
     margin-bottom: 3rem;
     color: var(--primary-dark);
-    letter-spacing: -0.03em; /* Letras más juntas = más moderno */
     font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
 /* ==========================================================================
-   HEADER Y NAVEGACIÓN: EFECTO GLASSMORPHISM (CRISTAL FLOTANTE)
+   HEADER Y NAVEGACIÓN (FLOTANTE & LIMPIO)
    ========================================================================== */
 header {
     position: fixed;
@@ -56,95 +58,71 @@ header {
     align-items: center;
     transition: var(--transition);
     background-color: transparent;
+    border-bottom: 1px solid rgba(255,255,255,0.05); /* Línea sutil en modo transparente */
 }
 
 .menu-toggle { display: none; }
 
-/* 1. LOGO */
-.logo, a.logo {
-    color: var(--primary-dark) !important;
-    -webkit-text-fill-color: var(--primary-dark) !important;
-    text-decoration: none !important;
-    font-weight: 900 !important;
-    font-size: 1.5rem !important;
-    letter-spacing: -1px !important;
-    text-transform: uppercase !important;
-    transition: var(--transition) !important;
-}
-
-body.inner-page header:not(.scrolled) .logo {
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;
-}
-
-header.scrolled .logo {
-    color: var(--primary-dark) !important;
-    -webkit-text-fill-color: var(--primary-dark) !important;
-}
-
-.logo:hover, a.logo:hover { opacity: 0.7 !important; }
-
-/* 2. ENLACES DEL MENÚ */
 .nav-links {
     display: flex;
     list-style: none; 
-    gap: 2.5rem; /* Más espacio para respirar */
+    gap: 2.5rem;
     margin: 0;
     padding: 0;
 }
 
-body:not(.inner-page) .nav-links a {
-    color: var(--primary-dark) !important; 
+/* ESTADO 1: HEADER TRANSPARENTE (Arriba del todo - Letras Blancas) */
+header:not(.scrolled) .logo,
+header:not(.scrolled) .nav-links a {
+    color: var(--white) !important;
+    -webkit-text-fill-color: var(--white) !important;
+    text-decoration: none !important;
     font-weight: 600;
     font-size: 0.95rem;
-    text-decoration: none !important;
+    letter-spacing: 0.5px;
     transition: var(--transition);
 }
 
-body.inner-page header:not(.scrolled) .nav-links a {
-    color: #ffffff !important; 
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-decoration: none !important;
-    transition: var(--transition);
+header:not(.scrolled) .logo {
+    font-size: 1.6rem !important;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
-/* Hover con subrayado animado moderno */
-.nav-links a { position: relative; }
-.nav-links a::after {
-    content: ''; position: absolute; width: 0; height: 2px;
-    bottom: -4px; left: 0; background: var(--accent);
-    transition: width 0.3s ease;
+header:not(.scrolled) .nav-links a:hover {
+    color: var(--accent) !important;
+    -webkit-text-fill-color: var(--accent) !important;
 }
-.nav-links a:hover::after { width: 100%; }
-.nav-links a:hover { color: var(--accent) !important; }
 
-/* ==========================================================================
-   HEADER SCROLLED (BARRA FLOTANTE ESTILO APPLE/VERCEL)
-   ========================================================================== */
+/* ESTADO 2: HEADER CON SCROLL (Fondo Blanco - Letras Oscuras) */
 header.scrolled {
-    top: 15px; /* Se despega del techo */
-    width: 96%;
-    left: 2%;
-    border-radius: 50px; /* Forma de píldora gigante */
-    background-color: rgba(255, 255, 255, 0.7) !important; 
-    backdrop-filter: blur(16px); /* Desenfoque de cristal */
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.5) !important;
-    padding: 0.8rem 3% !important;
+    background-color: rgba(255, 255, 255, 0.95) !important; 
+    backdrop-filter: blur(10px); /* Efecto cristal */
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.05) !important;
+    padding: 1rem 5% !important;
+    border-bottom: none;
 }
 
+header.scrolled .logo,
 header.scrolled .nav-links a { 
     color: var(--primary-dark) !important; 
+    -webkit-text-fill-color: var(--primary-dark) !important;
+    font-weight: 700;
 }
+
+header.scrolled .nav-links a:hover { 
+    color: var(--accent) !important;
+    -webkit-text-fill-color: var(--accent) !important;
+}
+
 header.scrolled .bar { 
     background-color: var(--primary-dark) !important; 
 }
 
-@media (max-width: 993px) { .only-desktop { display: none; } }
 
 /* ==========================================================================
-   DROPDOWN MENU (CRISTAL ULTRA LIMPIO)
+   DROPDOWN MENU (MODERNIZADO)
    ========================================================================== */
 .dropdown { position: relative; display: flex; align-items: center; }
 .dropdown-toggle { cursor: pointer; }
@@ -153,242 +131,213 @@ header.scrolled .bar {
 @media (min-width: 993px) {
     .dropdown-menu {
         position: absolute; top: 100%; left: -20px; margin-top: 15px;
-        background-color: rgba(255, 255, 255, 0.9) !important;
-        backdrop-filter: blur(16px);
+        background-color: var(--white) !important;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-        padding: 0.5rem; min-width: 240px; border-radius: 16px;
-        z-index: 1000; border: 1px solid rgba(0,0,0,0.05);
+        padding: 1rem 0; min-width: 240px;
+        border-radius: 12px; z-index: 1000; border: 1px solid rgba(0,0,0,0.03);
     }
-
-    .dropdown::after { content: ''; position: absolute; width: 100%; height: 25px; bottom: -25px; left: 0; }
-    .dropdown:hover .dropdown-menu { display: block !important; animation: fadeInDrop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
+    .dropdown::after { content: ''; position: absolute; width: 100%; height: 30px; bottom: -30px; left: 0; }
+    .dropdown:hover .dropdown-menu { display: block !important; animation: fadeInDropdown 0.3s ease forwards; }
     .dropdown-menu li a {
-        display: block !important; padding: 12px 20px !important;
-        color: var(--text-main) !important; font-weight: 500; font-size: 0.9rem;
-        border-radius: 8px; transition: var(--transition);
+        display: block !important; padding: 12px 30px !important;
+        color: var(--text-main) !important; -webkit-text-fill-color: var(--text-main) !important;
+        font-weight: 500; font-size: 0.95rem; text-align: left; transition: var(--transition);
     }
-    .dropdown-menu li a::after { display: none; } /* Quitamos el subrayado animado aquí */
-    
     .dropdown-menu li a:hover {
         background-color: var(--bg-light) !important;
-        color: var(--accent) !important;
-        transform: translateX(5px); /* Pequeño salto a la derecha */
+        color: var(--accent) !important; -webkit-text-fill-color: var(--accent) !important;
+        padding-left: 35px !important;
     }
 }
-@keyframes fadeInDrop { from { opacity: 0; transform: translateY(15px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
-
-@media (max-width: 992px) {
-    .dropdown { width: 100%; display: flex !important; flex-direction: column; align-items: center !important; justify-content: center; }
-    .dropdown-toggle { width: 100%; text-align: center !important; display: block; }
-    .dropdown-menu {
-        display: none !important; position: absolute !important; top: 100%; left: 50%; transform: translateX(-50%);
-        width: 90%; max-width: 320px; margin-top: 15px;
-        background-color: #ffffff !important; box-shadow: var(--shadow) !important;
-        border-radius: 16px; padding: 10px; z-index: 2000;
-    }
-    .dropdown-menu.show-dropdown { display: block !important; animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-    .dropdown-menu li a {
-        display: block !important; padding: 12px !important; color: var(--primary-dark) !important;
-        font-size: 1rem; font-weight: 600; text-align: center !important; border-radius: 8px;
-    }
-    .dropdown-menu li a:active { background-color: var(--bg-light) !important; color: var(--accent) !important; }
+@keyframes fadeInDropdown {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
-@keyframes popIn { 0% { opacity: 0; transform: translate(-50%, -10px) scale(0.95); } 100% { opacity: 1; transform: translate(-50%, 0) scale(1); } }
 
 /* ==========================================================================
-   NUEVO HERO INDEX (ALTO IMPACTO Y CONSTRASTE)
+   NUEVO HERO INDEX: INMERSIVO, CINEMÁTICO & GLASSMORPHISM
    ========================================================================== */
 .hero-new {
-    height: 100vh !important;
-    min-height: 700px;
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     position: relative;
-    background-color: var(--white);
+    background-color: var(--primary-dark);
+    padding-top: 0; /* Permite que el header pase por encima */
     overflow: hidden;
-    padding-top: 0;
 }
 
-/* Luces de ambiente en el fondo (Aura moderna) */
-.hero-new::before {
-    content: ''; position: absolute; top: -20%; left: -10%; width: 50vw; height: 50vw;
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
-    z-index: 0;
+/* La imagen de Arequipa se convierte en un fondo absoluto total */
+.hero-visual {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0; padding: 0; margin: 0;
 }
+
+.hero-visual .visual-wrapper {
+    width: 100%; height: 100%; 
+    border-radius: 0 !important; border: none; box-shadow: none;
+}
+
+.hero-visual img {
+    width: 100%; height: 100%; 
+    object-fit: cover;
+    opacity: 0.35; /* Oscurecemos la imagen para que el texto brille */
+    filter: contrast(1.1) saturate(1.2);
+    transform: scale(1.05); /* Ligero zoom para evitar bordes blancos */
+}
+
+/* Overlay / Gradiente encima de la foto para darle dramatismo */
 .hero-new::after {
-    content: ''; position: absolute; bottom: -20%; right: -10%; width: 40vw; height: 40vw;
-    background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
-    z-index: 0;
+    content: '';
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,21,43,0.9) 0%, rgba(0,21,43,0.2) 40%, rgba(0,21,43,0.95) 100%);
+    z-index: 1; pointer-events: none;
 }
 
-/* Mantenemos tu cuadrícula pero con proporciones más modernas */
+.hero-dots { display: none; } /* Ocultamos los puntos en este diseño inmersivo */
+
+/* Contenedor del texto reorganizado */
 .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr; /* La imagen cobra protagonismo */
-    gap: 5rem;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    position: relative;
-    z-index: 2;
+    text-align: center;
+    z-index: 2; /* Sobre la foto y el gradiente */
     width: 100%;
+    margin-top: 60px; /* Compensa el header */
 }
 
-/* Etiqueta flotante */
+.hero-text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .hero-tag {
     display: inline-block;
-    padding: 6px 16px;
-    background: rgba(37, 99, 235, 0.1);
     color: var(--accent);
+    background: rgba(255, 159, 28, 0.15);
+    padding: 6px 18px;
     border-radius: 30px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     margin-bottom: 2rem;
-    border: 1px solid rgba(37, 99, 235, 0.2);
+    border: 1px solid rgba(255, 159, 28, 0.3);
 }
 
-/* Tipografía masiva y apretada */
 .hero-text h1 {
-    font-size: clamp(3rem, 6vw, 4.8rem);
+    font-size: clamp(3.2rem, 7vw, 5.5rem);
     line-height: 1.05;
-    color: var(--primary-dark);
+    color: var(--white);
     margin-bottom: 1.5rem;
     font-weight: 900;
-    text-align: left;
-    letter-spacing: -0.04em;
+    letter-spacing: -1px;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
 }
 
-/* Gradiente salvaje para la segunda línea del título */
 .hero-text h1 span {
-    background: linear-gradient(135deg, var(--accent), var(--accent-glow));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
+    color: var(--accent);
+    background: none;
+    -webkit-background-clip: border-box;
+    -webkit-text-fill-color: initial;
 }
 
 .hero-text p {
-    font-size: 1.25rem;
-    max-width: 580px;
-    margin-bottom: 3rem;
-    color: var(--text-main);
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.7;
-    font-weight: 400;
+    font-weight: 300;
 }
 
-/* Fechas ultra limpias */
-.hero-dates { display: flex; align-items: center; gap: 2.5rem; margin-bottom: 3rem; }
-.date-box .day { font-size: 3rem; font-weight: 900; color: var(--primary-dark); line-height: 1; letter-spacing: -2px; }
-.date-box .month { font-size: 1rem; text-transform: uppercase; font-weight: 700; color: var(--accent); display: block; margin-top: 5px; }
+/* Tarjeta Glassmorphism para las fechas y ubicación */
+.hero-dates {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 1.5rem 3.5rem;
+    border-radius: 50px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.date-box { align-items: center; }
+.date-box .day { font-size: 2.5rem; font-weight: 900; color: var(--white); line-height: 1; }
+.date-box .month { font-size: 1rem; font-weight: 600; color: var(--accent); letter-spacing: 2px; }
 
 .hero-location {
-    font-size: 1.1rem; font-weight: 600; color: var(--text-main);
-    border-left: 2px solid rgba(0,0,0,0.1); padding-left: 2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--white);
+    border-left: 1px solid rgba(255,255,255,0.2);
+    padding-left: 3rem;
 }
 
-/* Botones: Píldoras con Sombras Radiantes */
-.hero-btns { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
+/* Botones Modernizados */
+.hero-btns {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
 .btn-primary-hero {
-    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-    color: var(--white) !important;
-    padding: 1.2rem 2.5rem;
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 50px; /* Píldora total */
-    transition: var(--transition);
-    box-shadow: var(--shadow-glow);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
+    background-color: var(--accent);
+    color: var(--primary-dark) !important;
+    padding: 1.1rem 2.5rem;
+    font-weight: 800;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(255, 159, 28, 0.3);
 }
-
-.btn-primary-hero:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
-}
+.btn-primary-hero:hover { background-color: var(--white); transform: translateY(-3px); }
 
 .btn-secondary-hero {
-    color: var(--primary-dark);
-    text-decoration: none;
-    font-weight: 700;
-    padding: 1.2rem 2rem;
+    color: var(--white) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 1.1rem 2.5rem;
+    font-weight: 600;
     border-radius: 50px;
-    background: var(--bg-light);
-    transition: var(--transition);
-    font-size: 0.95rem;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(5px);
 }
+.btn-secondary-hero:hover { background: var(--white); color: var(--primary-dark) !important; }
 
-.btn-secondary-hero:hover {
-    background: #E2E8F0;
-    color: var(--accent);
-}
-
-/* ==========================================================================
-   IMAGEN: PANEL FLOTANTE SIN BORDES (EFECTO GLOW)
-   ========================================================================== */
-.hero-visual { position: relative; padding: 0; }
-
-/* El resplandor detrás de la foto */
-.hero-visual::before {
-    content: ''; position: absolute;
-    top: 5%; left: 5%; right: 5%; bottom: 5%;
-    background: linear-gradient(135deg, var(--accent), var(--accent-glow));
-    filter: blur(50px);
-    opacity: 0.4;
-    z-index: 1;
-    transition: var(--transition);
-}
-
-.hero-visual .visual-wrapper {
-    width: 100%; height: 600px;
-    position: relative; z-index: 2;
-    border-radius: 24px !important; /* Esquinas modernas de Apple */
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    border: 1px solid rgba(255,255,255,0.4); /* Fino borde de cristal */
-    background-color: var(--primary-dark);
-    transition: var(--transition);
-}
-
-.hero-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-
-.hero-visual:hover .visual-wrapper { transform: translateY(-10px); }
-.hero-visual:hover::before { opacity: 0.6; filter: blur(60px); transform: translateY(10px); }
-.hero-visual:hover img { transform: scale(1.05); }
-
-/* Indicador de Scroll Minimalista */
+/* Indicador de Scroll Blanco */
 .scroll-indicator {
     position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 10px;
-    opacity: 0.4; z-index: 10; transition: var(--transition);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    opacity: 0.7; z-index: 10; color: var(--white); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase;
 }
-.scroll-indicator:hover { opacity: 1; }
-
-.mouse { width: 22px; height: 36px; border: 2px solid var(--text-main); border-radius: 20px; position: relative; }
+.mouse { width: 26px; height: 40px; border: 2px solid rgba(255,255,255,0.6); border-radius: 20px; position: relative; }
 .mouse::before {
-    content: ''; width: 2px; height: 6px; background: var(--text-main);
-    position: absolute; left: 50%; top: 6px; transform: translateX(-50%);
-    border-radius: 2px; animation: scroll 2s infinite;
+    content: ''; width: 4px; height: 8px; background: var(--white); position: absolute; left: 50%; top: 8px;
+    transform: translateX(-50%); border-radius: 2px; animation: scroll 2s infinite;
 }
-@keyframes scroll { 0% { opacity: 1; transform: translateX(-50%) translateY(0); } 100% { opacity: 0; transform: translateX(-50%) translateY(12px); } }
+@keyframes scroll { 0% { opacity: 1; transform: translateX(-50%) translateY(0); } 100% { opacity: 0; transform: translateX(-50%) translateY(15px); } }
 
-/* ==========================================================================
-   MÓVIL
-   ========================================================================== */
+/* Adaptabilidad Móvil para el Nuevo Hero */
 @media (max-width: 992px) {
-    .hero-new { height: auto !important; min-height: 100vh; padding: 120px 0 60px 0; }
-    .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
-    .hero-text h1 { text-align: center; font-size: clamp(3rem, 10vw, 4rem); }
-    .hero-text p { margin: 0 auto 2.5rem; }
-    .hero-dates { justify-content: center; flex-direction: column; gap: 1rem; }
-    .hero-location { border-left: none; padding-left: 0; border-top: 2px solid rgba(0,0,0,0.1); padding-top: 1rem; }
-    .hero-btns { justify-content: center; flex-direction: column; width: 100%; }
-    .btn-primary-hero, .btn-secondary-hero { width: 100%; max-width: 350px; text-align: center; }
-    .hero-visual { display: block !important; margin-top: 2rem; }
-    .hero-visual .visual-wrapper { height: 400px; }
-    .scroll-indicator { display: none !important; }
+    .hero-dates { flex-direction: column; gap: 1.5rem; padding: 2rem; border-radius: 25px; }
+    .hero-location { border-left: none; border-top: 1px solid rgba(255,255,255,0.2); padding-left: 0; padding-top: 1.5rem; }
+    .hero-text h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); }
 }
+
+@media (max-width: 992px) {
+    /* ... Menú hamburguesa ... (Mantén tu código móvil existente para el toggle del menú aquí abajo) */
 
 
 
