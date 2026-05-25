@@ -1090,146 +1090,131 @@ header.scrolled .nav-links a {
 }
 
 /* ==========================================================================
-   SECCIÓN: TOP KEYNOTE SPEAKERS (MODERN TECH CARDS)
+   SECCIÓN: TOP KEYNOTE SPEAKERS (TECH PROFILE CARDS)
    ========================================================================== */
 .speakers-preview {
     padding: 8rem 0;
-    background-color: var(--white); /* Fondo limpio para contrastar con la línea de tiempo */
+    background-color: var(--white); /* Fondo blanco completo para contrastar con las secciones contiguas */
     position: relative;
+    z-index: 1;
 }
 
 .speakers-preview h2 {
     color: var(--primary-dark);
-    margin-bottom: 1rem;
+    text-align: center;
+    margin-bottom: 4rem;
 }
 
 .grid-speakers {
     display: grid;
-    /* Ajuste responsivo automático: 4 en PC, 2 en Tablet, 1 en Móvil */
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    /* Ajuste responsivo: se adapta automáticamente al espacio disponible */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 3rem 2rem;
-    margin-top: 4rem;
 }
 
-/* Tarjeta del Speaker */
-.speaker-item {
+/* Diseño de la Tarjeta */
+.speaker-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    background: var(--white);
-    border-radius: 16px;
-    overflow: hidden;
-    text-decoration: none;
-    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.06); /* Sombra elegante */
-    border: 1px solid rgba(0, 51, 102, 0.04);
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.05); /* Sombra base suave */
+    border: 1px solid rgba(0, 51, 102, 0.05);
+    border-top: 4px solid var(--primary); /* Línea corporativa superior */
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    position: relative;
+    text-decoration: none;
 }
 
-/* Efecto de línea de color naranja (accent) que se dibuja al hacer hover */
-.speaker-item::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.4s ease;
-}
-
-.speaker-item:hover {
+/* Efectos al pasar el mouse */
+.speaker-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 51, 102, 0.12);
-    border-color: rgba(243, 156, 18, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 51, 102, 0.12); /* Sombra más profunda */
+    border-top-color: var(--accent); /* La línea cambia a naranja */
 }
 
-.speaker-item:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-/* Contenedor de la foto */
-.speaker-img-wrapper {
+/* Contenedor de la fotografía */
+.speaker-photo {
     width: 100%;
-    aspect-ratio: 1 / 1; /* Mantiene la imagen siempre cuadrada sin deformarse */
+    aspect-ratio: 1 / 1.1; /* Formato ligeramente vertical (retrato) */
     overflow: hidden;
     position: relative;
     background-color: var(--bg-light);
 }
 
-.speaker-img-wrapper img {
+.speaker-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s ease;
 }
 
-.speaker-item:hover .speaker-img-wrapper img {
-    transform: scale(1.08); /* Zoom suave a la foto */
+.speaker-card:hover .speaker-photo img {
+    transform: scale(1.05); /* Zoom sutil de la imagen */
 }
 
-/* Capa de color semitransparente sobre la foto (estilo tecnológico) */
-.speaker-img-wrapper::before {
-    content: '';
+/* Gradiente tecnológico que aparece abajo de la foto al hacer hover */
+.speaker-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(to top, rgba(0, 31, 63, 0.4) 0%, transparent 50%);
-    z-index: 1;
+    background: linear-gradient(to top, rgba(0, 31, 63, 0.6) 0%, transparent 40%);
     opacity: 0;
     transition: opacity 0.4s ease;
+    z-index: 1;
 }
 
-.speaker-item:hover .speaker-img-wrapper::before {
+.speaker-card:hover .speaker-overlay {
     opacity: 1;
 }
 
-/* Contenedor de Textos */
+/* Información del Speaker */
 .speaker-info {
-    padding: 1.8rem 1.5rem;
+    padding: 2rem 1.5rem;
     text-align: center;
-    flex-grow: 1; /* Si una tarjeta es más alta, el texto se estira para igualar */
+    flex-grow: 1; /* Si una tarjeta es más alta, esta parte se estira sin romper el diseño */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: var(--white);
+    position: relative;
+    z-index: 2;
 }
 
 .speaker-info h4 {
     color: var(--primary-dark);
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
     transition: color 0.3s ease;
 }
 
-.speaker-item:hover .speaker-info h4 {
-    color: var(--accent); /* El nombre cambia a naranja al pasar el mouse */
+.speaker-card:hover .speaker-info h4 {
+    color: var(--accent); /* El nombre se ilumina */
 }
 
 .speaker-info p {
     color: var(--text-main);
-    font-weight: 500;
     font-size: 0.95rem;
-    line-height: 1.5;
+    font-weight: 500;
     margin: 0;
     opacity: 0.8;
+    line-height: 1.5;
 }
 
 /* ==========================================================================
-   RESPONSIVE PARA SPEAKERS
+   RESPONSIVE PARA SPEAKERS (MÓVIL)
    ========================================================================== */
 @media (max-width: 768px) {
     .speakers-preview {
-        padding: 5rem 0;
+        padding: 5rem 0; /* Menos padding vertical en móviles */
     }
     .grid-speakers {
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         gap: 2rem;
     }
-    .speaker-item {
+    .speaker-card {
         max-width: 350px;
-        margin: 0 auto; /* Centra las tarjetas en dispositivos móviles */
+        margin: 0 auto; /* Centra las tarjetas cuando se apilan en 1 columna */
         width: 100%;
     }
 }
