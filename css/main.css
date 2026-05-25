@@ -1005,54 +1005,30 @@ header.scrolled .nav-links a {
 }
 .highlight .date-display, .highlight .date-content h4, .highlight .date-content p { color: var(--white); }
 
-@media (max-width: 992px) {
-    /* Fuerza a que todo el contenido textual se alinee a la derecha */
-    .hero-grid, 
-    .welcome-text-box, 
-    .timeline-item, 
-    .info-section, 
-    .partner-category,
-    .hero-text {
-        text-align: right !important;
-    }
-
-    /* Ajuste para los elementos que usan flexbox o grid */
-    .hero-btns, 
-    .hero-dates,
-    .welcome-badge,
-    .hero-btns-centered {
-        justify-content: flex-end !important; /* Mueve los botones a la derecha */
-    }
-
-    /* Ajuste específico para que las listas de temas o items no se rompan */
-    .tpc-list, .bullet-list {
-        text-align: right !important;
-        margin-right: 0;
-        margin-left: auto; /* Mantiene la lista a la derecha */
-    }
-    
-    /* Para que los iconos o viñetas no queden mal */
-    .tpc-list li {
-        padding-left: 0;
-        padding-right: 25px; /* Cambiamos el padding al lado derecho */
-    }
-    
-    .tpc-list li::before {
-        left: auto;
-        right: 0; /* Movemos la viñeta a la derecha */
-    }
-
-    /* Centrado de los números de las estadísticas */
-    .stat-item {
-        text-align: right !important;
-    }
-}
-
 @media (max-width: 768px) {
-    .timeline-wrapper::before { left: 30px; }
-    .timeline-item { width: 100%; padding-left: 70px; padding-right: 0; }
-    .timeline-item:nth-child(even), .timeline-item:nth-child(odd) { left: 0; }
-    .timeline-item::after { left: 21px; }
+    /* 1. Mantenemos la línea guía a la izquierda */
+    .timeline-wrapper::before { 
+        left: 30px; 
+    }
+    
+    /* 2. Forzamos que todos los items ocupen el 100% y se alineen a la izquierda (visualizando el contenido a la derecha de la línea) */
+    .timeline-item { 
+        width: 100%; 
+        padding-left: 70px; /* Espacio para que no toque el borde izquierdo */
+        padding-right: 20px; /* Margen de seguridad derecho */
+        justify-content: flex-start !important; /* Fuerza la alineación al inicio (izquierda) */
+    }
+    
+    /* 3. Quitamos la alternancia que los enviaba a la derecha */
+    .timeline-item:nth-child(even), 
+    .timeline-item:nth-child(odd) { 
+        left: 0; 
+    }
+    
+    /* 4. Ajustamos el nodo circular para que quede sobre la línea */
+    .timeline-item::after { 
+        left: 21px; 
+    }
 }
 
 /* ==========================================================================
