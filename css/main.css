@@ -488,7 +488,7 @@ header.scrolled .nav-links a {
     background-size: 100px 100px;
     z-index: -2;
     animation: rotateGraphBack 180s linear infinite reverse;
-    opacity: 0.3;
+    opacity: 0.2;
 }
 
 @keyframes rotateGraphFront {
@@ -504,7 +504,7 @@ header.scrolled .nav-links a {
 /* Contenedores del Hero */
 .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 50/50 equilibrado */
+    grid-template-columns: 1.1fr 9.9fr; /* 50/50 equilibrado */
     gap: 4rem;
     align-items: center;
     z-index: 2;
