@@ -441,121 +441,302 @@ header.scrolled .nav-links a {
 
 
 /* ==========================================================================
-   NUEVO HERO: INMERSIVO & MODERNO (UI 2.0)
+   HERO INDEX: DATA NODE CONCEPT (OUT OF THE BOX UI/UX)
    ========================================================================== */
 .hero-new {
-    height: 100vh;
-    min-height: 700px;
+    min-height: 100vh;
     width: 100%;
     position: relative;
-    background: radial-gradient(circle at 80% 20%, #eff6ff 0%, #ffffff 60%);
+    /* Fondo limpio que permite leer el logo azul inicial */
+    background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
     display: flex;
     align-items: center;
-    padding-top: 80px; /* Espacio exacto para el Header */
+    /* PROTECCIÓN DEL HEADER: 140px asegura que nada choque con el menú superior */
+    padding-top: 140px; 
+    padding-bottom: 80px;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
-/* Efecto visual de fondo minimalista */
-.hero-new::after {
+/* Efecto de malla de bases de datos de fondo */
+.hero-tech-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+        linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 1;
+}
+
+/* Resplandor asimétrico estilo Web 3.0 */
+.hero-tech-bg::after {
     content: '';
     position: absolute;
-    bottom: -100px;
-    right: -100px;
-    width: 600px;
-    height: 600px;
-    background: var(--primary);
-    opacity: 0.03;
+    top: -10%; right: -5%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
     border-radius: 50%;
-    filter: blur(80px);
 }
 
-.hero-grid {
-    display: flex;
-    flex-direction: column;
+.hero-grid-bento {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr; /* La imagen toma un poco más de espacio */
+    gap: 5rem;
     align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 900px; /* El contenido se estrecha para máxima legibilidad */
-    margin: 0 auto;
     position: relative;
     z-index: 2;
+    width: 100%;
 }
 
-.hero-tag {
-    background: rgba(37, 99, 235, 0.1);
-    color: var(--primary);
-    padding: 0.5rem 1.2rem;
-    border-radius: 50px;
-    font-weight: 700;
+/* --- Lado Izquierdo: Contenido --- */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tech-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--white);
+    padding: 8px 16px;
+    border-radius: 30px;
     font-size: 0.85rem;
+    font-weight: 700;
     text-transform: uppercase;
+    color: var(--primary-dark);
+    letter-spacing: 1px;
+    box-shadow: var(--shadow-sm);
     margin-bottom: 2rem;
-    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
-.hero-text h1 {
-    font-size: clamp(3rem, 8vw, 5rem);
-    line-height: 1;
+/* Un puntito palpitante estilo "Servidor en línea" */
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+.hero-content h1 {
+    font-size: clamp(3.2rem, 5vw, 4.8rem);
+    line-height: 1.05;
     font-weight: 800;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-dark);
 }
 
-.hero-text h1 span {
-    color: var(--primary);
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary) 0%, #60A5FA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.hero-text p {
+.hero-description {
     font-size: 1.25rem;
     color: var(--text-main);
-    max-width: 700px;
-    margin: 0 auto 3rem auto;
-}
-
-.hero-dates {
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
+    line-height: 1.7;
     margin-bottom: 3rem;
+    max-width: 90%;
 }
-
-.date-box .day { font-size: 1.8rem; font-weight: 800; color: var(--primary-dark); }
-.date-box .month { font-size: 0.9rem; color: var(--text-main); text-transform: uppercase; }
 
 .hero-btns {
     display: flex;
-    gap: 1rem;
-    justify-content: center;
+    gap: 1.5rem;
     flex-wrap: wrap;
 }
 
-/* Botones Modernos */
 .btn-primary-hero {
     background: var(--primary);
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: var(--radius-md);
+    color: var(--white);
+    padding: 1.1rem 2.5rem;
+    border-radius: var(--radius-sm);
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
 }
 
 .btn-secondary-hero {
-    background: transparent;
-    border: 2px solid var(--primary-dark);
+    background: var(--white);
     color: var(--primary-dark);
-    padding: 1rem 2rem;
-    border-radius: var(--radius-md);
+    padding: 1.1rem 2rem;
+    border-radius: var(--radius-sm);
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
-.btn-primary-hero:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-.btn-secondary-hero:hover { background: var(--primary-dark); color: white; }
+.btn-primary-hero:hover { transform: translateY(-3px); box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.6); }
+.btn-secondary-hero:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
 
-/* Eliminamos .hero-visual porque el Hero ahora es inmersivo tipográfico */
-.hero-visual { display: none; }
 
+/* --- Lado Derecho: Imagen Nodo / Dashboard --- */
+.hero-visual-bento {
+    position: relative;
+    width: 100%;
+}
+
+/* El bloque principal de la imagen */
+.image-node {
+    position: relative;
+    width: 100%;
+    height: 550px;
+    border-radius: var(--radius-lg);
+    background: var(--primary-dark);
+    box-shadow: var(--shadow-lg);
+}
+
+.image-node img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    opacity: 0.9; /* Ligeramente oscurecida para look tech */
+}
+
+/* Tarjeta flotante (Glassmorphism) - Simula un registro de base de datos */
+.floating-data-card {
+    position: absolute;
+    bottom: -30px;
+    left: -40px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 1.5rem 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    min-width: 280px;
+    animation: floatCard 6s ease-in-out infinite; /* Animación sutil de flotación */
+}
+
+@keyframes floatCard {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.data-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.data-icon {
+    font-size: 1.8rem;
+    background: var(--white);
+    width: 45px; height: 45px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+.data-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.data-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-main);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.data-value {
+    font-size: 1.1rem;
+    color: var(--primary-dark);
+    font-weight: 800;
+}
+
+/* --- Scroll Indicator --- */
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.5;
+    z-index: 10;
+}
+
+.mouse { width: 24px; height: 36px; border: 2px solid var(--primary-dark); border-radius: 20px; position: relative; }
+.mouse::before {
+    content: ''; width: 4px; height: 6px; background: var(--accent); position: absolute;
+    left: 50%; top: 6px; transform: translateX(-50%); border-radius: 2px;
+    animation: scrollMouse 2s infinite;
+}
+
+@keyframes scrollMouse {
+    0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
+}
+
+/* ==========================================================================
+   RESPONSIVE (MÓVIL Y TABLET)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .hero-new {
+        height: auto;
+        padding-top: 120px; /* Mantiene la protección del header */
+        padding-bottom: 60px;
+    }
+    
+    .hero-grid-bento {
+        grid-template-columns: 1fr; /* Pasa a 1 sola columna */
+        gap: 4rem;
+        text-align: center;
+    }
+
+    .hero-content {
+        align-items: center; /* Centra el texto en móvil */
+    }
+
+    .hero-description {
+        max-width: 100%;
+    }
+
+    .hero-btns {
+        justify-content: center;
+    }
+
+    .image-node {
+        height: 400px; /* Reduce altura de foto en celular */
+        margin-bottom: 2rem;
+    }
+
+    /* La tarjeta flotante se acomoda para no salirse de la pantalla */
+    .floating-data-card {
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        animation: none; /* Quitamos la flotación en celular para evitar parpadeos */
+    }
+    
+    .scroll-indicator { display: none; }
+}
 
 
 /* ==========================================================================
