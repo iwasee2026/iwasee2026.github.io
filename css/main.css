@@ -1090,68 +1090,153 @@ header.scrolled .nav-links a {
 }
 
 /* ==========================================================================
-   SECCIÓN: TOP KEYNOTE SPEAKERS (ESTILO MINIMALISTA)
+   SECCIÓN: TOP KEYNOTE SPEAKERS (MODERN TECH CARDS)
    ========================================================================== */
 .speakers-preview {
     padding: 8rem 0;
-    background-color: var(--bg-light);
+    background-color: var(--white); /* Fondo limpio para contrastar con la línea de tiempo */
+    position: relative;
+}
+
+.speakers-preview h2 {
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
 }
 
 .grid-speakers {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 4rem 2rem; /* Mayor separación vertical para que los perfiles "respiren" */
+    /* Ajuste responsivo automático: 4 en PC, 2 en Tablet, 1 en Móvil */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 3rem 2rem;
     margin-top: 4rem;
 }
 
-/* Contenedor invisible: Sin fondo, sin bordes, sin sombras cuadradas */
+/* Tarjeta del Speaker */
 .speaker-item {
-    text-align: center;
-    background: transparent; 
-    padding: 0;
-    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.06); /* Sombra elegante */
+    border: 1px solid rgba(0, 51, 102, 0.04);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
 }
 
-/* Efecto de elevación sutil a todo el conjunto */
+/* Efecto de línea de color naranja (accent) que se dibuja al hacer hover */
+.speaker-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+}
+
 .speaker-item:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 51, 102, 0.12);
+    border-color: rgba(243, 156, 18, 0.2);
 }
 
-/* La foto redonda es el único elemento con volumen */
-.speaker-item img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
+.speaker-item:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Contenedor de la foto */
+.speaker-img-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Mantiene la imagen siempre cuadrada sin deformarse */
+    overflow: hidden;
+    position: relative;
+    background-color: var(--bg-light);
+}
+
+.speaker-img-wrapper img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border: 4px solid var(--white);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.12); /* Sombra suave solo alrededor de la foto */
-    margin-bottom: 1.5rem;
-    transition: var(--transition);
+    transition: transform 0.6s ease;
 }
 
-/* La sombra se intensifica sutilmente al pasar el mouse */
-.speaker-item:hover img {
-    box-shadow: 0 20px 40px rgba(0, 31, 63, 0.25);
-    border-color: var(--accent); /* Un ligero guiño al color naranja de la marca */
+.speaker-item:hover .speaker-img-wrapper img {
+    transform: scale(1.08); /* Zoom suave a la foto */
 }
 
-.speaker-item h4 {
+/* Capa de color semitransparente sobre la foto (estilo tecnológico) */
+.speaker-img-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to top, rgba(0, 31, 63, 0.4) 0%, transparent 50%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.speaker-item:hover .speaker-img-wrapper::before {
+    opacity: 1;
+}
+
+/* Contenedor de Textos */
+.speaker-info {
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    flex-grow: 1; /* Si una tarjeta es más alta, el texto se estira para igualar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.speaker-info h4 {
     color: var(--primary-dark);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 800;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
 }
 
-.speaker-item p {
+.speaker-item:hover .speaker-info h4 {
+    color: var(--accent); /* El nombre cambia a naranja al pasar el mouse */
+}
+
+.speaker-info p {
     color: var(--text-main);
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
     opacity: 0.8;
+}
+
+/* ==========================================================================
+   RESPONSIVE PARA SPEAKERS
+   ========================================================================== */
+@media (max-width: 768px) {
+    .speakers-preview {
+        padding: 5rem 0;
+    }
+    .grid-speakers {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 2rem;
+    }
+    .speaker-item {
+        max-width: 350px;
+        margin: 0 auto; /* Centra las tarjetas en dispositivos móviles */
+        width: 100%;
+    }
 }
 
 
 /* ==========================================================================
-   SECCIÓN: STATS (DISEÑO MEJORADO)
+   SECCIÓN: STATS
    ========================================================================== */
 .stats-section {
     background: linear-gradient(135deg, var(--primary-dark) 0%, #001122 100%);
