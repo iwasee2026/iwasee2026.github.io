@@ -479,7 +479,7 @@ header.scrolled .nav-links a {
 
 .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 50/50 equilibrado */
+    grid-template-columns: 1.2fr 0.8fr; /* 50/50 equilibrado */
     gap: 4rem;
     align-items: center;
     z-index: 2;
@@ -606,7 +606,7 @@ header.scrolled .nav-links a {
 /* Visual: Estilo Moderno con Marco y Animación Suave */
 .hero-visual {
     position: relative;
-    padding: 20px;
+    padding: 10px;
 }
 
 .visual-wrapper {
