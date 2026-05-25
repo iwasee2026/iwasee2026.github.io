@@ -689,118 +689,200 @@ header.scrolled .nav-links a {
     }
 }
 
+
 /* ==========================================================================
-   SECCIÓN: WELCOME (DISEÑO EDITORIAL SIN CAJAS)
+   NUEVO DISEÑO SECCIÓN: WELCOME (MODERN TECH TYPOGRAPHY)
    ========================================================================== */
 .welcome-section {
     padding: 8rem 0;
-    /* Fondo con un gradiente muy elegante y sutil en tonos grises/azules claros */
-    background: linear-gradient(135deg, var(--bg-light) 0%, #e9ecef 100%);
+    background-color: var(--white);
     position: relative;
     overflow: hidden;
+    z-index: 2; /* Asegura que se posicione correctamente bajo el Hero */
 }
 
-/* Detalle decorativo de fondo (un círculo opaco para romper lo plano) */
+/* Patrón sutil de fondo desvanecido para toque de ingeniería */
 .welcome-section::before {
     content: '';
     position: absolute;
-    top: -30%;
-    right: -10%;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: rgba(0, 51, 102, 0.03); /* Azul principal con casi nada de opacidad */
+    top: 0; 
+    left: -5%; 
+    width: 50%; 
+    height: 100%;
+    background-image: radial-gradient(rgba(0, 51, 102, 0.05) 2px, transparent 2px);
+    background-size: 30px 30px;
     z-index: 1;
+    -webkit-mask-image: linear-gradient(to right, black 20%, transparent 100%);
+    mask-image: linear-gradient(to right, black 20%, transparent 100%);
 }
 
 .welcome-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1.2fr 0.8fr; /* Da un poco más de espacio al texto */
+    gap: 5rem;
     align-items: center;
     position: relative;
-    z-index: 2; /* Asegura que el texto esté por encima del círculo decorativo */
+    z-index: 2;
 }
 
-/* Rompemos el centrado del título global solo para esta sección */
-.welcome-text h2 {
-    text-align: left;
+/* ---------- Caja de Texto (Izquierda) ---------- */
+.welcome-text-box {
+    position: relative;
+}
+
+.welcome-badge {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--accent);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
     margin-bottom: 1.5rem;
 }
 
-.welcome-text h2::after {
-    margin: 15px 0; /* Alinea la línea naranja a la izquierda */
+.welcome-badge::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: var(--accent);
 }
 
-.welcome-text .lead-text {
-    font-size: 1.3rem;
+.welcome-text-box h2 {
+    text-align: left;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    color: var(--primary-dark);
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    font-weight: 900;
+}
+
+.welcome-text-box .lead-text {
+    font-size: 1.25rem;
     color: var(--primary);
     font-weight: 600;
     margin-bottom: 1.5rem;
     line-height: 1.6;
+    border-left: 4px solid var(--accent);
+    padding-left: 1.5rem;
+    background: linear-gradient(to right, rgba(243, 156, 18, 0.05), transparent);
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.welcome-text p {
+.welcome-text-box p:not(.lead-text) {
     font-size: 1.1rem;
     color: var(--text-main);
-    margin-bottom: 1rem;
-    opacity: 0.9;
+    line-height: 1.8;
+    opacity: 0.85;
 }
 
-/* Elemento visual tipográfico de la derecha */
-.welcome-visual {
+/* ---------- Caja Visual Abstracta (Derecha) ---------- */
+.welcome-visual-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 350px;
+}
+
+.year-wrapper {
+    position: relative;
     text-align: center;
-    border-left: 2px solid rgba(0,0,0,0.08); /* Una línea vertical divisoria muy fina */
-    padding-left: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.welcome-visual .big-number {
-    font-size: 8rem;
+/* El número gigante en el fondo (Solo bordes) */
+.year-bg {
+    font-size: clamp(10rem, 15vw, 16rem);
     font-weight: 900;
-    color: var(--primary);
+    line-height: 0.8;
+    color: transparent;
+    -webkit-text-stroke: 3px rgba(0, 51, 102, 0.06);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    user-select: none; /* Evita que el usuario lo seleccione por error */
+}
+
+/* Tarjeta flotante superpuesta */
+.year-front {
+    position: relative;
+    z-index: 2;
+    background: var(--white);
+    padding: 2.5rem 3.5rem;
+    box-shadow: 0 25px 60px rgba(0, 51, 102, 0.1);
+    border-radius: 12px;
+    border-bottom: 5px solid var(--accent);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.welcome-visual-box:hover .year-front {
+    transform: translateY(-10px);
+    box-shadow: 0 35px 70px rgba(0, 51, 102, 0.15);
+}
+
+.year-front .highlight {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--primary-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
     line-height: 1;
-    text-shadow: 6px 6px 0px rgba(243, 156, 18, 0.15); /* Sombra naranja desfasada */
 }
 
-.welcome-visual .big-number span {
-    font-size: 3rem;
-    vertical-align: super;
+.year-front .edition-text {
+    font-size: 1.2rem;
     color: var(--accent);
-}
-
-.welcome-visual .visual-text {
-    font-size: 1.5rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--text-main);
-    margin-top: -10px;
+    letter-spacing: 4px;
+    margin-top: 0.8rem;
 }
 
-/* Adaptación para pantallas móviles */
-@media (max-width: 768px) {
+/* ---------- Ajustes Responsive ---------- */
+@media (max-width: 992px) {
     .welcome-grid {
         grid-template-columns: 1fr;
+        gap: 5rem;
+    }
+    
+    .welcome-text-box h2 {
+        font-size: 2.5rem;
+    }
+    
+    .welcome-badge {
+        justify-content: center;
+    }
+    
+    .welcome-text-box h2, 
+    .welcome-text-box p:not(.lead-text) {
         text-align: center;
-        gap: 3rem;
+    }
+
+    .welcome-text-box .lead-text {
+        text-align: left;
     }
     
-    .welcome-text h2 {
-        text-align: center;
-    }
-    
-    .welcome-text h2::after {
-        margin: 15px auto;
-    }
-    
-    .welcome-visual {
-        border-left: none;
-        border-top: 2px solid rgba(0,0,0,0.08);
-        padding-left: 0;
-        padding-top: 3rem;
+    .year-bg {
+        font-size: 10rem;
     }
 }
 
+
+/* ==========================================================================
+   SECCIÓN: Timeline
+   ========================================================================== */
 .dates-timeline {
     padding: 8rem 0;
     background-color: var(--white);
