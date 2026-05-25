@@ -482,7 +482,7 @@ header.scrolled .nav-links a {
 /* Contenedores del Hero */
 .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 50/50 equilibrado */
+    grid-template-columns: 1.1fr 0.9fr; /* 50/50 equilibrado */
     gap: 4rem;
     align-items: center;
     z-index: 2;
