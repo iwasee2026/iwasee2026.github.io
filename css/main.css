@@ -698,10 +698,10 @@ header.scrolled .nav-links a {
     background-color: var(--white);
     position: relative;
     overflow: hidden;
-    z-index: 2; /* Asegura que se posicione correctamente bajo el Hero */
+    z-index: 2; 
 }
 
-/* Patrón sutil de fondo desvanecido para toque de ingeniería */
+/* Patrón sutil de fondo desvanecido */
 .welcome-section::before {
     content: '';
     position: absolute;
@@ -718,7 +718,7 @@ header.scrolled .nav-links a {
 
 .welcome-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr; /* Da un poco más de espacio al texto */
+    grid-template-columns: 1.2fr 0.8fr; 
     gap: 5rem;
     align-items: center;
     position: relative;
@@ -809,7 +809,7 @@ header.scrolled .nav-links a {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
-    user-select: none; /* Evita que el usuario lo seleccione por error */
+    user-select: none; 
 }
 
 /* Tarjeta flotante superpuesta */
@@ -850,35 +850,61 @@ header.scrolled .nav-links a {
     margin-top: 0.8rem;
 }
 
-/* ---------- Ajustes Responsive ---------- */
+/* ---------- Ajustes Responsive (Solución para Móviles) ---------- */
 @media (max-width: 992px) {
+    .welcome-section {
+        padding: 5rem 0; /* Menos espacio vertical en celular */
+    }
+
     .welcome-grid {
         grid-template-columns: 1fr;
-        gap: 5rem;
+        gap: 4rem;
     }
     
     .welcome-text-box h2 {
-        font-size: 2.5rem;
+        font-size: clamp(2rem, 6vw, 2.5rem);
+        text-align: center; /* Centramos el título general */
     }
     
     .welcome-badge {
         justify-content: center;
     }
     
-    .welcome-text-box h2, 
     .welcome-text-box p:not(.lead-text) {
         text-align: center;
+        padding: 0 10px; /* Margen de seguridad horizontal */
     }
 
+    /* Solución al texto que se pegaba a la izquierda */
     .welcome-text-box .lead-text {
-        text-align: left;
+        text-align: center;
+        border-left: none; /* Quitamos la línea izquierda en móvil */
+        border-top: 2px solid var(--accent); /* La pasamos arriba y abajo */
+        border-bottom: 2px solid var(--accent);
+        padding: 1.5rem 1rem;
+        margin: 2rem 10px;
+        background: rgba(243, 156, 18, 0.05);
     }
     
+    /* Solución al desbordamiento de la tarjeta */
+    .welcome-visual-box {
+        min-height: 250px;
+    }
+
     .year-bg {
-        font-size: 10rem;
+        font-size: 8rem; /* Reducimos el número gigante de fondo */
+    }
+
+    .year-front {
+        padding: 1.5rem 2rem; /* Achicamos los márgenes internos */
+        width: 85%; /* Evitamos que la tarjeta toque los bordes del celular */
+        max-width: 320px;
+    }
+
+    .year-front .highlight {
+        font-size: 2.2rem; /* Texto más pequeño en la tarjeta flotante */
     }
 }
-
 
 /* ==========================================================================
    SECCIÓN: Timeline
