@@ -442,77 +442,154 @@ header.scrolled .nav-links a {
 
 
 /* ==========================================================================
-   NUEVO HERO CON FONDO SUAVE Y GRAFOS ANIMADOS (IWASEE)
+   NUEVO HERO: MODULAR, TECH & ANIMATED GRAPHS (IWASEE 2026)
    ========================================================================== */
 .hero-new {
-    min-height: 95vh; /* Ocupa casi toda la pantalla */
+    min-height: 90vh; /* Ocupa casi toda la pantalla */
     display: flex;
     align-items: center;
     position: relative;
-    
-    /* FONDO SUAVE: Degradado de azul a blanco */
-    background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
-    
+    background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%); /* Fondo suave */
     overflow: hidden;
-    padding-top: 130px; /* Espacio para el header */
+    padding-top: 120px; /* Espacio garantizado para el header */
     padding-bottom: 60px;
+    z-index: 1;
 }
 
-/* CONTENEDOR PARA GRAFOS ANIMADOS (SVG) */
-.hero-new::after {
+/* Animación de Grafos de Fondo */
+.hero-new::before {
     content: "";
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    
-    /* Patrón SVG de grafos (nodos y líneas) */
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZD0iTTEwIDEwTDkwIDkwTTEwIDkwTDkwIDEwIiBzdHJva2U9InJnYmEoMCw1MSwxMDIsMC4wNSkiIHN0cm9rZS13aWR0aD0iMSIvPjxjaXJjbGUgY3g9IjEwIiBjeT0iMTAiIHI9IjIiIGZpbGw9InJnYmEoMCw1MSwxMDIsMC4wOCkiLz48Y2lyY2xlIGN4PSI5MCIgY3k9IjkwIiByPSIyIiBmaWxsPSJyZ2JhKDAsNTEsMTAyLDAuMDgpIi8+PGNpcmNsZSBjeD0iOTAiIGN5PSIxMCIgcj0iMiIgZmlsbD0icmdiYSgwLDUxLDEwMiwwLjA4KSIvPjxjaXJjbGUgY3g9IjEwIiBjeT0iOTAiIHI9IjIiIGZpbGw9InJnYmEoMCw1MSwxMDIsMC4wOCkiLz48L3N2Zz4=');
-    background-size: 80px 80px; /* Tamaño del patrón de grafos */
-    opacity: 0.8;
-    z-index: 1;
-    
-    /* Animación suave de movimiento */
-    animation: animatedGraphs 20s linear infinite;
+    background-image: 
+        radial-gradient(var(--accent) 1px, transparent 1px), /* Puntos/Nodos */
+        linear-gradient(to right, rgba(0, 51, 102, 0.05) 1px, transparent 1px), /* Líneas Horizontales */
+        linear-gradient(to bottom, rgba(0, 51, 102, 0.05) 1px, transparent 1px); /* Líneas Verticales */
+    background-size: 40px 40px, 40px 40px, 40px 40px;
+    background-position: 0 0, 20px 20px, 20px 20px;
+    opacity: 0.2;
+    z-index: -1;
+    animation: graphNet 60s linear infinite;
 }
 
-/* ANIMACIÓN CSS PARA LOS GRAFOS */
-@keyframes animatedGraphs {
-    from { background-position: 0 0; }
-    to { background-position: 100px 100px; }
+@keyframes graphNet {
+    0% { background-position: 0 0, 20px 20px, 20px 20px; }
+    100% { background-position: 400px 400px, 420px 420px, 420px 420px; }
 }
 
 .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* 50/50 equilibrado */
     gap: 4rem;
     align-items: center;
-    position: relative;
-    z-index: 2; /* Encima de la animación de fondo */
+    z-index: 2;
 }
 
-/* ... (El resto de estilos de hero-text, hero-visual, botones y responsive se mantienen igual que en el diseño Modular & Tech proporcionado anteriormente) ... */
+.hero-text {
+    position: relative;
+    z-index: 3;
+}
 
-/* Actualización de botones para combinar con el nuevo fondo suave */
+.hero-tag {
+    display: inline-block;
+    background: rgba(243, 156, 18, 0.1); /* Fondo suave para el tag */
+    color: var(--accent-hover);
+    padding: 6px 15px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.hero-text h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    font-weight: 900;
+}
+
+.hero-text h1 span { 
+    color: var(--primary); 
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-text p {
+    font-size: 1.15rem;
+    color: var(--text-main);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+/* Diseño de fechas estilo Grid */
+.hero-dates {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    align-items: center;
+}
+
+.date-box {
+    border-right: 2px solid var(--accent);
+    padding-right: 1.5rem;
+    text-align: center;
+}
+
+.date-box .day { 
+    font-size: 2.5rem; 
+    font-weight: 800; 
+    color: var(--primary); 
+    line-height: 1;
+}
+
+.date-box .month { 
+    display: block; 
+    font-weight: 700; 
+    color: var(--primary-dark); 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-location {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+/* Botones Modernos */
+.hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
 .btn-primary-hero {
     background: var(--primary);
     color: white;
-    padding: 1.1rem 2.2rem;
+    padding: 1rem 2.5rem;
     border-radius: 4px;
     text-decoration: none;
     font-weight: 700;
     transition: var(--transition);
-    border: 2px solid transparent;
+    box-shadow: 0 4px 14px rgba(0, 51, 102, 0.2);
 }
 
 .btn-primary-hero:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 51, 102, 0.3);
 }
 
 .btn-secondary-hero {
-    background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente para ver el grafo detrás */
-    border: 2px solid var(--primary);
+    background: transparent;
+    border: 1px solid var(--primary);
     color: var(--primary);
-    padding: 1.1rem 2.2rem;
+    padding: 1rem 2.5rem;
     border-radius: 4px;
     text-decoration: none;
     font-weight: 700;
@@ -520,10 +597,81 @@ header.scrolled .nav-links a {
 }
 
 .btn-secondary-hero:hover {
-    background: var(--primary);
-    color: white;
+    background: rgba(0, 51, 102, 0.05);
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
 }
 
+/* Visual: Estilo Moderno con Marco y Animación Suave */
+.hero-visual {
+    position: relative;
+    padding: 20px;
+}
+
+.visual-wrapper {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 20px 20px 0px rgba(0, 51, 102, 0.05); /* Sombra más suave */
+    transition: var(--transition);
+}
+
+.hero-visual:hover .visual-wrapper {
+    transform: translate(-5px, -5px);
+    box-shadow: 25px 25px 0px rgba(243, 156, 18, 0.1); /* Cambio de color al hover */
+}
+
+.visual-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 5s ease;
+}
+
+.hero-visual:hover .visual-wrapper img {
+    transform: scale(1.05); /* Pequeño zoom al hover */
+}
+
+/* Ajustes Responsive */
+@media (max-width: 992px) {
+    .hero-new {
+        padding-top: 100px;
+        min-height: auto;
+    }
+    .hero-grid { 
+        grid-template-columns: 1fr; 
+        text-align: center; 
+        gap: 3rem; 
+    }
+    .hero-dates { 
+        justify-content: center; 
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    .date-box {
+        border-right: none;
+        border-bottom: 2px solid var(--accent);
+        padding-right: 0;
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .hero-btns { justify-content: center; }
+    .btn-primary-hero, .btn-secondary-hero {
+        width: 100%;
+        max-width: 300px;
+    }
+    .hero-visual { 
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    .visual-wrapper {
+        height: 300px;
+    }
+}
 
 /* ==========================================================================
    SECCIÓN: WELCOME (DISEÑO EDITORIAL SIN CAJAS)
