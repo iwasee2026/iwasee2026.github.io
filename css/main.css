@@ -1548,82 +1548,70 @@ header.scrolled .nav-links a {
 
 
 /* ==========================================================================
-   NUEVO DISEÑO: HERO DE PÁGINAS INTERNAS (MODERNO & TECH PARA AMW)
+   NUEVO DISEÑO: HERO DE PÁGINAS INTERNAS (LIGHT TECH & GRAPH)
    ========================================================================== */
 .page-header {
     position: relative;
-    /* Degradado base oscuro y profundo */
-    background: linear-gradient(135deg, #001122 0%, #001F3F 50%, #002b5e 100%);
-    min-height: 300px; /* Misma altura estándar que el anterior */
+    /* Mismo fondo claro del index */
+    background: linear-gradient(135deg, #e4eaf1 0%, #f9fbfc 100%);
+    min-height: 300px; 
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    padding-top: 80px; /* Espacio para que el menú no tape el contenido */
-    border-bottom: 4px solid var(--accent); /* Línea inferior de acento */
+    padding-top: 80px; 
+    border-bottom: 1px solid rgba(0, 51, 102, 0.05); /* Borde sutil para separar del contenido */
+    z-index: 1;
 }
 
-/* Efecto "Tech Grid" (Cuadrícula de red de datos) */
+/* Animación del Grafo igual al index */
 .page-header::before {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    opacity: 0.6;
-    z-index: 1;
-}
-
-/* Brillo "Orb" radial (Simula energía/conexión en la esquina) */
-.page-header::after {
-    content: '';
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(243, 156, 18, 0.15) 0%, transparent 70%);
-    top: -100px;
-    right: 5%;
-    border-radius: 50%;
-    z-index: 1;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background-image: url('data:image/svg+xml;utf8,<svg width="150" height="150" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="3.5" fill="%23003366" opacity="0.4"/><circle cx="120" cy="60" r="5" fill="%23f39c12" opacity="0.4"/><circle cx="60" cy="120" r="3" fill="%23003366" opacity="0.4"/><circle cx="130" cy="130" r="3.5" fill="%23003366" opacity="0.4"/><line x1="30" y1="30" x2="120" y2="60" stroke="%23003366" stroke-width="1.5" opacity="0.15"/><line x1="30" y1="30" x2="60" y2="120" stroke="%23003366" stroke-width="1.5" opacity="0.15"/><line x1="120" y1="60" x2="60" y2="120" stroke="%23f39c12" stroke-width="1.5" opacity="0.2"/><line x1="120" y1="60" x2="130" y2="130" stroke="%23003366" stroke-width="1.5" opacity="0.15"/><line x1="60" y1="120" x2="130" y2="130" stroke="%23003366" stroke-width="1.5" opacity="0.15"/></svg>');
+    background-repeat: repeat;
+    background-size: 100px 100px;
+    z-index: -1;
+    animation: rotateGraphBack 180s linear infinite reverse;
+    opacity: 0.35;
 }
 
 /* Contenedor del texto */
 .page-header-content {
     position: relative;
-    z-index: 2; /* Para que quede por encima de la cuadrícula */
+    z-index: 2; 
     max-width: 100%;
     padding: 0 20px;
     animation: slideUpFade 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
 }
 
-/* Título principal (Impactante y moderno) */
+/* Título principal (Adaptado al fondo claro) */
 .page-header-content h1 {
     font-size: clamp(2.5rem, 5vw, 3.8rem);
-    color: #ffffff;
+    color: var(--primary-dark); /* Color oscuro para contraste */
     margin-bottom: 0.5rem;
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -1px;
-    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    text-shadow: none; /* Se elimina la sombra del diseño anterior */
     line-height: 1.1;
 }
 
-/* Subtítulo (Elegante con líneas laterales tech) */
+/* Subtítulo */
 .page-header-content p {
     font-size: clamp(1rem, 2vw, 1.25rem);
-    color: var(--accent);
-    font-weight: 600;
+    color: var(--primary); 
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 3px;
     margin: 0;
     display: inline-block;
     position: relative;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: none;
 }
 
-/* Líneas decorativas a los lados del subtítulo */
+/* Líneas decorativas a los lados del subtítulo (En color Naranja) */
 .page-header-content p::before,
 .page-header-content p::after {
     content: '';
@@ -1632,7 +1620,7 @@ header.scrolled .nav-links a {
     width: 40px;
     height: 2px;
     background-color: var(--accent);
-    opacity: 0.4;
+    opacity: 0.8;
 }
 .page-header-content p::before { right: 100%; margin-right: 15px; }
 .page-header-content p::after { left: 100%; margin-left: 15px; }
@@ -1657,10 +1645,28 @@ header.scrolled .nav-links a {
     }
     .page-header-content p::before,
     .page-header-content p::after {
-        display: none; /* Oculta las líneas laterales en pantallas pequeñas por espacio */
+        display: none; 
     }
 }
 
+/* ==========================================================================
+   CORRECCIÓN DEL MENÚ PARA FONDOS CLAROS EN SUB-PÁGINAS
+   ========================================================================== */
+/* Sobrescribe las reglas anteriores que hacían el texto blanco en el header */
+body.inner-page header:not(.scrolled) .logo,
+body.inner-page header:not(.scrolled) .nav-links a {
+    color: #001F3F !important;
+    -webkit-text-fill-color: #001F3F !important;
+}
+
+/* Corrige el color del menú hamburguesa en móviles */
+body.inner-page header:not(.scrolled) .menu-toggle .bar {
+    background-color: #001F3F !important;
+}
+
+body.inner-page header:not(.scrolled) .nav-links a:hover {
+    color: var(--accent) !important;
+}
 
 
 
