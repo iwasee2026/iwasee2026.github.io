@@ -449,7 +449,7 @@ header.scrolled .nav-links a {
     display: flex;
     align-items: center;
     position: relative;
-    background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%); /* Fondo suave */
+    background: linear-gradient(135deg, #fcf9f2 0%, #f0e6d2 100%);
     overflow: hidden;
     padding-top: 120px; /* Espacio garantizado para el header */
     padding-bottom: 60px;
@@ -463,11 +463,11 @@ header.scrolled .nav-links a {
     top: 0; left: 0; width: 100%; height: 100%;
     background-image: 
         radial-gradient(var(--accent) 1px, transparent 1px), /* Puntos/Nodos */
-        linear-gradient(to right, rgba(0, 51, 102, 0.05) 1px, transparent 1px), /* Líneas Horizontales */
-        linear-gradient(to bottom, rgba(0, 51, 102, 0.05) 1px, transparent 1px); /* Líneas Verticales */
+        linear-gradient(to right, rgba(0, 51, 102, 0.012) 1px, transparent 1px), /* Líneas Horizontales */
+        linear-gradient(to bottom, rgba(0, 51, 102, 0.12) 1px, transparent 1px); /* Líneas Verticales */
     background-size: 40px 40px, 40px 40px, 40px 40px;
     background-position: 0 0, 20px 20px, 20px 20px;
-    opacity: 0.2;
+    opacity: 0.45;
     z-index: -1;
     animation: graphNet 60s linear infinite;
 }
