@@ -684,6 +684,9 @@ header.scrolled .nav-links a {
         height: 300px;
         box-shadow: 10px 10px 0px rgba(0, 51, 102, 0.06);
     }
+    .hero-visual { 
+        display: none; 
+    }
 }
 
 /* ==========================================================================
