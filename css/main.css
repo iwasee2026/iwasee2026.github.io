@@ -441,228 +441,248 @@ header.scrolled .nav-links a {
 
 
 /* ==========================================================================
-   NUEVO HERO INDEX: CENTERED PANORAMIC (DISEÑO MODERNO)
+   NUEVO HERO: TECH & ENGINEERING (IWASEE 2026)
    ========================================================================== */
-.hero-centered {
+.hero-tech {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Separa el texto arriba y la imagen abajo */
+    align-items: center;
     position: relative;
     background-color: var(--white);
     overflow: hidden;
-    /* SEGURIDAD: 140px de padding asegura que el texto jamás choque con el header */
-    padding-top: 140px; 
-}
-
-/* Patrón de puntos integrado */
-.hero-dots {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: radial-gradient(rgba(0, 51, 102, 0.05) 2px, transparent 2px);
-    background-size: 40px 40px;
+    /* SEGURIDAD: 150px evita que el menú transparente/blanco tape el texto */
+    padding-top: 150px; 
+    padding-bottom: 80px;
     z-index: 1;
 }
 
-/* Contenedor Superior (Texto y Botones) */
-.hero-content-top {
-    flex: 1; /* Toma todo el espacio disponible arriba de la imagen */
-    display: flex;
-    align-items: center; /* Centra verticalmente en su bloque */
-    z-index: 2;
+/* Fondo estilo "Blueprint / Tech Grid" */
+.hero-tech::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+        linear-gradient(rgba(0, 51, 102, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 51, 102, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -2;
+}
+
+/* Brillo tecnológico de fondo (Glow) */
+.hero-tech::after {
+    content: '';
+    position: absolute;
+    top: 20%; right: -5%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(243, 156, 18, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.hero-tech-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 5rem;
+    align-items: center;
     width: 100%;
-    padding-bottom: 2rem;
 }
 
-.hero-text-box {
-    text-align: center;
-    max-width: 950px;
-    margin: 0 auto;
-}
-
-.hero-text-box .hero-tag {
-    display: inline-block;
-    background: rgba(243, 156, 18, 0.1);
-    color: var(--accent-hover);
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-weight: 800;
+/* TEXTO IZQUIERDO */
+.tech-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 51, 102, 0.05);
+    border-left: 3px solid var(--accent);
+    padding: 8px 16px;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 0.85rem;
+    color: var(--primary-dark);
     margin-bottom: 2rem;
 }
 
-.hero-text-box h1 {
-    font-size: clamp(2.8rem, 6vw, 4.8rem);
-    line-height: 1.1;
+.hero-tech-text h1 {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.05;
     color: var(--primary-dark);
-    margin-bottom: 1.5rem;
     font-weight: 900;
+    margin-bottom: 1.5rem;
+    text-align: left;
 }
 
-.hero-text-box h1 span {
-    color: var(--primary);
-    background: linear-gradient(to right, var(--primary), #0055a4);
+.hero-tech-text h1 .gradient-text {
+    background: linear-gradient(135deg, var(--primary) 0%, #00a8ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    display: block;
 }
 
-.hero-text-box p {
-    font-size: 1.25rem;
-    max-width: 700px;
-    margin: 0 auto 2.5rem auto;
+.hero-tech-text p {
+    font-size: 1.2rem;
     color: var(--text-main);
-    line-height: 1.6;
-}
-
-/* Indicadores de Fecha y Lugar (Estilo Píldoras) */
-.hero-metrics {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    line-height: 1.7;
     margin-bottom: 3rem;
+    max-width: 600px;
+    border-left: 1px solid rgba(0,0,0,0.1);
+    padding-left: 1.5rem;
 }
 
-.metric {
-    background: #ffffff;
-    border: 1px solid rgba(0,51,102,0.1);
-    padding: 12px 24px;
-    border-radius: 50px;
-    font-weight: 700;
-    color: var(--primary-dark);
+/* BOTONES */
+.tech-btns {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-}
-
-.metric i { 
-    color: var(--accent); 
-    font-size: 1.2rem; 
-}
-
-/* Botones Centrados */
-.hero-btns-centered {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 1.5rem;
     flex-wrap: wrap;
+    align-items: center;
 }
 
-.hero-btns-centered .btn-primary-hero {
+.btn-tech-primary {
     background-color: var(--primary);
     color: var(--white);
-    padding: 1.1rem 2.8rem;
+    padding: 1.2rem 2.5rem;
     text-decoration: none;
     font-weight: 700;
-    border-radius: 50px; /* Botones totalmente redondeados */
+    border-radius: 4px; /* Cuadrado con ligero borde, más técnico */
     transition: var(--transition);
-    box-shadow: 0 10px 20px rgba(0, 51, 102, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 51, 102, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
-.hero-btns-centered .btn-secondary-hero {
+.btn-tech-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+}
+
+.btn-tech-secondary {
     color: var(--primary);
     text-decoration: none;
     font-weight: 700;
-    padding: 1.1rem 2.8rem;
-    border-radius: 50px;
-    border: 2px solid rgba(0, 51, 102, 0.1);
-    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 8px;
     transition: var(--transition);
 }
 
-.hero-btns-centered .btn-primary-hero:hover { 
-    background: var(--primary-dark); 
-    transform: translateY(-3px); 
-    box-shadow: 0 15px 25px rgba(0, 51, 102, 0.3); 
+.btn-tech-secondary:hover {
+    color: var(--accent);
+    gap: 12px; /* Efecto flecha que se mueve */
 }
 
-.hero-btns-centered .btn-secondary-hero:hover { 
-    border-color: var(--accent); 
-    color: var(--accent); 
-    background-color: rgba(243, 156, 18, 0.05); 
-    transform: translateY(-3px); 
-}
-
-/* Contenedor Inferior (Imagen Panorámica) */
-.hero-visual-bottom {
-    width: 100%;
-    height: 35vh; /* Altura dinámica para que no rompa el 100vh */
-    min-height: 250px;
-    max-height: 400px;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end; /* Se ancla al fondo */
-    padding: 0 2%;
-}
-
-.panoramic-window {
-    width: 100%;
-    max-width: 1400px;
-    height: 100%;
-    background-color: var(--primary-dark);
-    border-radius: 40px 40px 0 0; /* Curvas elegantes arriba, plano abajo */
-    overflow: hidden;
+/* IMAGEN DERECHA (DISEÑO GEOMÉTRICO) */
+.hero-tech-visual {
     position: relative;
-    box-shadow: 0 -20px 60px rgba(0, 51, 102, 0.12);
+    z-index: 2;
 }
 
-.tech-overlay {
+/* Marco desfasado (Wireframe) */
+.hero-tech-visual::before {
+    content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(to top, rgba(0,31,63,0.8) 0%, transparent 100%);
-    z-index: 1;
+    top: 20px; right: -20px;
+    width: 100%; height: 100%;
+    border: 3px solid var(--accent);
+    z-index: -1;
+    border-radius: 0 40px 0 40px; /* Geometría asimétrica dura */
+    opacity: 0.5;
+    transition: var(--transition);
 }
 
-.panoramic-window img {
+.tech-image-wrapper {
+    width: 100%;
+    height: 550px;
+    background-color: var(--primary-dark);
+    border-radius: 40px 0 40px 0; /* Opuesto al marco para generar tensión visual */
+    overflow: hidden;
+    box-shadow: -20px 20px 60px rgba(0,0,0,0.1);
+}
+
+.tech-image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: 0;
-    transition: transform 10s ease; /* Efecto Ken Burns (zoom muy lento) */
+    opacity: 0.9; /* Ligeramente opaca para un look tech */
+    transition: transform 0.6s ease;
 }
 
-.hero-centered:hover .panoramic-window img {
+.hero-tech-visual:hover .tech-image-wrapper img {
     transform: scale(1.05);
+    opacity: 1;
 }
 
-/* Sello Flotante sobre la imagen */
-.floating-badge {
+.hero-tech-visual:hover::before {
+    top: 30px; right: -30px;
+    opacity: 1;
+}
+
+/* Tarjeta de Datos Flotante (UI Element) */
+.floating-data-card {
     position: absolute;
-    bottom: 30px;
-    right: 40px;
-    background: rgba(255,255,255,0.1);
+    bottom: -30px;
+    left: -40px;
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 15px 25px;
-    border-radius: 20px;
-    z-index: 2;
-    color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(0, 51, 102, 0.15);
+    border-left: 4px solid var(--accent);
     display: flex;
     align-items: center;
     gap: 15px;
+    animation: floatTech 5s ease-in-out infinite;
+    z-index: 3;
 }
 
-.badge-number { font-size: 2.5rem; font-weight: 900; line-height: 1; color: var(--accent); }
-.badge-text { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+@keyframes floatTech {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
 
-/* Responsive del Hero Centrado */
+.data-icon {
+    width: 45px; height: 45px;
+    background: rgba(0, 51, 102, 0.05);
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    color: var(--primary);
+}
+
+.data-text span {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-main);
+    opacity: 0.7;
+    font-weight: 700;
+}
+
+.data-text strong {
+    display: block;
+    color: var(--primary-dark);
+    font-size: 1.1rem;
+}
+
+/* RESPONSIVE */
 @media (max-width: 992px) {
-    .hero-centered {
+    .hero-tech {
+        height: auto;
         padding-top: 120px;
-        height: auto !important; /* Libera la altura en móviles */
     }
-    .hero-text-box h1 { font-size: clamp(2.5rem, 8vw, 3.5rem); }
-    .hero-metrics { flex-direction: column; gap: 1rem; align-items: center; }
-    .hero-btns-centered { flex-direction: column; width: 100%; }
-    .hero-btns-centered a { width: 100%; max-width: 300px; text-align: center; }
-    .panoramic-window { border-radius: 20px 20px 0 0; }
-    .floating-badge { display: none; /* Se oculta en móvil para dejar ver la foto */ }
+    .hero-tech-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+        text-align: left;
+    }
+    .hero-tech-text h1 { font-size: clamp(2.5rem, 8vw, 3.5rem); text-align: left; }
+    .hero-tech-text p { border-left: none; padding-left: 0; }
+    
+    .floating-data-card {
+        bottom: -20px; left: 20px; right: 20px;
+        justify-content: center;
+    }
+    .hero-tech-visual::before { right: -10px; }
 }
 
 
