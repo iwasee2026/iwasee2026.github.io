@@ -1004,36 +1004,33 @@ header.scrolled .nav-links a {
     color: var(--white);
 }
 .highlight .date-display, .highlight .date-content h4, .highlight .date-content p { color: var(--white); }
-
 @media (max-width: 768px) {
-    /* 1. Mantenemos la línea guía a la izquierda */
+    /* Mantenemos la línea principal a la izquierda */
     .timeline-wrapper::before { 
         left: 30px; 
     }
     
-    /* 2. Forzamos que todos los items ocupen el 100% y se alineen a la izquierda (visualizando el contenido a la derecha de la línea) */
+    /* Forzamos el contenido a la derecha */
     .timeline-item { 
         width: 100%; 
-        padding-left: 70px; /* Espacio para que no toque el borde izquierdo */
-        padding-right: 20px; /* Margen de seguridad derecho */
-        justify-content: flex-start !important; /* Fuerza la alineación al inicio (izquierda) */
+        padding-left: 70px; /* Espacio para que el nodo quepa */
+        padding-right: 20px;
+        justify-content: flex-start !important; 
     }
     
-    /* 3. Quitamos la alternancia que los enviaba a la derecha */
+    /* EL CAMBIO IMPORTANTE: */
+    /* Ajustamos el círculo (::after) para que esté alineado con la línea guía */
+    .timeline-item::after { 
+        left: 21px; /* Esta medida alinea el círculo exactamente sobre la línea vertical */
+    }
+
+    /* Limpiamos cualquier herencia de alternancia */
     .timeline-item:nth-child(even), 
     .timeline-item:nth-child(odd) { 
         left: 0; 
     }
-    
-    /* 4. Ajustamos el nodo circular para que quede sobre la línea */
-    .timeline-item::after { 
-        left: 21px; 
-    }
+}
 
-   .timeline-item:nth-child(even), 
-   .timeline-item:nth-child(odd) { 
-        left: 0; 
-    }
 }
 
 /* ==========================================================================
