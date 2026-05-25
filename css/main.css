@@ -443,47 +443,36 @@ header.scrolled .nav-links a {
 
 
 /* ==========================================================================
-   NUEVO HERO: MODULAR, TECH & REAL 3D GRAPH ANIMATION (IWASEE 2026)
+   NUEVO HERO: MODULAR, TECH & BACKGROUND GRAPH ANIMATION (IWASEE 2026)
    ========================================================================== */
 .hero-new {
-    min-height: 90vh; /* Ocupa casi toda la pantalla */
+    min-height: 100vh; /* Ahora ocupa el 100% del alto de la pantalla */
     display: flex;
     align-items: center;
     position: relative;
-    /* Nuevo fondo: Tono "Ice Blue Tech" que combina perfecto con el azul marino y naranja */
     background: linear-gradient(135deg, #e4eaf1 0%, #f9fbfc 100%);
     overflow: hidden;
-    padding-top: 120px; /* Espacio garantizado para no chocar con el header */
+    padding-top: 120px; /* Protege el contenido para que no lo tape el header */
     padding-bottom: 60px;
     z-index: 1;
 }
 
-/* ANIMACIÓN DE GRAFO REAL (Nodos y Conexiones)
-   Usamos un SVG inyectado en Base64 para dibujar nodos y aristas reales.
-   Creamos un lienzo del 200% de la pantalla para que pueda rotar sin mostrar bordes vacíos.
-*/
-.hero-new::before,
-.hero-new::after {
+/* ANIMACIÓN DE GRAFO REAL (Solo capa de fondo sutil) */
+.hero-new::before {
     content: "";
     position: absolute;
     top: -50%; 
     left: -50%; 
     width: 200%; 
     height: 200%;
-    /* El SVG dibuja puntos (circles) y líneas (lines) con los colores corporativos */
+    /* SVG del grafo */
     background-image: url('data:image/svg+xml;utf8,<svg width="150" height="150" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="3.5" fill="%23003366" opacity="0.4"/><circle cx="120" cy="60" r="5" fill="%23f39c12" opacity="0.4"/><circle cx="60" cy="120" r="3" fill="%23003366" opacity="0.4"/><circle cx="130" cy="130" r="3.5" fill="%23003366" opacity="0.4"/><line x1="30" y1="30" x2="120" y2="60" stroke="%23003366" stroke-width="1.5" opacity="0.15"/><line x1="30" y1="30" x2="60" y2="120" stroke="%23003366" stroke-width="1.5" opacity="0.15"/><line x1="120" y1="60" x2="60" y2="120" stroke="%23f39c12" stroke-width="1.5" opacity="0.2"/><line x1="120" y1="60" x2="130" y2="130" stroke="%23003366" stroke-width="1.5" opacity="0.15"/><line x1="60" y1="120" x2="130" y2="130" stroke="%23003366" stroke-width="1.5" opacity="0.15"/></svg>');
     background-repeat: repeat;
-}
-
-
-/* Capa trasera del grafo (Más pequeña, gira a la izquierda para dar efecto 3D Parallax) */
-.hero-new::after {
-    background-size: 100px 100px;
+    background-size: 100px 100px; /* Tamaño pequeño */
     z-index: -2;
     animation: rotateGraphBack 180s linear infinite reverse;
-    opacity: 0.3;
+    opacity: 0.35; /* Opacidad ajustada para ser un fondo suave */
 }
-
 
 @keyframes rotateGraphBack {
     0% { transform: rotate(0deg) translate(0px, 0px); }
@@ -493,7 +482,7 @@ header.scrolled .nav-links a {
 /* Contenedores del Hero */
 .hero-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr; 
+    grid-template-columns: 1fr 1fr; /* 50/50 equilibrado */
     gap: 4rem;
     align-items: center;
     z-index: 2;
@@ -633,13 +622,13 @@ header.scrolled .nav-links a {
     height: 450px;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 20px 20px 0px rgba(0, 51, 102, 0.06); /* Sombra elegante */
+    box-shadow: 20px 20px 0px rgba(0, 51, 102, 0.06); 
     transition: var(--transition);
 }
 
 .hero-visual:hover .visual-wrapper {
     transform: translate(-5px, -5px);
-    box-shadow: 25px 25px 0px rgba(243, 156, 18, 0.15); /* Cambio de color al hover */
+    box-shadow: 25px 25px 0px rgba(243, 156, 18, 0.15); 
 }
 
 .visual-wrapper img {
@@ -650,7 +639,7 @@ header.scrolled .nav-links a {
 }
 
 .hero-visual:hover .visual-wrapper img {
-    transform: scale(1.03); /* Pequeño zoom al hover */
+    transform: scale(1.03); 
 }
 
 /* ==========================================================================
@@ -659,7 +648,7 @@ header.scrolled .nav-links a {
 @media (max-width: 992px) {
     .hero-new {
         padding-top: 100px;
-        min-height: auto;
+        min-height: auto; /* En móviles es preferible que la altura sea automática para que el texto no se rompa */
     }
     .hero-grid { 
         grid-template-columns: 1fr; 
@@ -696,7 +685,6 @@ header.scrolled .nav-links a {
         box-shadow: 10px 10px 0px rgba(0, 51, 102, 0.06);
     }
 }
-
 
 /* ==========================================================================
    SECCIÓN: WELCOME (DISEÑO EDITORIAL SIN CAJAS)
