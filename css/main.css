@@ -442,113 +442,91 @@ header.scrolled .nav-links a {
 
 
 /* ==========================================================================
-   NUEVO HERO: ASIMÉTRICO MODERNO (IWASEE 2026)
+   NUEVO HERO: ASIMÉTRICO E INDUSTRIAL (IWASEE 2026)
    ========================================================================== */
-.hero-new {
+.hero-iwasee {
     min-height: 90vh;
     display: flex;
     align-items: center;
     position: relative;
-    background: var(--white);
+    background-color: var(--white);
+    padding-top: 120px; /* Evita que el header se superponga */
     overflow: hidden;
-    padding-top: 120px; /* Separación garantizada del Header */
 }
 
-.hero-grid {
+.hero-grid-asym {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Dividido en dos */
+    grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    position: relative;
     z-index: 2;
 }
 
-/* Texto alineado a la izquierda, contundente */
-.hero-text-box {
-    text-align: left;
-}
-
-.hero-tag {
+.badge-tag {
     display: inline-block;
     background: var(--primary);
     color: var(--white);
     padding: 6px 15px;
-    font-size: 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
-.hero-text-box h1 {
-    font-size: clamp(3rem, 8vw, 5.5rem);
-    line-height: 0.95; /* Compacto y masivo */
+.hero-text h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
     color: var(--primary-dark);
     margin-bottom: 2rem;
-    font-weight: 900;
 }
 
-.hero-text-box p {
-    font-size: 1.2rem;
-    color: var(--text-main);
-    max-width: 500px;
-    margin-bottom: 3rem;
-}
+.hero-text h1 span { color: var(--accent); }
 
-/* Botones con estilo industrial */
-.hero-btns {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.btn-primary-hero {
-    background: var(--accent);
-    color: var(--white);
-    padding: 1rem 2rem;
-    text-decoration: none;
-    font-weight: 800;
-    border-radius: 0; /* Estilo industrial cuadrado */
-    transition: var(--transition);
-}
-
-.btn-secondary-hero {
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    padding: 1rem 2rem;
-    text-decoration: none;
-    font-weight: 800;
-}
-
-/* La imagen como un elemento de diseño cortante */
-.hero-visual .visual-wrapper {
-    width: 100%;
-    height: 600px;
+/* Diseño asimétrico de la imagen */
+.hero-visual-asym {
     position: relative;
-    /* Recorte geométrico moderno */
-    clip-path: polygon(10% 0, 100% 0, 100% 90%, 0 100%);
-    background: var(--primary-dark);
+    height: 500px;
 }
 
-.hero-visual img {
+.visual-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.visual-frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(30%) contrast(1.1);
-    transition: transform 0.5s ease;
+    border-radius: 0px 80px 0px 80px; /* Forma asimétrica */
+    position: relative;
+    z-index: 2;
 }
 
-.hero-visual:hover img {
-    transform: scale(1.05);
+.frame-accent {
+    position: absolute;
+    top: 30px;
+    right: -30px;
+    width: 100%;
+    height: 100%;
+    border: 4px solid var(--accent);
+    border-radius: 0px 80px 0px 80px;
+    z-index: 1;
 }
 
-/* Responsive Asimétrico */
+/* Responsivo para celulares */
 @media (max-width: 992px) {
-    .hero-grid { grid-template-columns: 1fr; text-align: center; }
-    .hero-text-box { text-align: center; }
-    .hero-text-box p { margin: 0 auto 3rem auto; }
-    .hero-btns { justify-content: center; }
-    .hero-visual .visual-wrapper { height: 400px; clip-path: none; border-radius: 20px; }
+    .hero-grid-asym {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    .hero-visual-asym { display: none; } /* Ocultamos visual complejo en móvil */
+    .hero-text { padding: 0 1rem; }
 }
-
 
 
 /* ==========================================================================
