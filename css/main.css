@@ -475,20 +475,13 @@ header.scrolled .nav-links a {
     background-repeat: repeat;
 }
 
-/* Capa frontal del grafo (Más grande, gira hacia la derecha) */
-.hero-new::before {
-    background-size: 180px 180px;
-    z-index: -1;
-    animation: rotateGraphFront 120s linear infinite;
-    opacity: 0.8;
-}
 
 /* Capa trasera del grafo (Más pequeña, gira a la izquierda para dar efecto 3D Parallax) */
 .hero-new::after {
     background-size: 100px 100px;
     z-index: -2;
     animation: rotateGraphBack 180s linear infinite reverse;
-    opacity: 0.2;
+    opacity: 0.3;
 }
 
 
