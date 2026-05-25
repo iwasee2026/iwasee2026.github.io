@@ -440,249 +440,104 @@ header.scrolled .nav-links a {
 
 
 
+
+
 /* ==========================================================================
-   NUEVO HERO: TECH & ENGINEERING (IWASEE 2026)
+   NUEVO HERO: DISEÑO "ELEVATED MODERN" (Panorámico y Elegante)
    ========================================================================== */
-.hero-tech {
-    min-height: 100vh;
+.hero-new {
+    min-height: 90vh; /* Ajuste para que se vea bien en todas las pantallas */
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
-    background-color: var(--white);
+    background-color: var(--bg-light);
+    padding-top: 100px;
+    padding-bottom: 50px;
     overflow: hidden;
-    /* SEGURIDAD: 150px evita que el menú transparente/blanco tape el texto */
-    padding-top: 150px; 
-    padding-bottom: 80px;
-    z-index: 1;
 }
 
-/* Fondo estilo "Blueprint / Tech Grid" */
-.hero-tech::before {
+/* Efecto de degradado sutil en el fondo */
+.hero-new::after {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: 
-        linear-gradient(rgba(0, 51, 102, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 51, 102, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-    z-index: -2;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 80% 20%, rgba(243, 156, 18, 0.05), transparent 40%);
+    pointer-events: none;
 }
 
-/* Brillo tecnológico de fondo (Glow) */
-.hero-tech::after {
-    content: '';
-    position: absolute;
-    top: 20%; right: -5%;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(243, 156, 18, 0.08) 0%, transparent 70%);
-    border-radius: 50%;
-    z-index: -1;
-}
-
-.hero-tech-grid {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 5rem;
+.hero-grid {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    width: 100%;
+    text-align: center;
+    z-index: 2;
+    gap: 3rem;
 }
 
-/* TEXTO IZQUIERDO */
-.tech-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(0, 51, 102, 0.05);
-    border-left: 3px solid var(--accent);
-    padding: 8px 16px;
-    font-weight: 700;
-    text-transform: uppercase;
+/* Texto impactante */
+.hero-text {
+    max-width: 900px;
+}
+
+.hero-tag {
+    background: var(--primary);
+    color: white;
+    padding: 6px 20px;
+    border-radius: 50px;
+    font-size: 0.8rem;
     letter-spacing: 2px;
-    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: inline-block;
+}
+
+.hero-text h1 {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 900;
+    line-height: 0.95;
     color: var(--primary-dark);
     margin-bottom: 2rem;
 }
 
-.hero-tech-text h1 {
-    font-size: clamp(3rem, 5vw, 4.5rem);
-    line-height: 1.05;
-    color: var(--primary-dark);
-    font-weight: 900;
-    margin-bottom: 1.5rem;
-    text-align: left;
-}
-
-.hero-tech-text h1 .gradient-text {
-    background: linear-gradient(135deg, var(--primary) 0%, #00a8ff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: block;
-}
-
-.hero-tech-text p {
-    font-size: 1.2rem;
+.hero-text p {
+    font-size: 1.3rem;
     color: var(--text-main);
-    line-height: 1.7;
-    margin-bottom: 3rem;
-    max-width: 600px;
-    border-left: 1px solid rgba(0,0,0,0.1);
-    padding-left: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
 }
 
-/* BOTONES */
-.tech-btns {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.btn-tech-primary {
-    background-color: var(--primary);
-    color: var(--white);
-    padding: 1.2rem 2.5rem;
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 4px; /* Cuadrado con ligero borde, más técnico */
-    transition: var(--transition);
-    box-shadow: 0 10px 25px rgba(0, 51, 102, 0.2);
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-tech-primary:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-3px);
-}
-
-.btn-tech-secondary {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: var(--transition);
-}
-
-.btn-tech-secondary:hover {
-    color: var(--accent);
-    gap: 12px; /* Efecto flecha que se mueve */
-}
-
-/* IMAGEN DERECHA (DISEÑO GEOMÉTRICO) */
-.hero-tech-visual {
-    position: relative;
-    z-index: 2;
-}
-
-/* Marco desfasado (Wireframe) */
-.hero-tech-visual::before {
-    content: '';
-    position: absolute;
-    top: 20px; right: -20px;
-    width: 100%; height: 100%;
-    border: 3px solid var(--accent);
-    z-index: -1;
-    border-radius: 0 40px 0 40px; /* Geometría asimétrica dura */
-    opacity: 0.5;
-    transition: var(--transition);
-}
-
-.tech-image-wrapper {
+/* Imagen panorámica protagonista */
+.hero-visual {
     width: 100%;
-    height: 550px;
-    background-color: var(--primary-dark);
-    border-radius: 40px 0 40px 0; /* Opuesto al marco para generar tensión visual */
-    overflow: hidden;
-    box-shadow: -20px 20px 60px rgba(0,0,0,0.1);
+    max-width: 1100px;
 }
 
-.tech-image-wrapper img {
+.visual-wrapper {
+    width: 100%;
+    height: 450px;
+    border-radius: 30px; /* Esquinas suaves, diseño tipo "Card" */
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.15); /* Sombra pesada para que "flote" */
+    transition: var(--transition);
+}
+
+.visual-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.9; /* Ligeramente opaca para un look tech */
-    transition: transform 0.6s ease;
+    transition: transform 0.7s ease;
 }
 
-.hero-tech-visual:hover .tech-image-wrapper img {
+.hero-visual:hover .visual-wrapper img {
     transform: scale(1.05);
-    opacity: 1;
 }
 
-.hero-tech-visual:hover::before {
-    top: 30px; right: -30px;
-    opacity: 1;
-}
-
-/* Tarjeta de Datos Flotante (UI Element) */
-.floating-data-card {
-    position: absolute;
-    bottom: -30px;
-    left: -40px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 15px 35px rgba(0, 51, 102, 0.15);
-    border-left: 4px solid var(--accent);
+/* Ajustes de botones para el nuevo diseño */
+.hero-btns {
     display: flex;
-    align-items: center;
-    gap: 15px;
-    animation: floatTech 5s ease-in-out infinite;
-    z-index: 3;
-}
-
-@keyframes floatTech {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0); }
-}
-
-.data-icon {
-    width: 45px; height: 45px;
-    background: rgba(0, 51, 102, 0.05);
-    border-radius: 50%;
-    display: flex; justify-content: center; align-items: center;
-    color: var(--primary);
-}
-
-.data-text span {
-    display: block;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    color: var(--text-main);
-    opacity: 0.7;
-    font-weight: 700;
-}
-
-.data-text strong {
-    display: block;
-    color: var(--primary-dark);
-    font-size: 1.1rem;
-}
-
-/* RESPONSIVE */
-@media (max-width: 992px) {
-    .hero-tech {
-        height: auto;
-        padding-top: 120px;
-    }
-    .hero-tech-grid {
-        grid-template-columns: 1fr;
-        gap: 4rem;
-        text-align: left;
-    }
-    .hero-tech-text h1 { font-size: clamp(2.5rem, 8vw, 3.5rem); text-align: left; }
-    .hero-tech-text p { border-left: none; padding-left: 0; }
-    
-    .floating-data-card {
-        bottom: -20px; left: 20px; right: 20px;
-        justify-content: center;
-    }
-    .hero-tech-visual::before { right: -10px; }
+    justify-content: center;
+    gap: 1.5rem;
 }
 
 
