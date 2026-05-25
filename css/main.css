@@ -1029,6 +1029,11 @@ header.scrolled .nav-links a {
     .timeline-item::after { 
         left: 21px; 
     }
+
+   .timeline-item:nth-child(even), 
+   .timeline-item:nth-child(odd) { 
+        left: 0; 
+    }
 }
 
 /* ==========================================================================
