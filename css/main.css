@@ -442,90 +442,94 @@ header.scrolled .nav-links a {
 
 
 /* ==========================================================================
-   NUEVO HERO: ASIMÉTRICO E INDUSTRIAL (IWASEE 2026)
+   NUEVO DISEÑO: HERO EDITORIAL ASIMÉTRICO
    ========================================================================== */
-.hero-iwasee {
+.hero-new {
     min-height: 90vh;
+    padding-top: 180px; /* Separación clara del Header */
+    padding-bottom: 80px;
+    position: relative;
+    background: #ffffff;
     display: flex;
     align-items: center;
-    position: relative;
-    background-color: var(--white);
-    padding-top: 120px; /* Evita que el header se superponga */
-    overflow: hidden;
 }
 
-.hero-grid-asym {
+.hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1fr 0.8fr; /* El texto tiene prioridad de espacio */
+    gap: 6rem;
     align-items: center;
-    position: relative;
-    z-index: 2;
 }
 
-.badge-tag {
-    display: inline-block;
-    background: var(--primary);
-    color: var(--white);
-    padding: 6px 15px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 1.5rem;
-}
-
-.hero-text h1 {
-    font-size: 4rem;
+.hero-text-content h1 {
+    font-size: clamp(3.5rem, 7vw, 5.5rem);
     font-weight: 900;
-    line-height: 1.1;
+    line-height: 0.95;
     color: var(--primary-dark);
     margin-bottom: 2rem;
 }
 
-.hero-text h1 span { color: var(--accent); }
+.hero-text-content h1 span {
+    color: var(--accent);
+}
 
-/* Diseño asimétrico de la imagen */
-.hero-visual-asym {
+.hero-text-content p {
+    font-size: 1.3rem;
+    color: var(--text-main);
+    max-width: 500px;
+    margin-bottom: 3rem;
+}
+
+/* Diseño de la imagen asimétrica */
+.hero-visual-container {
     position: relative;
+}
+
+.hero-image-card {
+    position: relative;
+    width: 100%;
     height: 500px;
 }
 
-.visual-frame {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.visual-frame img {
+.hero-image-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 0px 80px 0px 80px; /* Forma asimétrica */
-    position: relative;
+    border-radius: 40px 0 40px 0; /* Corte asimétrico */
     z-index: 2;
+    position: relative;
 }
 
-.frame-accent {
+/* Acento visual detrás de la imagen */
+.hero-image-accent {
     position: absolute;
-    top: 30px;
+    top: -30px;
     right: -30px;
     width: 100%;
     height: 100%;
-    border: 4px solid var(--accent);
-    border-radius: 0px 80px 0px 80px;
+    border: 3px solid var(--accent);
+    border-radius: 40px 0 40px 0;
     z-index: 1;
 }
 
-/* Responsivo para celulares */
+/* Ajustes Responsive */
 @media (max-width: 992px) {
-    .hero-grid-asym {
+    .hero-grid {
         grid-template-columns: 1fr;
+        gap: 4rem;
         text-align: center;
-        gap: 2rem;
     }
-    .hero-visual-asym { display: none; } /* Ocultamos visual complejo en móvil */
-    .hero-text { padding: 0 1rem; }
+    .hero-text-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero-text-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-image-accent { display: none; }
+    .hero-image-card { height: 350px; }
 }
 
 
