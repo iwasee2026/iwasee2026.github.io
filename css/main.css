@@ -313,7 +313,7 @@ header.scrolled .nav-links a {
         left: 50%;
         transform: translateX(-50%); 
         width: 240px; 
-        background-color: var(--primary) !important; 
+        background-color: var(--white) !important; 
         box-shadow: 0 15px 30px rgba(0,0,0,0.3); 
         border-radius: 8px;
         margin-top: 10px;
