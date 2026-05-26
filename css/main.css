@@ -1865,191 +1865,328 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 
 
 
-
-
-
-
-
-
 /* ==========================================================================
-   PÁGINA INFO (UNIFICADA CON EL ESTILO DE SUBMISSIONS)
+   PÁGINA INFO (MODERN TECH TABS & PROFILE CARDS)
    ========================================================================== */
 
-/* 1. SECCIONES: Limpias para que se vea el fondo de puntos */
+/* ---------- Layout Principal (Tabs & Content) ---------- */
+.tabs-page-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* ---------- Menú Lateral (Sidebar Nav) ---------- */
+.sidebar-nav {
+    flex: 0 0 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: sticky;
+    top: 120px; /* Se queda fijo al hacer scroll en PC, debajo del header */
+    z-index: 10;
+}
+
+.side-tab-btn {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    background: var(--white);
+    border: 1px solid rgba(0, 51, 102, 0.05);
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.side-tab-btn:hover {
+    background: rgba(0, 51, 102, 0.03);
+    color: var(--primary);
+    transform: translateX(5px);
+}
+
+.side-tab-btn.active {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    box-shadow: 0 10px 20px rgba(0, 51, 102, 0.15);
+    transform: translateX(5px);
+}
+
+/* ---------- Área de Contenido ---------- */
+.content-area {
+    flex: 1;
+    min-width: 0; /* Evita que el contenido desborde el flexbox */
+}
+
 .info-section.tab-section {
-    display: none; /* Se activa por JS */
-    animation: fadeInTab 0.4s ease forwards;
-    background: transparent !important; /* Quitamos el fondo blanco que tapa los puntos */
-    padding: 0 !important;             /* Quitamos el padding extra para que use el del container */
-    box-shadow: none !important;       /* Quitamos la sombra de caja */
-    border: none !important;
+    display: none;
+    animation: fadeInTab 0.5s ease forwards;
 }
 
 .info-section.tab-section.active {
     display: block;
 }
 
-/* 2. TÍTULOS: Misma medida y estilo que Submissions */
+@keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Títulos de Sección ---------- */
 .section-title-left {
-    text-align: left;
     font-size: 2.2rem;
     color: var(--primary-dark);
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 900;
     position: relative;
 }
 
 .section-title-left::after {
     content: '';
     display: block;
-    width: 50px;
-    height: 3px;
+    width: 60px;
+    height: 4px;
     background: var(--accent);
-    margin-top: 10px;
+    margin-top: 12px;
+    border-radius: 2px;
 }
 
-/* 3. BLOQUES DE TEXTO: Ajuste de ancho máximo (igual a submissions) */
-.editorial-text-block {
-    max-width: 750px; /* Reducido para igualar la legibilidad de Submissions */
-    background: transparent !important;
+.subsection-title {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin: 3.5rem 0 1.5rem 0;
+    font-weight: 800;
+}
+
+.subsection-title.center {
+    text-align: center;
 }
 
 .editorial-text-block p {
     font-size: 1.1rem;
-    line-height: 1.7;
+    line-height: 1.8;
     color: var(--text-main);
     margin-bottom: 1.5rem;
+    opacity: 0.9;
 }
 
-/* 4. COMITÉ ORGANIZADOR: Ajuste de tarjetas */
-/* Aquí mantenemos tu diseño de fotos pero con medidas controladas */
+/* ---------- Tarjetas del Comité (Organizers Cards) ---------- */
 .officers-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .officer-item {
-    background: #ffffff; /* Las tarjetas de personas sí llevan blanco para resaltar */
-    padding: 1.5rem;
+    background: var(--white);
+    padding: 2.5rem 1.5rem;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.04);
+    border: 1px solid rgba(0, 51, 102, 0.04);
+    border-top: 4px solid var(--primary);
     text-align: center;
-    flex: 1 1 250px;
-    max-width: 280px; /* Medida controlada */
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.officer-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 51, 102, 0.1);
+    border-top-color: var(--accent);
 }
 
 .officer-photo {
-    width: 110px; /* Un poco más pequeña para no verse tosca */
-    height: 110px;
-    margin: 0 auto 1rem auto;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1.5rem;
     border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid var(--primary);
+    border: 4px solid rgba(0, 51, 102, 0.05);
+    padding: 4px;
+    background: var(--white);
+    transition: var(--transition);
+}
+
+.officer-item:hover .officer-photo {
+    border-color: rgba(243, 156, 18, 0.3); /* Anillo naranja al hover */
 }
 
 .officer-photo img {
     width: 100%;
     height: 100%;
+    border-radius: 50%;
     object-fit: cover;
 }
 
-/* 5. TABLAS (EDICIONES PREVIAS / DATES): Estilo editorial limpio */
-.editions-wrapper {
-    margin-top: 2rem;
-    border-top: 2px solid var(--primary-dark);
-    max-width: 850px; /* Ajustado para que no ocupe todo el ancho */
-}
-
-.edition-row {
-    display: grid;
-    grid-template-columns: 180px 1fr 1fr; /* Medidas de columnas fijas como en Submissions */
-    gap: 1.5rem;
-    padding: 1.2rem 0.5rem;
-    border-bottom: 1px solid rgba(0, 51, 102, 0.08);
-    background: transparent;
-}
-
-.edition-header {
+.officer-name {
+    color: var(--primary-dark);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
     font-weight: 800;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    color: var(--primary-dark);
-    background: rgba(0,0,0,0.02);
 }
 
-/* 6. OTROS ELEMENTOS DE INFO */
-.subsection-title {
-    font-size: 1.5rem;
-    color: var(--primary-dark);
-    margin: 3rem 0 1.5rem 0;
-    text-align: left;
+.officer-affiliation {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    opacity: 0.8;
+    line-height: 1.4;
 }
 
-.topics-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 columnas precisas en escritorio */
+/* ---------- Sponsors ---------- */
+.sponsors-grid {
+    display: flex;
     gap: 2rem;
-    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 2rem;
 }
 
-.tpc-list {
-    list-style: none;
+.sponsor-logo {
+    padding: 2.5rem;
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: var(--transition);
+    text-align: center;
+    flex: 1 1 250px; /* Flexbox para que se acomoden solos */
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
+    align-items: center;
+    justify-content: center;
 }
 
-.tpc-list li {
-    padding-left: 15px;
-    border-left: 2px solid var(--accent);
-    font-size: 0.95rem;
-    word-wrap: break-word; /* Evita que textos largos rompan la caja */
+.sponsor-logo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    border-color: rgba(243, 156, 18, 0.3);
 }
 
-/* 7. AJUSTE DASHBOARD (Apegar el menú a la izquierda) */
-.tabs-page-layout {
+.sponsor-label {
+    font-size: 0.85rem;
+    color: var(--text-main);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.sponsor-logo img {
+    max-height: 70px;
+    width: auto;
+}
+
+/* ---------- Caja de Contacto ---------- */
+.contact-box {
+    margin-top: 2.5rem;
+    padding: 2.5rem;
+    background: var(--white);
+    border-left: 4px solid var(--primary);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    border-right: 1px solid rgba(0,0,0,0.05);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.contact-line {
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
     display: flex;
     align-items: flex-start;
-    gap: 5%; /* Espacio porcentual para flexibilidad */
-    padding-top: 3rem;
-    max-width: 1400px !important;
-    width: 95% !important;
-    margin-left: 2% !important; /* Empuja todo el conjunto a la izquierda */
+    gap: 15px;
 }
 
-.sidebar-nav {
-    flex: 0 0 240px;
-    background: transparent !important; /* Menú lateral sin caja blanca */
-    box-shadow: none !important;
+.contact-line:last-child {
+    margin-bottom: 0;
 }
 
-.content-area {
-    flex: 1;
+.contact-label {
+    color: var(--primary-dark);
+    font-weight: 800;
+    width: 85px; /* Fija el ancho para que los textos se alineen como tabla */
+    flex-shrink: 0;
 }
 
-/* Responsive para Info */
-@media (max-width: 768px) {
+.contact-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.contact-link:hover {
+    color: var(--accent-hover);
+}
+
+/* ==========================================================================
+   RESPONSIVE INFO PAGE
+   ========================================================================== */
+@media (max-width: 992px) {
     .tabs-page-layout {
         flex-direction: column;
-        width: 100% !important;
-        margin-left: 0 !important;
+        gap: 2.5rem;
+        padding-top: 2rem;
     }
+    
+    /* El menú lateral se vuelve horizontal con scroll natural en móviles */
     .sidebar-nav {
         flex: none;
         width: 100%;
-        margin-bottom: 2rem;
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+        top: 0;
+        background: var(--white); 
     }
-    .edition-row {
-        grid-template-columns: 1fr;
+    
+    .side-tab-btn {
+        flex: 0 0 auto;
+        text-align: center;
+        padding: 0.8rem 1.5rem;
     }
-   .topics-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+    
+    /* Quitamos el movimiento horizontal en celulares al hacer hover */
+    .side-tab-btn:hover, .side-tab-btn.active {
+        transform: translateY(-2px);
     }
 }
+
+@media (max-width: 768px) {
+    .officers-grid {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        margin: 0 auto 2rem auto;
+    }
+    .section-title-left {
+        font-size: 1.8rem;
+    }
+    .subsection-title {
+        text-align: center;
+    }
+    /* En móviles muy pequeños, apilamos el label de contacto sobre el valor */
+    .contact-line {
+        flex-direction: column;
+        gap: 2px;
+    }
+    .contact-label {
+        width: auto;
+    }
+}
+
+
+
+
+
+
 
 
 
