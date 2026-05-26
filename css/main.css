@@ -1679,6 +1679,196 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 
 
 
+/* ==========================================================================
+   PÁGINA: NEWS & DATES (MODERN TECH DASHBOARD)
+   ========================================================================== */
+
+/* ---------- Panel de Fechas Importantes ---------- */
+.editions-wrapper {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.05);
+    overflow: hidden;
+    border: 1px solid rgba(0, 51, 102, 0.05);
+    margin-top: 2rem;
+}
+
+.edition-row {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1fr;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(0, 51, 102, 0.05);
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.edition-row:last-child {
+    border-bottom: none;
+}
+
+.edition-row:hover:not(.edition-header) {
+    background-color: rgba(0, 51, 102, 0.02);
+}
+
+/* Cabecera de la tabla */
+.edition-header {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+/* Fila Resaltada (El evento más próximo) */
+.edition-row.highlight-peru {
+    background-color: rgba(243, 156, 18, 0.03);
+    border-left: 4px solid var(--accent);
+}
+
+/* Textos internos de la tabla */
+.col-ws strong { 
+    color: var(--primary-dark); 
+    font-size: 1.1rem; 
+}
+.col-date { 
+    color: var(--text-main); 
+    font-weight: 600; 
+}
+.col-loc { 
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: center;
+    width: fit-content;
+}
+
+/* Colores de las etiquetas de Estado */
+.edition-row.highlight-peru .col-loc { 
+    background: rgba(46, 204, 113, 0.15); 
+    color: #219653; /* Verde para "Open" */
+} 
+.edition-row:not(.highlight-peru):not(.edition-header) .col-loc { 
+    background: rgba(0, 51, 102, 0.08); 
+    color: var(--primary); /* Azul para "Scheduled" */
+}
+
+/* ---------- Aviso AoE ---------- */
+.aoe-notice {
+    margin-top: 2rem;
+    padding: 1.2rem 2rem;
+    background: linear-gradient(to right, rgba(0, 51, 102, 0.04), transparent);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+.aoe-notice strong {
+    color: var(--primary-dark);
+}
+
+/* ---------- Artículos de Noticias (Tarjetas) ---------- */
+.news-article {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.04);
+    border: 1px solid rgba(0, 51, 102, 0.05);
+    border-top: 4px solid transparent;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.news-article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 51, 102, 0.1);
+    border-top-color: var(--accent); /* Se ilumina arriba al pasar el cursor */
+}
+
+.news-date {
+    display: inline-block;
+    background: rgba(243, 156, 18, 0.12);
+    color: var(--accent-hover);
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 16px;
+    border-radius: 30px;
+    margin-bottom: 1.5rem;
+}
+
+.news-article h3 {
+    color: var(--primary-dark);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.news-article p {
+    color: var(--text-main);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0;
+    opacity: 0.85;
+}
+
+/* ==========================================================================
+   RESPONSIVE (MÓVILES)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Transformamos la tabla en tarjetas apiladas */
+    .edition-row {
+        grid-template-columns: 1fr; /* Una sola columna */
+        gap: 12px;
+        padding: 1.5rem;
+    }
+    
+    .edition-header {
+        display: none; /* Ocultamos los títulos de tabla en móvil */
+    }
+    
+    .edition-row:not(.edition-header) {
+        border-bottom: 1px solid rgba(0, 51, 102, 0.08);
+    }
+    
+    .edition-row.highlight-peru {
+        border-left: 4px solid var(--accent);
+    }
+
+    .col-loc {
+        margin-top: 5px;
+    }
+
+    /* Ajustes para las noticias */
+    .news-article {
+        padding: 1.8rem;
+    }
+
+    .news-article h3 {
+        font-size: 1.35rem;
+    }
+}
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* ==========================================================================
@@ -2885,43 +3075,3 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 
 
 
-
-
-
-
-
-/* ==========================================================================
-   PÁGINA: NEWS
-   ========================================================================== */
-   
-   /* Estilo para la nota AoE */
-.aoe-notice {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background-color: rgba(0, 51, 102, 0.03);
-    border-left: 4px solid var(--primary);
-    font-size: 1rem;
-    color: var(--primary-dark);
-}
-
-/* Estilo para artículos de noticias */
-.news-article {
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-
-.news-date {
-    display: block;
-    font-size: 0.85rem;
-    color: var(--accent);
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-}
-
-.news-article h3 {
-    color: var(--primary);
-    margin-bottom: 1rem;
-}
-   
