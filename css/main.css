@@ -1748,7 +1748,7 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
     font-size: 1.1rem; 
 }
 .col-date { 
-    color: var(--text-main); 
+    color: var(--primary-dark); 
     font-weight: 600; 
 }
 .col-loc { 
