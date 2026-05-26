@@ -2466,6 +2466,37 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 
 
 
+
+
+/* ==========================================================================
+   PÁGINA: PROGRAM
+   ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   PÁGINA: Aceppted-papers
+   ========================================================================== */
+
+
+
+
+
+
+
+
+
+
 /* ==========================================================================
    PÁGINA: VENUE (DISEÑO EDITORIAL)
    ========================================================================== */
@@ -2824,133 +2855,6 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 
 
 
-
-/* ==========================================================================
-   PÁGINA: PROGRAM (DISEÑO DE LÍNEA DE TIEMPO)
-   ========================================================================== */
-
-/* Navegación de pestañas */
-.program-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 4rem;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-
-.tab-btn {
-    background: transparent;
-    border: none;
-    padding: 1rem 1.5rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-main);
-    cursor: pointer;
-    transition: var(--transition);
-    position: relative;
-    opacity: 0.5;
-}
-
-.tab-btn.active {
-    opacity: 1;
-    color: var(--primary);
-}
-
-/* Línea naranja bajo el botón activo */
-.tab-btn.active::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--accent);
-}
-
-/* Contenido del horario */
-.tab-content {
-    display: none;
-    animation: fadeIn 0.5s ease;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-.schedule-item {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    padding: 2.5rem 0;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    align-items: center;
-}
-
-.schedule-item:last-child {
-    border-bottom: none;
-}
-
-/* Columna de la hora */
-.schedule-item .time {
-    font-weight: 800;
-    color: var(--primary);
-    font-size: 1.1rem;
-}
-
-/* Columna de la actividad */
-.activity h3 {
-    font-size: 1.4rem;
-    color: var(--primary-dark);
-    margin-bottom: 0.3rem;
-}
-
-.activity p {
-    color: var(--text-main);
-    opacity: 0.8;
-}
-
-/* Estilos para sesiones especiales (Keynotes) */
-.schedule-item.keynote .activity h3 {
-    color: var(--accent); /* Resaltamos las keynotes */
-}
-
-/* Animación simple */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .program-tabs {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-    .tab-btn {
-        padding: 0.8rem;
-        font-size: 0.95rem;
-    }
-    .schedule-item {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-        padding: 1.5rem 0;
-    }
-    .schedule-item .time {
-        color: var(--accent);
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ==========================================================================
    PÁGINA: SUBMISSIONS (DATA TRANSCRIPT)
    ========================================================================== */
@@ -3096,6 +3000,8 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 
 
 
+
+
 /* ==========================================================================
    PÁGINA: REGISTRATION (MODERN PRICING CARDS)
    ========================================================================== */
@@ -3212,6 +3118,145 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
     font-size: 1.4rem;
     padding: 1.2rem 3rem;
 }
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   REUSABLE COMPONENT: TO BE ANNOUNCED (TBA) PLACEHOLDER
+   ========================================================================== */
+.tba-placeholder {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: var(--white);
+    border-radius: 16px;
+    border: 2px dashed rgba(0, 51, 102, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.03);
+    max-width: 900px;
+    margin: 4rem auto;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+}
+
+/* Efecto al pasar el cursor sobre la caja de anuncio */
+.tba-placeholder:hover {
+    border-color: var(--accent);
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 15px 40px rgba(0, 51, 102, 0.08);
+    transform: translateY(-5px);
+}
+
+.tba-icon {
+    font-size: 4rem;
+    color: var(--primary);
+    opacity: 0.2;
+    margin-bottom: 1.5rem;
+    transition: all 0.4s ease;
+}
+
+.tba-placeholder:hover .tba-icon {
+    opacity: 0.8;
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+.tba-placeholder h2 {
+    color: var(--primary-dark);
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+
+.tba-text-block {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.tba-text-block p {
+    font-size: 1.15rem;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.tba-text-block p.tba-subtext {
+    font-size: 1.05rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Píldora de estado con animación */
+.tba-status-pill {
+    margin-top: 2.5rem;
+    padding: 0.8rem 2rem;
+    background: var(--bg-light);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.tba-status-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulseDot 2s infinite; /* Animación de pulso continuo */
+}
+
+.tba-status-text {
+    font-weight: 800;
+    color: var(--primary-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+}
+
+@keyframes pulseDot {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(243, 156, 18, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(243, 156, 18, 0); }
+}
+
+/* ==========================================================================
+   RESPONSIVE PARA COMPONENTE TBA
+   ========================================================================== */
+@media (max-width: 768px) {
+    .tba-placeholder {
+        padding: 4rem 1.5rem;
+        margin: 2rem auto;
+        min-height: auto;
+    }
+    
+    .tba-icon {
+        font-size: 3rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
