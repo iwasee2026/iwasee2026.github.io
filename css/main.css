@@ -1678,181 +1678,301 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 
 
 
-
 /* ==========================================================================
-   PÁGINA: NEWS & DATES (MODERN TECH DASHBOARD)
+   PÁGINA INFO (MODERN TECH TABS & UNIFIED COMPONENTS)
    ========================================================================== */
 
-/* ---------- Panel de Fechas Importantes ---------- */
-.editions-wrapper {
-    background: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.05);
-    overflow: hidden;
+/* ---------- Layout Principal (Tabs & Content) ---------- */
+.tabs-page-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* ---------- Menú Lateral (Sidebar Nav) ---------- */
+.sidebar-nav {
+    flex: 0 0 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: sticky;
+    top: 100px;
+}
+
+.side-tab-btn {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    background: transparent;
     border: 1px solid rgba(0, 51, 102, 0.05);
-    margin-top: 2rem;
-}
-
-.edition-row {
-    display: grid;
-    grid-template-columns: 2fr 1.5fr 1fr;
-    padding: 1.5rem 2rem;
-    border-bottom: 1px solid rgba(0, 51, 102, 0.05);
-    align-items: center;
-    transition: background-color 0.3s ease;
-}
-
-.edition-row:last-child {
-    border-bottom: none;
-}
-
-.edition-row:hover:not(.edition-header) {
-    background-color: rgba(0, 51, 102, 0.02);
-}
-
-/* Cabecera de la tabla */
-.edition-header {
-    background-color: var(--primary-dark);
-    color: var(--white);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
-}
-
-/* Fila Resaltada (El evento más próximo) */
-.edition-row.highlight-peru {
-    background-color: rgba(243, 156, 18, 0.03);
-    border-left: 4px solid var(--accent);
-}
-
-/* Textos internos de la tabla */
-.col-ws strong { 
-    color: var(--primary-dark); 
-    font-size: 1.1rem; 
-}
-.col-date { 
-    color: var(--text-main); 
-    font-weight: 600; 
-}
-.col-loc { 
-    display: inline-block;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-align: center;
-    width: fit-content;
-}
-
-/* Colores de las etiquetas de Estado */
-.edition-row.highlight-peru .col-loc { 
-    background: rgba(46, 204, 113, 0.15); 
-    color: #219653; /* Verde para "Open" */
-} 
-.edition-row:not(.highlight-peru):not(.edition-header) .col-loc { 
-    background: rgba(0, 51, 102, 0.08); 
-    color: var(--primary); /* Azul para "Scheduled" */
-}
-
-/* ---------- Aviso AoE ---------- */
-.aoe-notice {
-    margin-top: 2rem;
-    padding: 1.2rem 2rem;
-    background: linear-gradient(to right, rgba(0, 51, 102, 0.04), transparent);
-    border-left: 4px solid var(--primary);
-    border-radius: 0 8px 8px 0;
-    font-size: 0.95rem;
+    border-radius: 8px;
+    font-weight: 600;
     color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
 }
 
-.aoe-notice strong {
+.side-tab-btn:hover {
+    background: rgba(0, 51, 102, 0.03);
+    color: var(--primary);
+    transform: translateX(5px);
+}
+
+.side-tab-btn.active {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    box-shadow: 0 10px 20px rgba(0, 51, 102, 0.15);
+    transform: translateX(5px);
+}
+
+/* ---------- Área de Contenido ---------- */
+.content-area {
+    flex: 1;
+    min-width: 0; 
+}
+
+.info-section.tab-section {
+    display: none;
+    animation: fadeInTab 0.5s ease forwards;
+}
+
+.info-section.tab-section.active {
+    display: block;
+}
+
+@keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Títulos y Textos ---------- */
+.section-title-left {
+    font-size: 2.2rem;
     color: var(--primary-dark);
+    margin-bottom: 2rem;
+    font-weight: 900;
+    position: relative;
 }
 
-/* ---------- Artículos de Noticias (Tarjetas) ---------- */
-.news-article {
+.section-title-left::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
+    margin-top: 12px;
+    border-radius: 2px;
+}
+
+.subsection-title {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin: 3.5rem 0 1.5rem 0;
+    font-weight: 800;
+}
+
+.editorial-text-block p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.drop-cap::first-letter {
+    float: left;
+    font-size: 3.5rem;
+    line-height: 0.8;
+    padding-right: 8px;
+    color: var(--accent);
+    font-weight: 900;
+}
+
+/* ---------- Tarjetas del Comité (Tech Profile Cards) ---------- */
+.officers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.officer-item {
     background: var(--white);
     border-radius: 12px;
-    padding: 2.5rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.04);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.05);
     border: 1px solid rgba(0, 51, 102, 0.05);
-    border-top: 4px solid transparent;
+    border-top: 4px solid var(--primary);
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.news-article:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 51, 102, 0.1);
-    border-top-color: var(--accent); /* Se ilumina arriba al pasar el cursor */
+.officer-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 51, 102, 0.12);
+    border-top-color: var(--accent);
 }
 
-.news-date {
-    display: inline-block;
-    background: rgba(243, 156, 18, 0.12);
-    color: var(--accent-hover);
-    font-size: 0.85rem;
+.officer-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: var(--bg-light);
+}
+
+.officer-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.officer-item:hover .officer-photo img {
+    transform: scale(1.05);
+}
+
+.officer-info {
+    padding: 1.5rem;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.officer-name {
+    color: var(--primary-dark);
+    font-size: 1.2rem;
     font-weight: 800;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.officer-item:hover .officer-name {
+    color: var(--accent);
+}
+
+.officer-affiliation {
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+/* ---------- Sponsors ---------- */
+.sponsors-grid {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.sponsor-logo {
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+    text-align: center;
+    transition: transform 0.3s ease;
+    min-width: 250px;
+}
+
+.sponsor-logo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.sponsor-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-main);
+    margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 6px 16px;
-    border-radius: 30px;
-    margin-bottom: 1.5rem;
+    font-weight: 700;
 }
 
-.news-article h3 {
-    color: var(--primary-dark);
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-    line-height: 1.3;
+/* ---------- Contact Box ---------- */
+.contact-box {
+    margin-top: 2.5rem; 
+    padding: 2rem; 
+    background: var(--white); 
+    border-left: 4px solid var(--primary); 
+    border-radius: 12px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
 }
 
-.news-article p {
-    color: var(--text-main);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin: 0;
-    opacity: 0.85;
+.contact-row {
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: flex-start;
 }
+
+.contact-row:last-child { margin-bottom: 0; }
+.contact-label { width: 90px; color: var(--primary-dark); font-weight: 800; flex-shrink: 0; }
+.contact-link { color: var(--accent); text-decoration: none; font-weight: 700; }
 
 /* ==========================================================================
-   RESPONSIVE (MÓVILES)
+   RESPONSIVE INFO PAGE
    ========================================================================== */
-@media (max-width: 768px) {
-    /* Transformamos la tabla en tarjetas apiladas */
-    .edition-row {
-        grid-template-columns: 1fr; /* Una sola columna */
-        gap: 12px;
-        padding: 1.5rem;
+@media (max-width: 992px) {
+    .tabs-page-layout {
+        flex-direction: column;
+        gap: 2.5rem;
+        padding-top: 2rem;
     }
     
-    .edition-header {
-        display: none; /* Ocultamos los títulos de tabla en móvil */
+    .sidebar-nav {
+        flex: none;
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+        top: 0;
     }
     
-    .edition-row:not(.edition-header) {
-        border-bottom: 1px solid rgba(0, 51, 102, 0.08);
+    .side-tab-btn {
+        flex: 0 0 auto;
+        text-align: center;
+        padding: 0.8rem 1.5rem;
     }
     
-    .edition-row.highlight-peru {
-        border-left: 4px solid var(--accent);
-    }
-
-    .col-loc {
-        margin-top: 5px;
-    }
-
-    /* Ajustes para las noticias */
-    .news-article {
-        padding: 1.8rem;
-    }
-
-    .news-article h3 {
-        font-size: 1.35rem;
+    .side-tab-btn:hover, .side-tab-btn.active {
+        transform: translateY(-2px);
     }
 }
+
+@media (max-width: 768px) {
+    .officers-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .sponsors-grid {
+        flex-direction: column;
+    }
+
+    .contact-row {
+        flex-direction: column;
+    }
+    
+    .contact-label {
+        margin-bottom: 5px;
+    }
+}
+
+
+
+
    
 
 
