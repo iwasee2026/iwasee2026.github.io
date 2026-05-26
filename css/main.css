@@ -57,6 +57,10 @@ h2 {
     margin-bottom: 3.5rem;
 }
 
+
+
+
+
 /* ==========================================================================
    HEADER Y NAVEGACIÓN (MODERNO Y FLOTANTE)
    ========================================================================== */
@@ -75,10 +79,6 @@ header {
     border-bottom: 1px solid transparent;
 }
 
-.menu-toggle {
-    display: none; 
-}
-
 /* ==========================================================================
    LOGO
    ========================================================================== */
@@ -91,8 +91,9 @@ header {
     transition: var(--transition) !important;
 }
 
+/* Fix: Color oscuro para el logo en sub-páginas (para que se lea sobre el fondo claro) */
 body.inner-page header:not(.scrolled) .logo {
-    color: var(--white) !important;
+    color: var(--primary-dark) !important;
 }
 
 header.scrolled .logo {
@@ -100,38 +101,28 @@ header.scrolled .logo {
 }
 
 /* ==========================================================================
-   ENLACES DE NAVEGACIÓN
+   ENLACES DE NAVEGACIÓN (DESKTOP)
    ========================================================================== */
 .nav-links {
     display: flex;
     list-style: none; 
-    gap: 2.5rem; /* Más respiro entre enlaces */
+    gap: 2.5rem;
     margin: 0;
     padding: 0;
     align-items: center;
 }
 
-body:not(.inner-page) .nav-links a {
-    color: var(--primary-dark) !important;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: var(--transition);
-    text-decoration: none;
-}
-
-body.inner-page header:not(.scrolled) .nav-links a {
-    color: var(--white) !important;
-    font-weight: 500;
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-/* Efecto Hover Moderno (Punto debajo en lugar de cambio de color brusco) */
+/* Unificación: Todos los enlaces en todas las páginas usan el mismo grosor y color base */
 .nav-links a {
+    color: var(--primary-dark) !important;
+    font-weight: 600 !important; /* Ahora tienen negrita en todas las páginas */
+    font-size: 0.95rem;
+    transition: var(--transition);
+    text-decoration: none;
     position: relative;
 }
 
+/* Efecto de Subrayado Hover */
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -150,24 +141,46 @@ body.inner-page header:not(.scrolled) .nav-links a {
 }
 
 /* ==========================================================================
-   SCROLL ACTIVO (Header estilo "Glassmorphism")
+   SCROLL ACTIVO (Header Glassmorphism)
    ========================================================================== */
 header.scrolled {
-    background-color: rgba(255, 255, 255, 0.9) !important; 
-    backdrop-filter: blur(10px); /* Efecto vidrio esmerilado */
+    background-color: rgba(255, 255, 255, 0.95) !important; 
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-sm) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
     padding: 1rem 5% !important;
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
+/* Al hacer scroll se mantiene la negrita y no se borran los efectos */
 header.scrolled .nav-links a { 
-    color: var(--text-main) !important; 
-    font-weight: 600;
+    color: var(--primary-dark) !important; 
+    font-weight: 600 !important;
 }
 
 /* ==========================================================================
-   DROPDOWN MENU (LIMPIO Y SIN BORDES DUROS)
+   MENÚ HAMBURGUESA
+   ========================================================================== */
+.menu-toggle {
+    display: none; 
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Fix: Las barras de la hamburguesa serán siempre azul oscuro */
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-dark) !important; 
+    transition: var(--transition);
+    border-radius: 3px;
+}
+
+/* ==========================================================================
+   DROPDOWN MENU (ESCRITORIO)
    ========================================================================== */
 .dropdown {
     position: relative;
@@ -189,7 +202,6 @@ header.scrolled .nav-links a {
     margin: 0;
 }
 
-/* Escritorio */
 @media (min-width: 993px) {
     .dropdown-menu {
         position: absolute;
@@ -198,10 +210,10 @@ header.scrolled .nav-links a {
         transform: translateX(-50%);
         margin-top: 15px;
         background-color: var(--white) !important;
-        box-shadow: var(--shadow-lg);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         padding: 0.5rem;
         min-width: 240px;
-        border-radius: var(--radius-md);
+        border-radius: 8px;
         z-index: 1000;
         border: 1px solid rgba(0,0,0,0.04);
     }
@@ -217,14 +229,13 @@ header.scrolled .nav-links a {
         display: block !important;
         padding: 12px 20px !important;
         color: var(--text-main) !important;
-        font-weight: 500;
+        font-weight: 500 !important; /* Submenús un poco menos marcados */
         font-size: 0.95rem;
-        border-radius: var(--radius-sm);
+        border-radius: 4px;
         transition: var(--transition);
     }
 
-    /* Quitamos la línea de hover para los submenús y usamos fondo suave */
-    .dropdown-menu li a::after { display: none; }
+    .dropdown-menu li a::after { display: none; } /* Sin línea naranja en submenú */
     
     .dropdown-menu li a:hover {
         background-color: var(--bg-light) !important;
@@ -238,22 +249,68 @@ header.scrolled .nav-links a {
     to { opacity: 1; transform: translate(-50%, 0); }
 }
 
-/* Móvil */
+/* ==========================================================================
+   NAVEGACIÓN MÓVIL (RESPONSIVE FIXES)
+   ========================================================================== */
 @media (max-width: 992px) {
+    .menu-toggle {
+        display: flex; /* Muestra el botón hamburguesa */
+    }
+
+    #nav-container {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Oculto a la derecha */
+        width: 80%;
+        max-width: 400px;
+        height: 100vh;
+        background-color: var(--primary-dark); /* Menú móvil en azul corporativo */
+        box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        z-index: 2999;
+    }
+
+    #nav-container.active {
+        right: 0;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center; /* Fix 1: Centra todos los enlaces */
+        width: 100%;
+        gap: 1.5rem;
+    }
+
+    /* Fix 2: Asegura que la fuente se lea bien sobre el fondo azul oscuro del menú desplegado */
+    .nav-links a {
+        color: var(--white) !important;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    
+    /* Dropdown Móvil Centrado */
     .dropdown {
         width: 100%;
         flex-direction: column;
         align-items: center !important; 
     }
     
-    .dropdown-toggle { width: 100%; text-align: center !important; }
+    .dropdown-toggle { 
+        width: 100%; 
+        justify-content: center; /* Centra "Program" y "Participation Info" */
+    }
 
+    /* Fix 4: El submenú no empuja al resto (Position Absolute o Comportamiento Limpio) */
     .dropdown-menu {
         display: none !important; 
-        position: relative !important; /* En móvil no es flotante, empuja el contenido */
+        position: relative !important; 
         width: 100%;
         background-color: rgba(255,255,255,0.05) !important;
-        border-radius: var(--radius-md);
+        border-radius: 8px;
         margin-top: 10px;
         padding: 10px 0;
     }
@@ -263,52 +320,12 @@ header.scrolled .nav-links a {
     }
 
     .dropdown-menu li a {
-        padding: 12px 20px !important;
+        padding: 10px 20px !important;
         color: rgba(255,255,255,0.8) !important; 
         font-size: 1rem;
-        font-weight: 500;
         text-align: center !important;
     }
-    .dropdown-menu li a::after { display: none; }
 }
-
-/* ==========================================================================
-   PÁGINAS INTERNAS (FONDO LIMPIO SIN PUNTOS)
-   ========================================================================== */
-.page-content {
-    position: relative;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-    min-height: 60vh;
-    z-index: 1;
-}
-
-/* Eliminamos el gradiente radial de puntos para un look más limpio */
-.page-content::before {
-    display: none;
-}
-
-/* Contenedores de contenido limpios */
-.tab-section,
-.editorial-text-block,
-.venue-article,
-.speaker-main-info {
-    padding: 2.5rem;
-    border-radius: var(--radius-lg);
-    background-color: var(--white);
-    box-shadow: var(--shadow-sm); 
-    border: 1px solid rgba(0,0,0,0.02);
-}
-
-.sidebar-nav {
-    background-color: transparent;
-    padding: 0;
-}
-
-@media (max-width: 768px) {
-    .tab-section, .editorial-text-block { padding: 1.5rem; }
-}
-
 
 
 
