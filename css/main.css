@@ -331,7 +331,7 @@ header.scrolled .nav-links a {
         display: block !important; 
         width: 100%;
         padding: 12px 20px !important;
-        color: rgba(255,255,255,0.95) !important; 
+        color: var(--primary-dark) !important; 
         font-size: 1rem;
         text-align: center !important;
     }
