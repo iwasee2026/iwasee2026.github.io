@@ -91,7 +91,7 @@ header {
     transition: var(--transition) !important;
 }
 
-/* Fix: Color oscuro para el logo en sub-páginas (para que se lea sobre el fondo claro) */
+/* Color oscuro para el logo en sub-páginas (para que se lea sobre el fondo claro) */
 body.inner-page header:not(.scrolled) .logo {
     color: var(--primary-dark) !important;
 }
@@ -115,7 +115,7 @@ header.scrolled .logo {
 /* Unificación: Todos los enlaces en todas las páginas usan el mismo grosor y color base */
 .nav-links a {
     color: var(--primary-dark) !important;
-    font-weight: 600 !important; /* Ahora tienen negrita en todas las páginas */
+    font-weight: 600 !important; 
     font-size: 0.95rem;
     transition: var(--transition);
     text-decoration: none;
@@ -170,7 +170,7 @@ header.scrolled .nav-links a {
     gap: 6px;
 }
 
-/* Fix: Las barras de la hamburguesa serán siempre azul oscuro */
+/* Las barras de la hamburguesa serán siempre azul oscuro */
 .menu-toggle .bar {
     width: 25px;
     height: 3px;
@@ -229,13 +229,13 @@ header.scrolled .nav-links a {
         display: block !important;
         padding: 12px 20px !important;
         color: var(--text-main) !important;
-        font-weight: 500 !important; /* Submenús un poco menos marcados */
+        font-weight: 500 !important;
         font-size: 0.95rem;
         border-radius: 4px;
         transition: var(--transition);
     }
 
-    .dropdown-menu li a::after { display: none; } /* Sin línea naranja en submenú */
+    .dropdown-menu li a::after { display: none; }
     
     .dropdown-menu li a:hover {
         background-color: var(--bg-light) !important;
@@ -250,21 +250,21 @@ header.scrolled .nav-links a {
 }
 
 /* ==========================================================================
-   NAVEGACIÓN MÓVIL (RESPONSIVE FIXES)
+   NAVEGACIÓN MÓVIL (RESPONSIVE FIXES & DROPDOWN FLOTANTE)
    ========================================================================== */
 @media (max-width: 992px) {
     .menu-toggle {
-        display: flex; /* Muestra el botón hamburguesa */
+        display: flex;
     }
 
     #nav-container {
         position: fixed;
         top: 0;
-        right: -100%; /* Oculto a la derecha */
+        right: -100%;
         width: 80%;
         max-width: 400px;
         height: 100vh;
-        background-color: var(--primary-dark); /* Menú móvil en azul corporativo */
+        background-color: var(--primary-dark); 
         box-shadow: -10px 0 30px rgba(0,0,0,0.2);
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
@@ -280,39 +280,44 @@ header.scrolled .nav-links a {
 
     .nav-links {
         flex-direction: column;
-        align-items: center; /* Fix 1: Centra todos los enlaces */
+        align-items: center; 
         width: 100%;
         gap: 1.5rem;
     }
 
-    /* Fix 2: Asegura que la fuente se lea bien sobre el fondo azul oscuro del menú desplegado */
     .nav-links a {
         color: var(--white) !important;
         font-size: 1.2rem;
         text-align: center;
     }
     
-    /* Dropdown Móvil Centrado */
     .dropdown {
         width: 100%;
         flex-direction: column;
         align-items: center !important; 
+        position: relative; /* Clave para que el menú flotante se base en este contenedor */
     }
     
     .dropdown-toggle { 
         width: 100%; 
-        justify-content: center; /* Centra "Program" y "Participation Info" */
+        justify-content: center; 
     }
 
-    /* Fix 4: El submenú no empuja al resto (Position Absolute o Comportamiento Limpio) */
+    /* SUBMENÚ FLOTANTE MÓVIL: No empuja el texto, flota encima */
     .dropdown-menu {
         display: none !important; 
-        position: relative !important; 
-        width: 100%;
-        background-color: rgba(255,255,255,0.05) !important;
+        position: absolute !important; /* Flota sobre los demás elementos */
+        top: 100%; /* Aparece debajo de "Program" o "Participation Info" */
+        left: 50%;
+        transform: translateX(-50%); /* Centrado perfecto */
+        width: 220px; /* Ancho fijo para la ventana flotante */
+        background-color: var(--primary) !important; /* Fondo sólido azul distinto para que se lea perfecto */
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3); /* Sombra para resaltar la caja flotante */
         border-radius: 8px;
         margin-top: 10px;
         padding: 10px 0;
+        z-index: 3000;
+        border: 1px solid rgba(255,255,255,0.1);
     }
 
     .dropdown-menu.show-dropdown {
@@ -320,8 +325,8 @@ header.scrolled .nav-links a {
     }
 
     .dropdown-menu li a {
-        padding: 10px 20px !important;
-        color: rgba(255,255,255,0.8) !important; 
+        padding: 12px 20px !important;
+        color: rgba(255,255,255,0.95) !important; 
         font-size: 1rem;
         text-align: center !important;
     }
