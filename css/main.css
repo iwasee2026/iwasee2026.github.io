@@ -2186,18 +2186,17 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 .speakers-tier {
     padding: 8rem 0; 
     position: relative;
+    background-color: var(--white); /* Fondo completamente unificado con las demás páginas */
 }
 
-/* 1. FONDOS DE SECCIONES */
+/* 1. FONDOS DE SECCIONES (LIMPIOS) */
 .main-keynotes {
-    background-color: var(--white);
-    background-image: radial-gradient(rgba(0, 51, 102, 0.05) 2px, transparent 2px);
-    background-size: 30px 30px;
+    background-color: transparent; /* Hereda el blanco limpio sin puntos ni texturas */
 }
 
 /* Si luego agregas una sección extra (ej: Invited Speakers) */
 .school-speakers {
-    background-color: var(--bg-light);
+    background-color: var(--bg-light); /* Un gris muy sutil para diferenciar si hay dos grupos */
     border-top: 1px solid rgba(0, 51, 102, 0.05);
 }
 
@@ -2330,11 +2329,10 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
     
     .speaker-card {
         max-width: 350px;
-        margin: 0 auto; /* Centra las tarjetas si quedan solas en una fila */
+        margin: 0 auto;
         width: 100%;
     }
 }
-
 
 
 
