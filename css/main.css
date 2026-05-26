@@ -2180,7 +2180,7 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 
 
 /* ==========================================================================
-   PÁGINA: SPEAKERS DIRECTORY (ESTILO MINIMALISTA Y LUMINOSO)
+   PÁGINA: KEYNOTES DIRECTORY (TECH PROFILE CARDS UNIFIED)
    ========================================================================== */
 
 .speakers-tier {
@@ -2188,128 +2188,155 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
     position: relative;
 }
 
-/* 1. DISEÑO MINIMALISTA PARA KEYNOTES (Blanco con patrón de cuadrados) */
+/* 1. FONDOS DE SECCIONES */
 .main-keynotes {
-    background-color: #ffffff;
-    /* Patrón de puntos sobre blanco */
+    background-color: var(--white);
     background-image: radial-gradient(rgba(0, 51, 102, 0.05) 2px, transparent 2px);
     background-size: 30px 30px;
-    position: relative;
 }
 
-/* Forzamos colores oscuros para la tipografía sobre el fondo claro */
-.main-keynotes .tier-heading h2 { color: var(--primary-dark); }
-.main-keynotes .tier-heading p { color: var(--text-main); opacity: 0.7; }
-.main-keynotes .portrait-name { color: var(--primary-dark); }
-.main-keynotes .portrait-uni { color: var(--text-main); }
-
-/* 2. DISEÑO PARA SCHOOL SPEAKERS (Gris perla con patrón de puntos) */
+/* Si luego agregas una sección extra (ej: Invited Speakers) */
 .school-speakers {
     background-color: var(--bg-light);
-    /* Patrón de puntos sobre gris perla */
-    background-image: radial-gradient(rgba(0, 51, 102, 0.04) 2px, transparent 2px);
-    background-size: 30px 30px;
-    border-top: 1px solid rgba(0,0,0,0.03);
-    position: relative;
+    border-top: 1px solid rgba(0, 51, 102, 0.05);
 }
 
-.school-speakers .tier-heading h2 { color: var(--primary-dark); }
-.school-speakers .tier-heading p { color: var(--text-main); opacity: 0.7; }
-.school-speakers .portrait-name { color: var(--primary-dark); }
-.school-speakers .portrait-uni { color: var(--text-main); }
-
 /* ==========================================================================
-   GRILLAS Y RETRATOS (DISEÑO FLOTANTE)
+   GRILLAS Y TARJETAS (REUTILIZACIÓN DEL INDEX)
    ========================================================================== */
 .tier-heading {
     text-align: center;
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
 }
 
 .tier-heading h2 {
     font-size: 2.8rem;
     margin-bottom: 0.5rem;
+    color: var(--primary-dark);
 }
 
 .tier-heading p {
     font-size: 1.15rem;
-    font-style: italic;
-    font-weight: 500;
+    color: var(--text-main);
+    opacity: 0.8;
 }
 
-/* Grillas responsivas */
+/* Grilla Responsiva */
 .tier-grid {
     display: grid;
-    gap: 4rem 2rem;
-    justify-items: center; 
+    /* Ajuste para que se formen columnas automáticamente */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 3rem 2rem;
 }
 
-.grid-large { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-.grid-medium { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-
-/* El Retrato Flotante */
-.speaker-portrait {
+/* Reutilizamos el estilo .speaker-card que creamos para el index */
+.speaker-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.05);
+    border: 1px solid rgba(0, 51, 102, 0.05);
+    border-top: 4px solid var(--primary);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     text-decoration: none;
-    transition: var(--transition);
-    max-width: 300px;
 }
 
-/* Interacción limpia */
-.speaker-portrait:hover {
-    transform: translateY(-8px);
+.speaker-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 51, 102, 0.12);
+    border-top-color: var(--accent);
 }
 
-.speaker-portrait:hover .portrait-name {
-    color: var(--accent); /* El nombre cambia a tu color naranja/oro */
+.speaker-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1.1; 
+    overflow: hidden;
+    position: relative;
+    background-color: var(--bg-light);
 }
 
-.speaker-portrait:hover img {
-    box-shadow: 0 25px 45px rgba(0, 31, 63, 0.15); /* Sombra más amplia y difusa */
-    border-color: var(--white);
-}
-
-/* La Fotografía Circular */
-.speaker-portrait img {
-    border-radius: 50%;
+.speaker-photo img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    /* Al estar en fondo blanco/gris, el borde blanco y la sombra le dan un efecto 3D hermoso */
-    border: 6px solid var(--white); 
-    box-shadow: 0 12px 25px rgba(0,0,0,0.08); 
-    margin-bottom: 1.5rem;
-    transition: var(--transition);
+    transition: transform 0.6s ease;
 }
 
-.grid-large img { width: 240px; height: 240px; }
-.grid-medium img { width: 170px; height: 170px; }
+.speaker-card:hover .speaker-photo img {
+    transform: scale(1.05);
+}
+
+/* Gradiente tecnológico */
+.speaker-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to top, rgba(0, 31, 63, 0.6) 0%, transparent 40%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.speaker-card:hover .speaker-overlay {
+    opacity: 1;
+}
+
+/* Información del Speaker */
+.speaker-info {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--white);
+    position: relative;
+    z-index: 2;
+}
 
 .portrait-name {
+    color: var(--primary-dark);
+    font-size: 1.35rem;
     font-weight: 800;
-    margin-bottom: 0.4rem;
-    transition: var(--transition);
-    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+    line-height: 1.3;
 }
 
-.grid-large .portrait-name { font-size: 1.6rem; }
-.grid-medium .portrait-name { font-size: 1.3rem; }
+.speaker-card:hover .portrait-name {
+    color: var(--accent);
+}
 
 .portrait-uni {
-    font-size: 1rem;
-    font-style: italic;
+    color: var(--text-main);
+    font-size: 0.95rem;
     font-weight: 500;
-    line-height: 1.4;
+    margin: 0;
+    opacity: 0.8;
+    line-height: 1.5;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
     .speakers-tier { padding: 5rem 0; }
-    .grid-large img { width: 200px; height: 200px; }
-    .grid-medium img { width: 150px; height: 150px; }
+    
     .tier-heading h2 { font-size: 2.2rem; }
+    
+    .tier-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 2.5rem;
+    }
+    
+    .speaker-card {
+        max-width: 350px;
+        margin: 0 auto; /* Centra las tarjetas si quedan solas en una fila */
+        width: 100%;
+    }
 }
+
+
+
 
 
 
@@ -2324,7 +2351,7 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 
 
 /* ==========================================================================
-   PÁGINA: SPEAKER DETAIL (ESTILO EDITORIAL)
+   PÁGINA: SPEAKER PROFILE
    ========================================================================== */
 
 .speaker-detail-grid {
