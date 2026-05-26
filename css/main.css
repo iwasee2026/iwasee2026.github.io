@@ -285,34 +285,36 @@ header.scrolled .nav-links a {
         gap: 1.5rem;
     }
 
-    .nav-links a {
+    /* FIX 2: Usamos #nav-container para darle máxima prioridad al color blanco en TODO el menú móvil */
+    #nav-container .nav-links a,
+    #nav-container .dropdown-toggle {
         color: var(--white) !important;
         font-size: 1.2rem;
         text-align: center;
+        -webkit-text-fill-color: var(--white) !important; /* Fuerza el color incluso en Safari/Chrome bugs */
     }
     
     .dropdown {
         width: 100%;
         flex-direction: column;
         align-items: center !important; 
-        position: relative; /* Clave para que el menú flotante se base en este contenedor */
+        position: relative; 
     }
     
     .dropdown-toggle { 
         width: 100%; 
-        justify-content: center; 
+        justify-content: center !important; /* Centra perfectamente los títulos con flecha */
     }
 
-    /* SUBMENÚ FLOTANTE MÓVIL: No empuja el texto, flota encima */
     .dropdown-menu {
         display: none !important; 
-        position: absolute !important; /* Flota sobre los demás elementos */
-        top: 100%; /* Aparece debajo de "Program" o "Participation Info" */
+        position: absolute !important; 
+        top: 100%; 
         left: 50%;
-        transform: translateX(-50%); /* Centrado perfecto */
-        width: 220px; /* Ancho fijo para la ventana flotante */
-        background-color: var(--primary) !important; /* Fondo sólido azul distinto para que se lea perfecto */
-        box-shadow: 0 15px 30px rgba(0,0,0,0.3); /* Sombra para resaltar la caja flotante */
+        transform: translateX(-50%); 
+        width: 240px; 
+        background-color: var(--primary) !important; 
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3); 
         border-radius: 8px;
         margin-top: 10px;
         padding: 10px 0;
@@ -324,7 +326,10 @@ header.scrolled .nav-links a {
         display: block !important;
     }
 
+    /* FIX 1: Convertimos los 'a' en bloques 100% para que se centren de verdad */
     .dropdown-menu li a {
+        display: block !important; 
+        width: 100%;
         padding: 12px 20px !important;
         color: rgba(255,255,255,0.95) !important; 
         font-size: 1rem;
