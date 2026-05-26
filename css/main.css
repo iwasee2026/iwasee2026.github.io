@@ -327,11 +327,12 @@ header.scrolled .nav-links a {
     }
 
     /* FIX 1: Convertimos los 'a' en bloques 100% para que se centren de verdad */
-    .dropdown-menu li a {
+    #nav-container .dropdown-menu li a {
         display: block !important; 
         width: 100%;
         padding: 12px 20px !important;
         color: var(--primary-dark) !important;
+       -webkit-text-fill-color: var(--primary-dark) !important;
         font-size: 1rem;
         text-align: center !important;
     }
