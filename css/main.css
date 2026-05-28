@@ -2916,6 +2916,100 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
     text-align: right; 
 }
 
+/* Call for papers */
+/* ==========================================================================
+   RESEARCH TRACKS (TARJETAS DE CATEGORÍA)
+   ========================================================================== */
+.topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.track-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.04);
+    border: 1px solid rgba(0, 51, 102, 0.05);
+    border-top: 4px solid var(--primary);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.track-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 51, 102, 0.1);
+    border-top-color: var(--accent);
+}
+
+.track-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 51, 102, 0.08);
+}
+
+.track-number {
+    display: inline-block;
+    background: rgba(243, 156, 18, 0.15);
+    color: var(--accent-hover);
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+
+.track-title {
+    color: var(--primary-dark);
+    font-size: 1.3rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.track-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1; /* Empuja el contenido para que todas las tarjetas midan igual */
+}
+
+.track-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 0.8rem;
+    color: var(--text-main);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.track-list li::before {
+    content: '▹'; /* Un pequeño triángulo o viñeta tech */
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-size: 1.2rem;
+    line-height: 1;
+    top: 2px;
+}
+
+@media (max-width: 768px) {
+    .topics-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .track-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+
 /* 2. Avisos (Callouts) - Reemplaza los cuadros cerrados por bordes laterales */
 .info-callout {
     padding: 1.5rem 2rem;
