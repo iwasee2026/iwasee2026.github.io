@@ -2918,93 +2918,160 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 
 /* Call for papers */
 /* ==========================================================================
-   RESEARCH TRACKS (TARJETAS DE CATEGORÍA)
+   RESEARCH TRACKS (PREMIUM ACADEMIC / EDITORIAL STYLE)
    ========================================================================== */
 .topics-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    margin-top: 2.5rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas precisas en escritorio */
+    gap: 3rem;
+    margin-top: 3.5rem;
+    margin-bottom: 4rem;
 }
 
-.track-card {
+/* La caja principal del Track */
+.track-box {
+    position: relative;
+    background: transparent;
+    padding: 2.5rem 0;
+    border-top: 2px solid rgba(0, 51, 102, 0.1);
+    border-bottom: 2px solid rgba(0, 51, 102, 0.1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+}
+
+/* Número gigante de marca de agua en el fondo */
+.track-box::before {
+    content: attr(data-track);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 7rem;
+    font-weight: 900;
+    color: rgba(0, 51, 102, 0.04);
+    z-index: -1;
+    line-height: 1;
+    letter-spacing: -5px;
+    transition: all 0.5s ease;
+    font-family: Arial, sans-serif;
+    pointer-events: none;
+}
+
+/* Barra lateral de acento que aparece mágicamente al hacer hover */
+.track-box::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2.5rem;
+    width: 0;
+    height: calc(100% + 4px);
+    background: var(--accent);
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 2;
+}
+
+/* Efecto al pasar el cursor (Hover) */
+.track-box:hover {
     background: var(--white);
-    border-radius: 12px;
-    padding: 2.5rem 2rem;
-    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.04);
-    border: 1px solid rgba(0, 51, 102, 0.05);
-    border-top: 4px solid var(--primary);
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    display: flex;
-    flex-direction: column;
+    padding: 2.5rem;
+    border-color: transparent;
+    box-shadow: 0 20px 40px rgba(0, 51, 102, 0.06);
+    transform: translateY(-5px);
 }
 
-.track-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 51, 102, 0.1);
-    border-top-color: var(--accent);
+.track-box:hover::after {
+    width: 6px; /* Aparece la línea naranja fuerte a la izquierda */
+    left: 0;
 }
 
-.track-header {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(0, 51, 102, 0.08);
+.track-box:hover::before {
+    color: rgba(243, 156, 18, 0.08); /* El número gigante se tiñe de naranja */
+    transform: scale(1.05) translate(-10px, 10px);
 }
 
-.track-number {
-    display: inline-block;
-    background: rgba(243, 156, 18, 0.15);
-    color: var(--accent-hover);
-    font-size: 0.85rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-bottom: 1rem;
-}
-
+/* Título del Track */
 .track-title {
+    font-size: 1.5rem;
     color: var(--primary-dark);
-    font-size: 1.3rem;
-    font-weight: 800;
+    font-weight: 900;
+    margin-bottom: 2.5rem;
     line-height: 1.3;
-    margin: 0;
+    max-width: 85%; /* Deja espacio para que se vea el número gigante */
+    transition: color 0.3s ease;
 }
 
+/* Lista de temas */
 .track-list {
     list-style: none;
-    margin: 0;
     padding: 0;
-    flex-grow: 1; /* Empuja el contenido para que todas las tarjetas midan igual */
+    margin: 0;
 }
 
 .track-list li {
     position: relative;
-    padding-left: 20px;
-    margin-bottom: 0.8rem;
+    padding: 1rem 0 1rem 1.8rem;
+    font-size: 1.05rem;
     color: var(--text-main);
-    font-size: 1rem;
-    line-height: 1.5;
+    border-bottom: 1px dashed rgba(0, 51, 102, 0.1);
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
+.track-list li:last-child {
+    border-bottom: none;
+}
+
+/* Viñeta técnica (Línea horizontal) */
 .track-list li::before {
-    content: '▹'; /* Un pequeño triángulo o viñeta tech */
+    content: '';
     position: absolute;
     left: 0;
-    color: var(--primary);
-    font-size: 1.2rem;
-    line-height: 1;
-    top: 2px;
+    top: 1.5rem;
+    width: 12px;
+    height: 2px;
+    background: var(--primary);
+    transition: all 0.3s ease;
 }
 
-@media (max-width: 768px) {
+/* Interacción de cada tema en la lista */
+.track-list li:hover {
+    color: var(--primary-dark);
+    padding-left: 2.2rem; /* El texto se empuja un poco */
+    background: linear-gradient(to right, rgba(0,51,102,0.02), transparent);
+}
+
+.track-list li:hover::before {
+    width: 18px; /* La línea se estira como una flecha */
+    background: var(--accent);
+}
+
+/* ==========================================================================
+   RESPONSIVE PARA TRACKS
+   ========================================================================== */
+@media (max-width: 992px) {
     .topics-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+        grid-template-columns: 1fr; /* Pasa a 1 sola columna en móviles y tablets */
+        gap: 2rem;
     }
-    .track-card {
+    
+    .track-box {
+        padding: 2rem 1.5rem;
+        background: var(--white);
+        border: 1px solid rgba(0, 51, 102, 0.05);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+    }
+    
+    .track-box::after {
+        left: 0;
+        width: 4px; /* En celular la línea lateral siempre está visible */
+        background: var(--primary);
+    }
+    
+    .track-box:hover::after {
+        background: var(--accent);
+    }
+    
+    .track-box:hover {
+        transform: none; /* Quitamos el salto en celular para no molestar el scroll */
         padding: 2rem 1.5rem;
     }
 }
