@@ -3195,13 +3195,16 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
    PÁGINA: REGISTRATION (MODERN PRICING CARDS)
    ========================================================================== */
 .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    justify-content: center; /* Centra la tarjeta si solo hay una */
+    flex-wrap: wrap;
     gap: 2rem;
     margin-top: 3rem;
 }
 
 .price-card {
+    flex: 0 0 100%;
+    max-width: 350px; /* Evita que la tarjeta se expanda demasiado */
     background: var(--white);
     padding: 2.5rem 2rem;
     border-radius: 15px;
@@ -3223,7 +3226,7 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
     color: var(--primary);
     font-size: 1.4rem;
     margin-bottom: 1rem;
-    min-height: 3.5rem;
+    min-height: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3234,24 +3237,30 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 }
 
 .price-card .amount {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 900;
     color: var(--primary-dark);
+    line-height: 1;
 }
 
 .price-card .currency {
     font-size: 1rem;
     color: #666;
     font-weight: 600;
+    text-transform: uppercase;
 }
 
 .price-card .price-label {
-    display: block;
+    display: inline-block;
+    background: rgba(243, 156, 18, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 1px;
     color: var(--accent);
-    font-weight: 700;
+    font-weight: 800;
+    margin: 0 auto 1rem auto;
 }
 
 .price-card .features {
@@ -3264,18 +3273,19 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 }
 
 .price-card .features li {
-    padding: 0.6rem 0;
+    padding: 0.8rem 0;
     border-bottom: 1px solid rgba(0,0,0,0.05);
     color: var(--text-main);
     position: relative;
-    padding-left: 1.5rem;
+    padding-left: 1.8rem;
 }
 
 .price-card .features li::before {
-    content: '→';
+    content: '✓'; /* Cambiado a un check mark para que se vea más como registro */
     position: absolute;
     left: 0;
     color: var(--accent);
+    font-weight: bold;
 }
 
 .price-card .features li:last-child {
@@ -3285,27 +3295,29 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 .price-card .late-price {
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 2px dashed rgba(0,0,0,0.1);
+    border-top: 2px dashed rgba(0, 51, 102, 0.1);
     font-size: 0.9rem;
-    color: #888;
+    color: var(--text-main);
 }
 
 .price-card .late-price strong {
-    color: var(--primary);
+    color: var(--primary-dark);
+    font-size: 1rem;
 }
 
 /* Botón de Registro Principal */
 .registration-cta {
-    margin: 4rem 0;
+    margin: 4rem auto;
     padding: 3rem;
     background: rgba(0, 51, 102, 0.03);
     border-radius: 20px;
     text-align: center;
+    max-width: 800px;
 }
 
 .registration-cta .btn-read-more {
-    font-size: 1.4rem;
-    padding: 1.2rem 3rem;
+    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
 }
 
 
