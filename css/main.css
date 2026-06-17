@@ -2344,6 +2344,15 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
     line-height: 1.5;
 }
 
+/* Línea separadora para secciones de Keynotes */
+.keynote-divider {
+    border: 0;
+    height: 1px;
+    background: rgba(0, 51, 102, 0.1); /* Gris/Azul muy sutil */
+    margin: 4rem auto;
+    width: 60%; /* No ocupa toda la pantalla para verse más sofisticado */
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .speakers-tier { padding: 5rem 0; }
