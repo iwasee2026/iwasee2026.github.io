@@ -2211,53 +2211,20 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
    PÁGINA: KEYNOTES DIRECTORY (TECH PROFILE CARDS UNIFIED)
    ========================================================================== */
 
-.speakers-tier {
-    padding: 8rem 0; 
-    position: relative;
-    background-color: var(--white); /* Fondo completamente unificado con las demás páginas */
-}
-
-/* 1. FONDOS DE SECCIONES (LIMPIOS) */
-.main-keynotes {
-    background-color: transparent; /* Hereda el blanco limpio sin puntos ni texturas */
-}
-
-/* Si luego agregas una sección extra (ej: Invited Speakers) */
-.school-speakers {
-    background-color: var(--bg-light); /* Un gris muy sutil para diferenciar si hay dos grupos */
-    border-top: 1px solid rgba(0, 51, 102, 0.05);
-}
-
 /* ==========================================================================
-   GRILLAS Y TARJETAS (REUTILIZACIÓN DEL INDEX)
+   GRILLAS Y TARJETAS (KEYNOTES - TAMAÑO UNIFICADO)
    ========================================================================== */
-.tier-heading {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.tier-heading h2 {
-    font-size: 2.8rem;
-    margin-bottom: 0.5rem;
-    color: var(--primary-dark);
-}
-
-.tier-heading p {
-    font-size: 1.15rem;
-    color: var(--text-main);
-    opacity: 0.8;
-}
-
-/* Grilla Responsiva */
 .tier-grid {
-    display: grid;
-    /* Ajuste para que se formen columnas automáticamente */
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra las tarjetas en todas las secciones */
     gap: 3rem 2rem;
+    width: 100%;
 }
 
-/* Reutilizamos el estilo .speaker-card que creamos para el index */
 .speaker-card {
+    flex: 0 0 280px; /* FUERZA EL TAMAÑO: No crecen ni se encogen de 280px */
+    max-width: 280px;
     background: var(--white);
     border-radius: 12px;
     overflow: hidden;
@@ -2278,7 +2245,7 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 
 .speaker-photo {
     width: 100%;
-    aspect-ratio: 1 / 1.1; 
+    aspect-ratio: 1 / 1.1; /* Proporción ligeramente vertical para que todas las fotos se vean iguales */
     overflow: hidden;
     position: relative;
     background-color: var(--bg-light);
@@ -2295,53 +2262,57 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
     transform: scale(1.05);
 }
 
-/* Gradiente tecnológico */
 .speaker-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(to top, rgba(0, 31, 63, 0.6) 0%, transparent 40%);
+    background: linear-gradient(to top, rgba(0, 31, 63, 0.4) 0%, transparent 40%);
     opacity: 0;
     transition: opacity 0.4s ease;
-    z-index: 1;
 }
 
-.speaker-card:hover .speaker-overlay {
-    opacity: 1;
-}
+.speaker-card:hover .speaker-overlay { opacity: 1; }
 
-/* Información del Speaker */
 .speaker-info {
-    padding: 2rem 1.5rem;
+    padding: 1.8rem 1.2rem;
     text-align: center;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background: var(--white);
-    position: relative;
-    z-index: 2;
 }
 
 .portrait-name {
     color: var(--primary-dark);
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
-    transition: color 0.3s ease;
     line-height: 1.3;
 }
 
-.speaker-card:hover .portrait-name {
-    color: var(--accent);
-}
+.speaker-card:hover .portrait-name { color: var(--accent); }
 
 .portrait-uni {
     color: var(--text-main);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    margin: 0;
     opacity: 0.8;
-    line-height: 1.5;
+}
+
+/* Línea separadora */
+.keynote-divider {
+    border: 0;
+    height: 1px;
+    background: rgba(0, 51, 102, 0.1);
+    margin: 4rem auto;
+    width: 60%;
+}
+
+@media (max-width: 768px) {
+    .speaker-card {
+        flex: 0 0 100%; /* En móviles pequeños ocupan el ancho disponible */
+        max-width: 320px;
+    }
 }
 
 /* Línea separadora para secciones de Keynotes */
@@ -2352,26 +2323,6 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
     margin: 4rem auto;
     width: 60%; /* No ocupa toda la pantalla para verse más sofisticado */
 }
-
-/* Responsive */
-@media (max-width: 768px) {
-    .speakers-tier { padding: 5rem 0; }
-    
-    .tier-heading h2 { font-size: 2.2rem; }
-    
-    .tier-grid {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 2.5rem;
-    }
-    
-    .speaker-card {
-        max-width: 350px;
-        margin: 0 auto;
-        width: 100%;
-    }
-}
-
-
 
 
 
