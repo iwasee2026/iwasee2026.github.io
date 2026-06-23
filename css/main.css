@@ -3411,7 +3411,7 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
    ========================================================================== */
 .competition-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr; /* 60% Información, 40% Formulario */
+    grid-template-columns: 0.7fr 1.3fr; /* 30% Información, 70% Formulario */
     gap: 4rem;
     margin-top: 3rem;
     margin-bottom: 5rem;
