@@ -1119,99 +1119,92 @@ header.scrolled .nav-links a {
 
 
 /* ==========================================================================
-   SECCIÓN: KEYNOTES PROMO (REEMPLAZO DE TOP SPEAKERS)
+   SECCIÓN: KEYNOTES CTA BANNER (EDITORIAL FULL-WIDTH)
    ========================================================================== */
-.keynotes-promo {
-    padding: 6rem 0;
-    background-color: var(--white);
+.keynotes-banner {
     position: relative;
-    z-index: 1;
+    padding: 7rem 0;
+    /* Fondo azul corporativo oscuro con un patrón muy sutil */
+    background-color: var(--primary-dark);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 2px, transparent 2px);
+    background-size: 30px 30px;
+    overflow: hidden;
+    text-align: center;
+    color: var(--white);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.promo-wrapper {
-    background: linear-gradient(135deg, rgba(0, 51, 102, 0.03) 0%, rgba(0, 51, 102, 0.01) 100%);
-    border: 1px solid rgba(0, 51, 102, 0.05);
-    border-left: 6px solid var(--primary);
-    border-radius: 20px;
-    padding: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 4rem;
-    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.03);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+.keynotes-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 51, 102, 0) 0%, rgba(243, 156, 18, 0.05) 100%);
+    pointer-events: none;
 }
 
-.promo-wrapper:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 51, 102, 0.08);
-    border-left-color: var(--accent);
+.keynotes-banner-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
-.promo-content {
-    flex: 1;
-    max-width: 700px;
+.keynotes-badge {
+    display: inline-block;
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
 }
 
-.promo-content h2 {
-    color: var(--primary-dark);
-    font-size: 2.2rem;
+.keynotes-banner h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: var(--white);
     margin-bottom: 1.5rem;
     line-height: 1.2;
+    letter-spacing: -1px;
 }
 
-.promo-content p {
-    color: var(--text-main);
-    font-size: 1.15rem;
+.keynotes-banner p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1.8;
-    margin-bottom: 2.5rem;
-    opacity: 0.9;
+    margin-bottom: 3rem;
+    font-weight: 400;
 }
 
-.promo-icon {
-    flex-shrink: 0;
-    width: 140px;
-    height: 140px;
-    background: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 25px rgba(0, 51, 102, 0.08);
-    border: 1px solid rgba(0, 51, 102, 0.03);
+/* Botón fantasma premium (Ghost Button) */
+.btn-ghost-light {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
 }
 
-.promo-icon i {
-    font-size: 3.5rem;
-    color: var(--accent);
+.btn-ghost-light:hover {
+    border-color: var(--accent);
+    background-color: var(--accent);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(243, 156, 18, 0.2);
 }
 
-/* Responsive para el Banner Promocional */
-@media (max-width: 992px) {
-    .promo-wrapper {
-        flex-direction: column-reverse;
-        text-align: center;
-        padding: 3rem 2rem;
-        gap: 2.5rem;
-        border-left: none;
-        border-top: 6px solid var(--primary);
-    }
-    .promo-wrapper:hover {
-        border-left-color: transparent;
-        border-top-color: var(--accent);
-    }
-    .promo-content h2 {
-        font-size: 1.8rem;
-    }
-    .promo-icon {
-        width: 100px;
-        height: 100px;
-    }
-    .promo-icon i {
-        font-size: 2.5rem;
-    }
+@media (max-width: 768px) {
+    .keynotes-banner { padding: 5rem 0; }
+    .keynotes-banner p { font-size: 1.05rem; }
 }
-
 
 /* ==========================================================================
    SECCIÓN: STATS
