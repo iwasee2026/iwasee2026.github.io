@@ -1117,133 +1117,98 @@ header.scrolled .nav-links a {
     }
 }
 
+
 /* ==========================================================================
-   SECCIÓN: TOP KEYNOTE SPEAKERS (TECH PROFILE CARDS)
+   SECCIÓN: KEYNOTES PROMO (REEMPLAZO DE TOP SPEAKERS)
    ========================================================================== */
-.speakers-preview {
-    padding: 8rem 0;
-    background-color: var(--white); /* Fondo blanco completo para contrastar con las secciones contiguas */
+.keynotes-promo {
+    padding: 6rem 0;
+    background-color: var(--white);
     position: relative;
     z-index: 1;
 }
 
-.speakers-preview h2 {
-    color: var(--primary-dark);
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.grid-speakers {
-    display: grid;
-    /* Ajuste responsivo: se adapta automáticamente al espacio disponible */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem 2rem;
-}
-
-/* Diseño de la Tarjeta */
-.speaker-card {
-    background: var(--white);
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.05); /* Sombra base suave */
+.promo-wrapper {
+    background: linear-gradient(135deg, rgba(0, 51, 102, 0.03) 0%, rgba(0, 51, 102, 0.01) 100%);
     border: 1px solid rgba(0, 51, 102, 0.05);
-    border-top: 4px solid var(--primary); /* Línea corporativa superior */
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    text-decoration: none;
-}
-
-/* Efectos al pasar el mouse */
-.speaker-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 51, 102, 0.12); /* Sombra más profunda */
-    border-top-color: var(--accent); /* La línea cambia a naranja */
-}
-
-/* Contenedor de la fotografía */
-.speaker-photo {
-    width: 100%;
-    aspect-ratio: 1 / 1.1; /* Formato ligeramente vertical (retrato) */
-    overflow: hidden;
-    position: relative;
-    background-color: var(--bg-light);
-}
-
-.speaker-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-.speaker-card:hover .speaker-photo img {
-    transform: scale(1.05); /* Zoom sutil de la imagen */
-}
-
-/* Gradiente tecnológico que aparece abajo de la foto al hacer hover */
-.speaker-overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(to top, rgba(0, 31, 63, 0.6) 0%, transparent 40%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 1;
-}
-
-.speaker-card:hover .speaker-overlay {
-    opacity: 1;
-}
-
-/* Información del Speaker */
-.speaker-info {
-    padding: 2rem 1.5rem;
-    text-align: center;
-    flex-grow: 1; /* Si una tarjeta es más alta, esta parte se estira sin romper el diseño */
+    border-left: 6px solid var(--primary);
+    border-radius: 20px;
+    padding: 4rem;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: var(--white);
-    position: relative;
-    z-index: 2;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.03);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.speaker-info h4 {
+.promo-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 51, 102, 0.08);
+    border-left-color: var(--accent);
+}
+
+.promo-content {
+    flex: 1;
+    max-width: 700px;
+}
+
+.promo-content h2 {
     color: var(--primary-dark);
-    font-size: 1.35rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    transition: color 0.3s ease;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
 }
 
-.speaker-card:hover .speaker-info h4 {
-    color: var(--accent); /* El nombre se ilumina */
-}
-
-.speaker-info p {
+.promo-content p {
     color: var(--text-main);
-    font-size: 0.95rem;
-    font-weight: 500;
-    margin: 0;
-    opacity: 0.8;
-    line-height: 1.5;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
 }
 
-/* ==========================================================================
-   RESPONSIVE PARA SPEAKERS (MÓVIL)
-   ========================================================================== */
-@media (max-width: 768px) {
-    .speakers-preview {
-        padding: 5rem 0; /* Menos padding vertical en móviles */
+.promo-icon {
+    flex-shrink: 0;
+    width: 140px;
+    height: 140px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0, 51, 102, 0.08);
+    border: 1px solid rgba(0, 51, 102, 0.03);
+}
+
+.promo-icon i {
+    font-size: 3.5rem;
+    color: var(--accent);
+}
+
+/* Responsive para el Banner Promocional */
+@media (max-width: 992px) {
+    .promo-wrapper {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 3rem 2rem;
+        gap: 2.5rem;
+        border-left: none;
+        border-top: 6px solid var(--primary);
     }
-    .grid-speakers {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 2rem;
+    .promo-wrapper:hover {
+        border-left-color: transparent;
+        border-top-color: var(--accent);
     }
-    .speaker-card {
-        max-width: 350px;
-        margin: 0 auto; /* Centra las tarjetas cuando se apilan en 1 columna */
-        width: 100%;
+    .promo-content h2 {
+        font-size: 1.8rem;
+    }
+    .promo-icon {
+        width: 100px;
+        height: 100px;
+    }
+    .promo-icon i {
+        font-size: 2.5rem;
     }
 }
 
