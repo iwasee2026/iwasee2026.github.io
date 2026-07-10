@@ -3265,6 +3265,69 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
     padding: 1rem 2.5rem;
 }
 
+/* Registration Note */
+
+.registration-note{
+    margin-top: 2.5rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(255,255,255,.05);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.registration-note p{
+    margin: .4rem 0;
+    color: var(--text-main);
+    line-height: 1.7;
+}
+
+.registration-note strong{
+    color: var(--accent-color);
+}
+
+
+/* Registration Procedure & Cancellation */
+
+.info-section{
+    margin-top: 4rem;
+    padding: 2rem;
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+}
+
+.info-section ol{
+    margin-top: 1.2rem;
+    padding-left: 1.4rem;
+    color: var(--text-main);
+}
+
+.info-section ol li{
+    margin-bottom: 1.2rem;
+    line-height: 1.8;
+}
+
+.info-section ul{
+    margin-top: .6rem;
+    padding-left: 1.3rem;
+}
+
+.info-section ul li{
+    margin-bottom: .4rem;
+}
+
+.info-section p{
+    color: var(--text-main);
+    line-height: 1.8;
+}
+
+.info-section strong{
+    color: var(--accent-color);
+}
+
+
+
 
 
 
