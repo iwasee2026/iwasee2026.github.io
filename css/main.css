@@ -2450,203 +2450,261 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
    PÁGINA: PROGRAM
    ========================================================================== */
 
-.program-intro{
-    max-width: 900px;
-    margin: 0 auto 2.5rem;
-    text-align: center;
+.program-navigation{
+    margin: 2.5rem 0 3rem;
 }
 
-.program-intro p{
-    color: var(--text-main);
-    line-height: 1.8;
-    opacity: .9;
+.program-days{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:1.5rem;
 }
+
+.day-card{
+    background:#fff;
+    border:1px solid rgba(0,0,0,.08);
+    border-radius:16px;
+    padding:1.8rem;
+    text-decoration:none;
+    color:inherit;
+    transition:.3s ease;
+    box-shadow:0 10px 28px rgba(0,0,0,.05);
+    position:relative;
+    overflow:hidden;
+}
+
+.day-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:5px;
+    background:linear-gradient(90deg,var(--accent-color),#00bcd4);
+}
+
+.day-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 40px rgba(0,0,0,.10);
+}
+
+.day-number{
+    display:inline-block;
+    background:var(--accent-color);
+    color:#fff;
+    font-size:.78rem;
+    font-weight:700;
+    padding:.35rem .8rem;
+    border-radius:999px;
+    margin-bottom:.8rem;
+}
+
+.day-card h3{
+    margin:.2rem 0;
+    font-size:1.45rem;
+    color:var(--text-main);
+}
+
+.day-card p{
+    margin:0;
+    color:#666;
+}
+
+/* ===================================================== */
 
 .program-day{
-    margin: 3rem auto;
+    margin:4rem 0;
 }
 
-.day-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: .8rem;
-    border-bottom: 3px solid var(--accent-color);
+.program-day-header{
+    margin-bottom:1.6rem;
+    border-left:6px solid var(--accent-color);
+    padding-left:1rem;
 }
 
-.day-header h2{
-    margin: 0;
-    font-size: 2rem;
-    color: var(--heading-color);
+.program-day-header h2{
+    margin:0;
+    font-size:2rem;
+    color:var(--text-main);
 }
 
-.day-header span{
-    background: var(--accent-color);
-    color: #fff;
-    padding: .45rem 1rem;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: .9rem;
-    letter-spacing: .5px;
+/* ===================================================== */
+
+.program-table{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid rgba(0,0,0,.08);
+    box-shadow:0 10px 35px rgba(0,0,0,.06);
 }
 
-.schedule-table{
-    display: flex;
-    flex-direction: column;
-    gap: .7rem;
+.program-row{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:1.4rem;
+    padding:1rem 1.5rem;
+    border-bottom:1px solid rgba(0,0,0,.06);
+    transition:.25s;
+    align-items:flex-start;
 }
 
-.schedule-row{
-    display: grid;
-    grid-template-columns: 95px 1fr;
-    background: #fff;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,.06);
-    transition: .25s ease;
-    border-left: 6px solid #d9d9d9;
+.program-row:last-child{
+    border-bottom:none;
 }
 
-.schedule-row:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 14px 28px rgba(0,0,0,.10);
+.program-row:hover{
+    background:#fafafa;
 }
 
-.schedule-time{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#f7f8fa;
+.time{
+    font-size:1.05rem;
     font-weight:700;
-    color:var(--heading-color);
-    font-size:1rem;
-    padding:1rem;
-    border-right:1px solid rgba(0,0,0,.06);
+    color:var(--accent-color);
+    text-align:center;
+    white-space:nowrap;
+    padding-top:.15rem;
 }
 
-.schedule-content{
-    padding:1rem 1.2rem;
-}
-
-.schedule-content h3{
+.session h4{
     margin:0 0 .35rem;
     font-size:1rem;
-    color:var(--heading-color);
+    color:#222;
 }
 
-.schedule-content p{
-    margin:.25rem 0;
-    line-height:1.45;
-    color:var(--text-main);
+.session p{
+    margin:0;
+    line-height:1.55;
+    color:#666;
     font-size:.94rem;
 }
 
-.schedule-content em{
-    color:var(--accent-color);
-    font-style:normal;
-    font-weight:600;
+.session strong{
+    color:#222;
 }
 
-.schedule-content strong{
-    color:var(--heading-color);
+/* ===================================================== */
+/* Colored left borders */
+/* ===================================================== */
+
+.program-row{
+    border-left:6px solid transparent;
 }
 
-/* ---------- COLORS ---------- */
-
-.schedule-row.welcome{
-    border-left-color:#2563eb;
+.program-row.welcome{
+    border-left-color:#5c6bc0;
 }
 
-.schedule-row.keynote{
-    border-left-color:#2563eb;
+.program-row.keynote{
+    border-left-color:#1976d2;
 }
 
-.schedule-row.paper{
-    border-left-color:#16a34a;
+.program-row.paper{
+    border-left-color:#43a047;
 }
 
-.schedule-row.break{
-    border-left-color:#f59e0b;
+.program-row.break{
+    border-left-color:#ff9800;
 }
 
-.schedule-row.lunch{
-    border-left-color:#dc2626;
+.program-row.lunch{
+    border-left-color:#f44336;
 }
 
-.schedule-row.competition{
-    border-left-color:#7c3aed;
+.program-row.competition{
+    border-left-color:#8e24aa;
 }
 
-.schedule-row.networking{
-    border-left-color:#0f766e;
+.program-row.networking{
+    border-left-color:#00897b;
 }
 
-.schedule-row.closing{
-    border-left-color:#475569;
+.program-row.closing{
+    border-left-color:#37474f;
 }
 
-/* ---------- RESPONSIVE ---------- */
+/* ===================================================== */
+/* Sticky day titles */
+/* ===================================================== */
+
+.program-day-header{
+    position:sticky;
+    top:82px;
+    background:#fff;
+    z-index:5;
+    padding-top:.6rem;
+    padding-bottom:.6rem;
+}
+
+/* ===================================================== */
+/* Responsive */
+/* ===================================================== */
 
 @media (max-width:900px){
 
-    .day-header{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:.8rem;
+    .program-row{
+        grid-template-columns:90px 1fr;
+        gap:1rem;
+    }
+
+    .program-day-header h2{
+        font-size:1.7rem;
     }
 
 }
 
 @media (max-width:768px){
 
-    .schedule-row{
-        grid-template-columns:75px 1fr;
+    .program-days{
+        grid-template-columns:1fr;
     }
 
-    .schedule-time{
-        font-size:.9rem;
-        padding:.8rem;
+    .program-row{
+        grid-template-columns:1fr;
+        gap:.5rem;
+        padding:1rem;
     }
 
-    .schedule-content{
-        padding:.9rem;
+    .time{
+        text-align:left;
+        font-size:1rem;
     }
 
-    .schedule-content h3{
-        font-size:.95rem;
+    .session h4{
+        font-size:.96rem;
     }
 
-    .schedule-content p{
-        font-size:.88rem;
+    .session p{
+        font-size:.90rem;
+        line-height:1.5;
+    }
+
+    .program-day-header{
+        position:relative;
+        top:auto;
     }
 
 }
 
-@media (max-width:540px){
+@media (max-width:480px){
 
-    .schedule-row{
-        grid-template-columns:1fr;
+    .program-day{
+        margin:3rem 0;
     }
 
-    .schedule-time{
-        justify-content:flex-start;
-        padding:.7rem 1rem;
-        background:var(--accent-color);
-        color:#fff;
-        border-right:none;
+    .program-day-header h2{
+        font-size:1.45rem;
     }
 
-    .schedule-content{
-        padding:1rem;
+    .day-card{
+        padding:1.4rem;
     }
 
-    .day-header h2{
-        font-size:1.5rem;
+    .day-card h3{
+        font-size:1.25rem;
     }
 
-    .day-header span{
-        font-size:.8rem;
+    .program-row{
+        border-left-width:5px;
     }
 
 }
