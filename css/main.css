@@ -2449,7 +2449,235 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
 /* ==========================================================================
    PÁGINA: PROGRAM
    ========================================================================== */
+/* ==========================================================================
+   PÁGINA: PROGRAM
+   ========================================================================== */
 
+.program-intro{
+    max-width:900px;
+    margin:0 auto 3rem;
+    text-align:center;
+}
+
+.program-intro p{
+    color:var(--text-main);
+    opacity:.9;
+    line-height:1.8;
+    font-size:1.05rem;
+}
+
+.program-day{
+    margin:4rem auto;
+}
+
+.day-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:2rem;
+    padding:1.2rem 1.8rem;
+    background:linear-gradient(135deg,var(--primary-color),var(--accent-color));
+    border-radius:18px;
+    color:#fff;
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.day-header h2{
+    margin:0;
+    color:#fff;
+    font-size:1.8rem;
+    font-weight:700;
+}
+
+.day-header span{
+    background:rgba(255,255,255,.18);
+    backdrop-filter:blur(8px);
+    padding:.55rem 1.2rem;
+    border-radius:999px;
+    font-weight:600;
+    letter-spacing:.05em;
+    font-size:.9rem;
+}
+
+.schedule-table{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+}
+
+.schedule-row{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:1.5rem;
+    align-items:stretch;
+}
+
+.schedule-time{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:1.05rem;
+    font-weight:700;
+    color:#fff;
+    border-radius:16px;
+    min-height:110px;
+    background:var(--primary-color);
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+}
+
+.schedule-content{
+    background:var(--card-bg);
+    border:1px solid rgba(255,255,255,.08);
+    border-left:6px solid var(--accent-color);
+    border-radius:16px;
+    padding:1.4rem 1.6rem;
+    transition:.3s ease;
+}
+
+.schedule-content:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+}
+
+.schedule-content h3{
+    margin:0 0 .65rem;
+    color:var(--accent-color);
+    font-size:1.1rem;
+    font-weight:700;
+}
+
+.schedule-content p{
+    margin:.35rem 0;
+    line-height:1.75;
+    color:var(--text-main);
+}
+
+.schedule-content strong{
+    color:var(--heading-color);
+}
+
+.schedule-content em{
+    color:var(--text-secondary);
+    font-style:italic;
+}
+
+/* Event Colors */
+
+.schedule-row.welcome .schedule-time{
+    background:#2563eb;
+}
+
+.schedule-row.welcome .schedule-content{
+    border-left-color:#2563eb;
+}
+
+.schedule-row.keynote .schedule-time{
+    background:#7c3aed;
+}
+
+.schedule-row.keynote .schedule-content{
+    border-left-color:#7c3aed;
+}
+
+.schedule-row.paper .schedule-time{
+    background:#0f9d58;
+}
+
+.schedule-row.paper .schedule-content{
+    border-left-color:#0f9d58;
+}
+
+.schedule-row.break .schedule-time{
+    background:#f59e0b;
+}
+
+.schedule-row.break .schedule-content{
+    border-left-color:#f59e0b;
+}
+
+.schedule-row.lunch .schedule-time{
+    background:#ef4444;
+}
+
+.schedule-row.lunch .schedule-content{
+    border-left-color:#ef4444;
+}
+
+.schedule-row.competition .schedule-time{
+    background:#0891b2;
+}
+
+.schedule-row.competition .schedule-content{
+    border-left-color:#0891b2;
+}
+
+.schedule-row.networking .schedule-time{
+    background:#64748b;
+}
+
+.schedule-row.networking .schedule-content{
+    border-left-color:#64748b;
+}
+
+.schedule-row.closing .schedule-time{
+    background:#be123c;
+}
+
+.schedule-row.closing .schedule-content{
+    border-left-color:#be123c;
+}
+
+/* Responsive */
+
+@media (max-width:992px){
+
+    .day-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:.8rem;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .schedule-row{
+        grid-template-columns:1fr;
+        gap:.75rem;
+    }
+
+    .schedule-time{
+        min-height:55px;
+        border-radius:12px;
+        justify-content:flex-start;
+        padding:0 1.2rem;
+    }
+
+    .schedule-content{
+        padding:1.2rem;
+    }
+
+    .day-header h2{
+        font-size:1.45rem;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .schedule-content h3{
+        font-size:1rem;
+    }
+
+    .schedule-content p{
+        font-size:.95rem;
+    }
+
+    .program-intro p{
+        font-size:1rem;
+    }
+
+}
 
 
 
