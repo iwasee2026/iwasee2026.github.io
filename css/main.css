@@ -2451,209 +2451,198 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
    ========================================================================== */
 
 .program-intro{
-    margin-bottom:3rem;
-    padding:2rem;
-    background:var(--card-bg);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:18px;
-    box-shadow:0 20px 50px rgba(0,0,0,.15);
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
 }
 
 .program-intro p{
-    margin-top:1rem;
-    color:var(--text-main);
-    line-height:1.9;
-    opacity:.9;
+    color: var(--text-main);
+    line-height: 1.8;
+    opacity: .9;
 }
 
 .program-day{
-    margin:4rem 0;
+    margin: 3rem auto;
 }
 
 .day-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:1rem;
-    margin-bottom:2rem;
-    padding-bottom:1rem;
-    border-bottom:2px solid rgba(255,255,255,.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: .8rem;
+    border-bottom: 3px solid var(--accent-color);
 }
 
 .day-header h2{
-    margin:0;
-    color:var(--text-main);
-    font-size:2rem;
+    margin: 0;
+    font-size: 2rem;
+    color: var(--heading-color);
 }
 
 .day-header span{
-    background:linear-gradient(135deg,var(--accent-color),#5fd3ff);
-    color:#fff;
-    padding:.55rem 1.2rem;
-    border-radius:999px;
-    font-size:.9rem;
-    font-weight:700;
-    letter-spacing:.08em;
-    text-transform:uppercase;
+    background: var(--accent-color);
+    color: #fff;
+    padding: .45rem 1rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: .9rem;
+    letter-spacing: .5px;
 }
 
 .schedule-table{
-    display:flex;
-    flex-direction:column;
-    gap:1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
 }
 
 .schedule-row{
-    display:grid;
-    grid-template-columns:130px 1fr;
-    gap:1.5rem;
-    align-items:stretch;
+    display: grid;
+    grid-template-columns: 95px 1fr;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,.06);
+    transition: .25s ease;
+    border-left: 6px solid #d9d9d9;
+}
+
+.schedule-row:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(0,0,0,.10);
 }
 
 .schedule-time{
     display:flex;
-    align-items:center;
     justify-content:center;
-    background:#101727;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:14px;
-    color:#fff;
-    font-size:1.05rem;
+    align-items:center;
+    background:#f7f8fa;
     font-weight:700;
-    min-height:110px;
+    color:var(--heading-color);
+    font-size:1rem;
+    padding:1rem;
+    border-right:1px solid rgba(0,0,0,.06);
 }
 
 .schedule-content{
-    position:relative;
-    background:var(--card-bg);
-    border:1px solid rgba(255,255,255,.08);
-    border-left:6px solid var(--accent-color);
-    border-radius:16px;
-    padding:1.4rem 1.6rem;
-    transition:.3s ease;
-    overflow:hidden;
-}
-
-.schedule-content::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(90deg,rgba(255,255,255,.03),transparent);
-    opacity:0;
-    transition:.3s;
-}
-
-.schedule-row:hover .schedule-content{
-    transform:translateY(-4px);
-    box-shadow:0 18px 40px rgba(0,0,0,.18);
-}
-
-.schedule-row:hover .schedule-content::before{
-    opacity:1;
+    padding:1rem 1.2rem;
 }
 
 .schedule-content h3{
-    margin:0 0 .6rem;
-    color:#fff;
-    font-size:1.1rem;
-    font-weight:700;
+    margin:0 0 .35rem;
+    font-size:1rem;
+    color:var(--heading-color);
 }
 
 .schedule-content p{
-    margin:.35rem 0;
+    margin:.25rem 0;
+    line-height:1.45;
     color:var(--text-main);
-    line-height:1.75;
-}
-
-.schedule-content strong{
-    color:#fff;
+    font-size:.94rem;
 }
 
 .schedule-content em{
     color:var(--accent-color);
     font-style:normal;
+    font-weight:600;
 }
 
-/* ==========================
-   EVENT COLORS
-   ========================== */
-
-.schedule-row.welcome .schedule-content{
-    border-left-color:#6366f1;
+.schedule-content strong{
+    color:var(--heading-color);
 }
 
-.schedule-row.keynote .schedule-content{
-    border-left-color:#00b8ff;
+/* ---------- COLORS ---------- */
+
+.schedule-row.welcome{
+    border-left-color:#2563eb;
 }
 
-.schedule-row.paper .schedule-content{
-    border-left-color:#22c55e;
+.schedule-row.keynote{
+    border-left-color:#2563eb;
 }
 
-.schedule-row.break .schedule-content{
+.schedule-row.paper{
+    border-left-color:#16a34a;
+}
+
+.schedule-row.break{
     border-left-color:#f59e0b;
 }
 
-.schedule-row.lunch .schedule-content{
-    border-left-color:#ef4444;
+.schedule-row.lunch{
+    border-left-color:#dc2626;
 }
 
-.schedule-row.competition .schedule-content{
-    border-left-color:#8b5cf6;
+.schedule-row.competition{
+    border-left-color:#7c3aed;
 }
 
-.schedule-row.networking .schedule-content{
-    border-left-color:#06b6d4;
+.schedule-row.networking{
+    border-left-color:#0f766e;
 }
 
-.schedule-row.closing .schedule-content{
-    border-left-color:#ec4899;
+.schedule-row.closing{
+    border-left-color:#475569;
 }
 
-/* ==========================
-   MOBILE
-   ========================== */
+/* ---------- RESPONSIVE ---------- */
 
 @media (max-width:900px){
-
-    .schedule-row{
-        grid-template-columns:1fr;
-        gap:.75rem;
-    }
-
-    .schedule-time{
-        min-height:55px;
-        justify-content:flex-start;
-        padding:0 1.25rem;
-    }
 
     .day-header{
         flex-direction:column;
         align-items:flex-start;
-    }
-
-    .day-header h2{
-        font-size:1.55rem;
+        gap:.8rem;
     }
 
 }
 
-@media (max-width:600px){
+@media (max-width:768px){
 
-    .program-intro{
-        padding:1.5rem;
+    .schedule-row{
+        grid-template-columns:75px 1fr;
+    }
+
+    .schedule-time{
+        font-size:.9rem;
+        padding:.8rem;
     }
 
     .schedule-content{
-        padding:1.2rem;
+        padding:.9rem;
     }
 
     .schedule-content h3{
-        font-size:1rem;
+        font-size:.95rem;
     }
 
     .schedule-content p{
-        font-size:.93rem;
+        font-size:.88rem;
+    }
+
+}
+
+@media (max-width:540px){
+
+    .schedule-row{
+        grid-template-columns:1fr;
+    }
+
+    .schedule-time{
+        justify-content:flex-start;
+        padding:.7rem 1rem;
+        background:var(--accent-color);
+        color:#fff;
+        border-right:none;
+    }
+
+    .schedule-content{
+        padding:1rem;
+    }
+
+    .day-header h2{
+        font-size:1.5rem;
     }
 
     .day-header span{
@@ -2661,7 +2650,6 @@ body.inner-page header:not(.scrolled) .nav-links a:hover {
     }
 
 }
-
 
 
 
